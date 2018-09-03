@@ -9,8 +9,8 @@ REM // STORE VARIABLES
 REM // -^> and ^<-
 
 :CHECKLIST
-IF "%applicationVersion%" NEQ "%latestVersion%" goto STOREERROR
-goto STOREMENU
+IF "%applicationVersion%" EQU "%latestVersion%" goto STOREMENU
+goto STOREERROR
 
 :STOREERROR
 TITLE An Error has occured! // TextGame Store Server

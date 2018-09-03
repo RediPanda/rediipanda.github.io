@@ -1,7 +1,7 @@
 :START
-POPD
 set GameLauncherDirectory=%cd%
 MODE 215,80
+CD /D %gameLauncherDirectory%
 @ECHO OFF
 TITLE Loading...
 :REDIRECTION
@@ -10,6 +10,11 @@ REM // Default value is VARIABLE
 goto VARIABLE
 
 REM //////////////////////////////////////////////////////////////////////////////////////////////////////////
+REM RANKS:
+REM BEGINNER, RECRUIT, REGIMENT-5, REGIMENT-22, REGIMENT-54, REGIMENT-84, REGIMENT-108, MERCENARY, ASSAULTAIR, SHARPSHOOTER, A-FORCE-A, A-FORCE-B, A-FORCE-C
+REM KREGIMEIRS-GUARD, ROYAL-GUARDIAN, ROYAL-GUARDIAN-GENERAL, ALPHA-RECRUIT, ALPHA-INFANTRY, ALPHA-TEAM-LEADER, ALPHA-GENERAL, ALPHA-LEADER
+REM EXTERNAT-ASSASSIN, EXTERNAT-ETERNAL-LEADER, EXTERNAT-GUARDIAN
+REM 
 REM LOCATIONS:
 REM 
 REM Greenvale:
@@ -20,7 +25,7 @@ REM
 REM Fiddle's Docks
 REM lastLocationID: FIDDLESDOCK
 REM Locations: FIDDLESDOCK, FIDDLESDOCK-DOCKS, FIDDLESDOCKS-HOSPITAL, FIDDLESDOCK-FARM, FIDDLESDOCK-EXITGATE, FIDDLESDOCK-ENTRANCE
-REM Comments: Novice town, Level 1-8.
+REM Comments: Novice town, Level 3-8.
 REM
 REM Kindle Town:
 REM lastLocationID: KINDLETOWN
@@ -28,12 +33,36 @@ REM Locations: KINDLETOWN, KINDLETOWN-STORE, KINDLETOWN-HOSPITAL, KINDLETOWN-FOR
 REM Comments: Novice town, Level 5-10.
 REM //////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+:OPTION1
+CLS
+echo This is option 1!
+PAUSE
+EXIT
+
+:OPTION2
+CLS
+echo This is option 2!
+PAUSE
+EXIT
+
+:OPTION3
+CLS
+echo This is option 3!
+PAUSE
+EXIT
+
+:OPTION4
+CLS
+echo This is option 4!
+PAUSE
+EXIT
+
 :RESTARTAPP
-POPD
+CD /D %gameLauncherDirectory%
 cls
 TITLE Rebooting // %applicationName%
 echo Rebooting application...
-TIMEOUT 5 /NOBREAK >NUL
+TIMEOUT 2 /NOBREAK >NUL
 goto REDIRECTION
 
 :EVENTREDIRECTION
@@ -41,7 +70,7 @@ TITLE Event // %applicationName%
 CLS
 REM // Default value if theres no event - NOEVENT
 REM // Default value if there is a event - EVENT
-set eventValue=EVENT
+set eventValue=IMAINMENU
 goto %eventValue%
 
 :EXITTOLAUNCHERAPP
@@ -50,15 +79,18 @@ TITLE Returning to launcher // %applicationName%
 goto  IMAINMENU
 
 :VARIABLE
-POPD
+CD /D %gameLauncherDirectory%
 PUSHD data
 PUSHD services
 CALL version.bat
-POPD
+CD /D %gameLauncherDirectory%
+set installedVersion=1.3
 set corpData=%appdata%/"NXT Studios"
 set mapData=%appdata%/"NXT Studios"/library/mapData
 set userDataLocation=%appdata%/"NXT Studios"/savedData/userData
+set serverLocation="%appdata%"/"NXT Studios"/server
 set applicationName=Text Game
+
 set applicationAuthor=NXT Studios
 set applicationUpdater=
 set applicationLauncherVersion=0.2
@@ -73,18 +105,20 @@ set licenseMenu=ILICENSE
 set licenseFile=license.txt
 set configDir=data/config
 set configFile=configuration.bat
-set /A fps = %random%%random% / 15000000
-set /A Result = 12 + 4
-set /A fps2=%random% %%100 +1
 set debug=false
 set allocatedDebugLevel=4
 set allocatedAdminDebugLevel=DEBUG-S008
+set allocatedMaxRAM=512
+set allocatedRAMSize=MB
 set SSLauncher=messageAdmin()
 set debugState=Enable
 set soundState=Disable
 set graphicState=Enable
 set savedData=
-set installedVersion=1.3
+set currency=$
+set adminLogin=RediPanda (Dev) (Admin)
+set roleAdmin=(GRANTED: ADMINISTRATIVE RIGHTS)
+
 
 REM // SERVER IDENTITY
 set serverName1=AU003
@@ -96,7 +130,7 @@ set serverName6=US001
 
 REM // AVAILABILIY OF SERVICES
 set multiplayerService=offline
-set storeService=offline
+set storeService=online
 
 REM // THIRD PARTY VARIBLES
 set loadedVar=LOADED   ]
@@ -131,115 +165,15 @@ set ATCT1=Easy Anti-cheat
 set ATCT2=Battleye Cheat
 set ATCT3=DRCronium Nexus Cheat
 
-REM // GRAPHICAL ASSETS
-REM Set the console to codepage 65001 (UTF-8).
-for /f "tokens=2 delims=:" %%a in ('chcp.com') do set "CONSOLE_CODEPAGE=%%a"
-set "CONSOLE_CODEPAGE=%CONSOLE_CODEPAGE: =%"
-chcp.com 65001 >NUL
-
-set "GBOX_LIGHT_SHADE=░"
-set "GBOX_MEDIUM_SHADE=▒"
-set "GBOX_DARK_SHADE=▓"
-set "GBOX_LIGHT_VERTICAL=│"
-set "GBOX_LIGHT_VERTICAL_AND_LEFT=┤"
-set "GBOX_VERTICAL_SINGLE_AND_LEFT_DOUBLE=╡"
-set "GBOX_VERTICAL_DOUBLE_AND_LEFT_SINGLE=╢"
-set "GBOX_DOWN_DOUBLE_AND_LEFT_SINGLE=╖"
-set "GBOX_DOWN_SINGLE_AND_LEFT_DOUBLE=╕"
-set "GBOX_DOUBLE_VERTICAL_AND_LEFT=╣"
-set "GBOX_DOUBLE_VERTICAL=║"
-set "GBOX_DOUBLE_DOWN_AND_LEFT=╗"
-set "GBOX_DOUBLE_UP_AND_LEFT=╝"
-set "GBOX_UP_DOUBLE_AND_LEFT_SINGLE=╜"
-set "GBOX_UP_SINGLE_AND_LEFT_DOUBLE=╛"
-set "GBOX_LIGHT_DOWN_AND_LEFT=┐"
-set "GBOX_LIGHT_UP_AND_RIGHT=└"
-set "GBOX_LIGHT_UP_AND_HORIZONTAL=┴"
-set "GBOX_LIGHT_DOWN_AND_HORIZONTAL=┬"
-set "GBOX_LIGHT_VERTICAL_AND_RIGHT=├"
-set "GBOX_LIGHT_HORIZONTAL=─"
-set "GBOX_LIGHT_VERTICAL_AND_HORIZONTAL=┼"
-set "GBOX_VERTICAL_SINGLE_AND_RIGHT_DOUBLE=╞"
-set "GBOX_VERTICAL_DOUBLE_AND_RIGHT_SINGLE=╟"
-set "GBOX_DOUBLE_UP_AND_RIGHT=╚"
-set "GBOX_DOUBLE_DOWN_AND_RIGHT=╔"
-set "GBOX_DOUBLE_UP_AND_HORIZONTAL=╩"
-set "GBOX_DOUBLE_DOWN_AND_HORIZONTAL=╦"
-set "GBOX_DOUBLE_VERTICAL_AND_RIGHT=╠"
-set "GBOX_DOUBLE_HORIZONTAL=═"
-set "GBOX_DOUBLE_VERTICAL_AND_HORIZONTAL=╬"
-set "GBOX_UP_SINGLE_AND_HORIZONTAL_DOUBLE=╧"
-set "GBOX_UP_DOUBLE_AND_HORIZONTAL_SINGLE=╨"
-set "GBOX_DOWN_SINGLE_AND_HORIZONTAL_DOUBLE=╤"
-set "GBOX_DOWN_DOUBLE_AND_HORIZONTAL_SINGLE=╥"
-set "GBOX_UP_DOUBLE_AND_RIGHT_SINGLE=╙"
-set "GBOX_UP_SINGLE_AND_RIGHT_DOUBLE=╘"
-set "GBOX_DOWN_SINGLE_AND_RIGHT_DOUBLE=╒"
-set "GBOX_DOWN_DOUBLE_AND_RIGHT_SINGLE=╓"
-set "GBOX_VERTICAL_DOUBLE_AND_HORIZONTAL_SINGLE=╫"
-set "GBOX_VERTICAL_SINGLE_AND_HORIZONTAL_DOUBLE=╪"
-set "GBOX_LIGHT_UP_AND_LEFT=┘"
-set "GBOX_LIGHT_DOWN_AND_RIGHT=┌"
-set "GBOX_FULL_BLOCK=█"
-set "GBOX_LOWER_HALF_BLOCK=▄"
-set "GBOX_LEFT_HALF_BLOCK=▌"
-set "GBOX_RIGHT_HALF_BLOCK=▐"
-set "GBOX_UPPER_HALF_BLOCK=▀"
-
-REM Restore the previous console codepage.
-chcp.com %CONSOLE_CODEPAGE% >NUL
-
-REM Set the console to codepage 65001 (UTF-8).
-for /f "tokens=2 delims=:" %%a in ('chcp.com') do set "CONSOLE_CODEPAGE=%%a"
-set "CONSOLE_CODEPAGE=%CONSOLE_CODEPAGE: =%"
-chcp.com 65001 >NUL
-
-set "GCTL_WHITE_SMILING_FACE=☺"
-set "GCTL_BLACK_SMILING_FACE=☻"
-set "GCTL_BLACK_HEART_SUIT=♥"
-set "GCTL_BLACK_DIAMOND_SUIT=♦"
-set "GCTL_BLACK_CLUB_SUIT=♣"
-set "GCTL_BLACK_SPADE_SUIT=♠"
-set "GCTL_BULLET=•"
-set "GCTL_INVERSE_BULLET=◘"
-set "GCTL_WHITE_CIRCLE=○"
-set "GCTL_INVERSE_WHITE_CIRCLE=◙"
-set "GCTL_MALE_SIGN=♂"
-set "GCTL_FEMALE_SIGN=♀"
-set "GCTL_EIGHTH_NOTE=♪"
-set "GCTL_BEAMED_EIGHTH_NOTES=♫"
-set "GCTL_WHITE_SUN_WITH_RAYS=☼"
-set "GCTL_BLACK_RIGHT_POINTER=►"
-set "GCTL_BLACK_LEFT_POINTER=◄"
-set "GCTL_UP_DOWN_ARROW=↕"
-set "GCTL_DOUBLE_EXCLAMATION_MARK=‼"
-set "GCTL_PILCROW_SIGN=¶"
-set "GCTL_SECTION_SIGN=§"
-set "GCTL_BLACK_RECTANGLE=▬"
-set "GCTL_UP_DOWN_ARROW_WITH_BASE=↨"
-set "GCTL_UP_ARROW=↑"
-set "GCTL_DOWN_ARROW=↓"
-set "GCTL_RIGHT_ARROW=→"
-set "GCTL_LEFT_ARROW=←"
-set "GCTL_RIGHT_ANGLE=∟"
-set "GCTL_LEFT_RIGHT_ARROW=↔"
-set "GCTL_BLACK_UP_TRIANGLE=▲"
-set "GCTL_BLACK_DOWN_TRIANGLE=▼"
-set "GCTL_HOUSE=⌂"
-
-REM Restore the previous console codepage.
-chcp.com %CONSOLE_CODEPAGE% >NUL
-
-REM // GRAPHICAL PORTS
-set smileyface=%GTCL_WHITE_SMILING_FACE%
-set G_BLOCK=%GBOX_FULL_BLOCK%
-
 CLS
 goto CHECKLIST
 
 :DEBUGVAR
 set debugline1=Directory: %CD%
 set debugline2=FPS: !fps!
+PAUSE
+PAUSE
+EXIT
 
 :CREATE
 CLS
@@ -251,8 +185,7 @@ echo.
 echo Once the application closes, please start it again to finish reloading new installation files!
 echo.
 TIMEOUT 5 /NOBREAK >NUL
-POPD
-POPD
+CD /D %gameLauncherDirectory%
 MD data
 PUSHD data
 MD config
@@ -263,19 +196,18 @@ PUSHD _Distribution
   echo [LICENSE]
   echo Distributions of this software to any third party is illegal.
 ) > license.txt
-POPD
+CD /D %gameLauncherDirectory%
 PUSHD data
 MD update
 PUSHD config
 echo set id=239542289318745164517661485119292356978222100021815192116140 >> lib.bat
-POPD
+CD /D %gameLauncherDirectory%
 PUSHD data
 PUSHD update
-goto END
+goto RESTARTAPP
 
 :CHECKLIST
 CD /D %gameLauncherDirectory%
-POPD
 if NOT EXIST data goto CREATE
 PUSHD data
 if NOT EXIST config goto CREATE
@@ -286,33 +218,63 @@ if %id%==239542289318745164517661485119292356978222100021815192116140 goto INTRO
 goto ERRORLVL1
 
 :ERRORLVL1
+REM // Triggered event if theres no such file as lib.bat or failed to read the id as provided.  The lib.bat file is located at ~root/data/ -> config <-
 cls
-echo It seems like the application files are missing or corrupted. Please delete the data file and run the installation again!
+echo.
+echo It seems like the application files are missing or corrupted during installation. Please delete the 'data' file and run the installation again!
 TIMEOUT /T 120
 EXIT
 
 :ERRORLVL2
+REM // Disabled event trigger
 cls
 echo The game is already running in a different instance! Please close this instance to play the application.
 TIMEOUT /T 120
 EXIT
 
+:ERRORLVL3
+TITLE [ERROR] Account Manager Service // Text Game
+REM // Triggered event if the application cannot start/read the localclass.bat located at ~appdata~/Roaming/NXT Studios/savedData/userData/ -> <USERNAME> <-
+cls
+echo.
+echo %applicationName% failed to fetch account data for " %username% " . Please select one of the following actions provided and available below.
+echo.
+echo.
+echo [STATUS]   Logged in as "%adminLogin% " with the following permissions: %roleAdmin%
+echo.
+echo [ACCOUNT]  "%adminLogin% " is logged in by Game Administrator using: Local Account Sessions
+echo [WARNING]  This account was logged in by a mod/user under the details of: Account Services System
+echo [WARNING]  Type of Logger: "Services"         Reason: "ERRORCODE (FAILED_USER_ACCOUNT_JOINT_SERVICES)"
+echo.
+echo.
+echo ---- ADMIN CONTROL ----
+echo.
+echo Please select an action.
+echo.
+echo.
+echo {SERVICE_USER_INPUT_1} ] (FAILED TO FIND ANY INPUT DATABASE NAMED "1"!)
+echo.
+echo {SERVICE_USER_INPUT_2} ] (FAILED TO FIND ANY INPUT DATABASE NAMED "2"!)
+echo.
+echo {SERVICE_USER_INPUT_3} ] (FAILED TO FIND ANY INPUT DATABASE NAMED "3"!)
+PAUSE
+
+
 :INTRODUCTION
 TITLE Introduction // %applicationName%
 
 :INFORMATIONREADER
-POPD
+CD /D %gameLauncherDirectory%
 PUSHD data
 PUSHD services
 CALL version.bat
-POPD
+CD /D %gameLauncherDirectory%
 
 REM // ADD IN EFFECTS AFTER THE ALPHA VERSION
 :IMAINMENU
-cd %gameLauncherDirectory%
-POPD
+cd /d %gameLauncherDirectory%
+CD /D %gameLauncherDirectory%
 TITLE Launcher // %applicationName%
-POPD
 cls
 echo ==================================
 echo =        Text Game               =
@@ -336,9 +298,10 @@ IF %cho%==event.EasterEgg goto EVENTREDIRECTION
 IF %cho%==%SSLauncher% goto IMAINMENUECHO
 IF %cho%==fastLoad goto CLIENTMAINMENULOGIN
 IF %cho%==applicationReboot goto RESTARTAPP
+IF %cho%==ERRORM8 goto ERRORLVL3
 echo.
 echo Incorrect option!
-PING 1.1.1.1 -n 1 -w 4500 >NUL
+TIMEOUT 1 /NOBREAK >NUL
 goto IMAINMENU
 
 :SAIT
@@ -346,6 +309,8 @@ PUSHD %appdata%
 MD "NXT Studios"
 PUSHD "NXT Studios"
 MD savedData
+MD library
+MD server
 goto IMAINMENU
 
 :IMAINMENUECHO
@@ -368,7 +333,7 @@ PAUSE
 goto IMAINMENUECHO
 
 :ILICENSE
-POPD
+CD /D %gameLauncherDirectory%
 PUSHD data
 PUSHD _Distribution
 start Notepad "license.txt"
@@ -376,18 +341,15 @@ goto IMAINMENU
 
 :IABOUT
 cd /d %gameLauncherDirectory%
-POPD
-POPD
 PUSHD data
 PUSHD asset
 PUSHD plugins
 CALL plugin-list.bat
-POPD
-POPD
+CD /D %gameLauncherDirectory%
 PUSHD data
 PUSHD services
 CALL version.bat
-POPD
+CD /D %gameLauncherDirectory%
 CLS
 echo ========================================================
 echo.
@@ -442,7 +404,6 @@ goto IMAINMENU
 
 :LAUNCHERTOCLIENT
 cd /d %gameLauncherDirectory%
-POPD
 echo.
 echo.
 echo Launching Game...
@@ -475,7 +436,6 @@ CD /d %gameLauncherDirectory%
 TITLE Installing // %applicationName%
 echo Installing advanced binary files...
 TIMEOUT 5 /NOBREAK >NUL
-POPD
 PUSHD data
 MD asset
 PUSHD asset
@@ -494,14 +454,13 @@ PUSHD plugins
   echo CALL plugin6.bat
   echo CLS
 ) > plugin-list.bat
-POPD
-POPD
+CD /d %gameLauncherDirectory%
 PUSHD data
 MD cache
 MD services
 PUSHD services
 echo set applicationVersion=%installedVersion% > version.bat
-POPD
+CD /d %gameLauncherDirectory%
 PUSHD data
 MD mono
 MD saves
@@ -511,19 +470,19 @@ MD architecture
 MD engine
 MD core
 MD dll
-POPD
+CD /d %gameLauncherDirectory%
 PUSHD data
 PUSHD saves
 MD profiles
 PUSHD profiles
 (
   echo [ README ]
-  echo The save system stores character save data into a new login-system by hex-coding and through using the Windows Registry Editor.
+  echo The save system stores character save data into a new login-system. This will increase the speed of reading user data.
   echo.
   echo Sorry for any inconvenience.
   echo - NXT Studios
 ) > README.TXT
-POPD
+CD /d %gameLauncherDirectory%
 PUSHD data
 PUSHD saves
 MD levels
@@ -552,13 +511,15 @@ PUSHD %appdata%
 MD "NXT Studios"
 PUSHD "NXT Studios"
 MD savedData
+MD library
+MD server
 PUSHD savedData
 MD userData
 POPD
 goto RESTARTAPP
 
 :CLIENTLAUNCHER
-REM // Display loading screen (with fake assets)
+REM // Display loading screen
 cls
 ECHO Loading Client Bootstrapper...
 TIMEOUT 1 /NOBREAK >NUL
@@ -575,97 +536,15 @@ cls
 ECHO Setting Nav-Mesh wireframe...
 TIMEOUT 1 /NOBREAK >NUL
 cls
-GOTO CUTLOADER
+REM // 1.3 STABLE RELEASE ALLOWED UNRESTRCITED VERSION CHECKS. 1.4+ NOW HAS STRICT PROTOCOLS AND NEW HANDSHAKES.
+REM // GOTO CUTLOADER
 ECHO Checking for new updates...
-TIMEOUT 3 /NOBREAK >NUL
-cls
-ECHO Downloading new updates... (0/13)
-TIMEOUT 3 /NOBREAK >NUL
-cls
-ECHO Downloading new updates... (1/13)
-TIMEOUT 3 /NOBREAK >NUL
-cls
-ECHO Downloading new updates... (2/13)
 TIMEOUT 1 /NOBREAK >NUL
-cls
-ECHO Downloading new updates... (4/13)
-TIMEOUT 1 /NOBREAK >NUL
-cls
-ECHO Downloading new updates... (5/13)
-TIMEOUT 1 /NOBREAK >NUL
-cls
-ECHO Downloading new updates... (6/13)
-TIMEOUT 1 /NOBREAK >NUL
-cls
-ECHO Downloading new updates... (8/13)
-TIMEOUT 1 /NOBREAK >NUL
-cls
-ECHO Downloading new updates... (9/13)
-TIMEOUT 1 /NOBREAK >NUL
-cls
-ECHO Downloading new updates... (12/13)
-TIMEOUT 1 /NOBREAK >NUL
-cls
-ECHO Downloading new updates... (13/13)
-TIMEOUT 2 /NOBREAK >NUL
 cls
 ECHO Importing new updates...
 TIMEOUT 4 /NOBREAK >NUL
 cls
-ECHO Reading MonoManager varibles...
-TIMEOUT 1 /NOBREAK >NUL
-cls
-ECHO Checking for new Anti-Cheat definitions...
-TIMEOUT 1 /NOBREAK >NUL
-cls
-ECHO Importing new definitions...
-TIMEOUT 1 /NOBREAK >NUL
-cls
-ECHO Loading Assets (0/1385)
-TIMEOUT 1 /NOBREAK >NUL
-cls
-ECHO Loading Assets (4/1385)
-TIMEOUT 1 /NOBREAK >NUL
-cls
-ECHO Loading Assets (19/1385)
-TIMEOUT 1 /NOBREAK >NUL
-cls
-ECHO Loading Assets (44/1385)
-TIMEOUT 1 /NOBREAK >NUL
-cls
-ECHO Loading Assets (63/1385)
-TIMEOUT 1 /NOBREAK >NUL
-cls
-ECHO Loading Assets (82/1385)
-TIMEOUT 1 /NOBREAK >NUL
-cls
-ECHO Loading Assets (133/1385)
-TIMEOUT 1 /NOBREAK >NUL
-cls
-ECHO Loading Assets (284/1385)
-TIMEOUT 1 /NOBREAK >NUL
-cls
-ECHO Loading Assets (374/1385)
-TIMEOUT 1 /NOBREAK >NUL
-cls
-ECHO Loading Assets (423/1385)
-TIMEOUT 1 /NOBREAK >NUL
-cls
-ECHO Loading Assets (590/1385)
-TIMEOUT 1 /NOBREAK >NUL
-cls
-ECHO Loading Assets (831/1385)
-TIMEOUT 1 /NOBREAK >NUL
-cls
-ECHO Loading Assets (1204/1385)
-TIMEOUT 1 /NOBREAK >NUL
-cls
-ECHO Loading Assets (1301/1385)
-TIMEOUT 1 /NOBREAK >NUL
-cls
-ECHO Loading Assets (1385/1385)
-TIMEOUT 1 /NOBREAK >NUL
-cls
+
 :CUTLOADER
 goto CLIENTMAINMENULOGIN
 
@@ -707,7 +586,6 @@ set /p "regname=> "
 echo.
 echo.
 echo Checking for user data...
-TIMEOUT 1 /NOBREAK >NUL
 PUSHD %appdata%
 PUSHD "NXT Studios"
 PUSHD savedData
@@ -795,8 +673,14 @@ PUSHD %registername%
   echo set password=%registerpass%
 ) > %registername%-login.bat
 (
+  echo set money=25
+) > money.bat
+(
   echo set currentHealth=250
 ) > health.bat
+(
+  echo set currentShield=0
+) > shield.bat
 (
   echo set weapon=P250
 ) > weapon.bat
@@ -822,6 +706,9 @@ PUSHD %registername%
   echo set maxHealth=250
 ) > maxHealth.bat
 (
+  echo set maxShield=0
+) > maxShield.bat
+(
   echo set debugState=Enable
 ) > debugSetting.bat
 (
@@ -831,7 +718,11 @@ PUSHD %registername%
   echo set graphicState=Disable
 ) > graphicSetting.bat
 (
+  echo set accountAge=%applicationVersion%
+) > accountAge.bat
+(
   echo CALL health.bat
+  echo CALL shield.bat
   echo CALL weapon.bat
   echo CALL weaponDMG.bat
   echo CALL ammo.bat
@@ -840,9 +731,14 @@ PUSHD %registername%
   echo CALL userRank.bat
   echo CALL lastLocation.bat
   echo CALL maxHealth.bat
+  echo CALL maxShield.bat
   echo CALL debugSetting.bat
   echo CALL soundSetting.bat
   echo CALL graphicSetting.bat
+  echo CALL money.bat
+  echo CALL accountAge.bat
+  echo SET localclassid=23789078239075230793392579035212390123258953289
+  echo cls
 ) > localclass.bat
 
 cls
@@ -857,41 +753,43 @@ goto CLIENTMAINMENULOGIN
 CD /d %userDataLocation%
 PUSHD %username%
 CALL localclass.bat
-TIMEOUT 2 /NOBREAK >NUL
-set /a cheatHealthSensor=%maxHealth%+1
-REM // DISABLED LINE if %health% GEQ %cheatHealthSensor% goto DETECTEDCHEAT
+IF "nullPointer%localclassid%"=="nullPointer" goto ERRORLVL3
+set /a cheatMaxInShieldSensor=%maxShield%+1
+set /a cheatMaxInHealthSensor=%maxHealth%+1
+set /a cheatMaxHealthSensor=12500+1
+set cheatMaxShieldSensor=5000
+if "%currentHealth%" GEQ "%cheatMaxInHealthSensor%" goto DETECTEDCHEAT
+if %maxHealth% GEQ %cheatMaxHealthSensor% goto DETECTEDCHEAT
+if %maxShield% GTR %cheatMaxShieldSensor% goto DETECTEDCHEAT
+if "%currentShield%" GEQ "%cheatMaxInShieldSensor%" goto DETECTEDCHEAT
 goto CLIENTMAINMENU
 
 :DETECTEDCHEAT
 CLS
 TITLE AntiCheat System - %ATCT3%
-COLOR 0C
 CLS
 echo.
 echo Sorry, but your account is detected to be modified in a cheating aspect / data is corrupted or filled with data the game lore itself cannot achieve. Please
 echo register a new account after the reboot!
 echo.
-TIMEOUT 2 /T /NOBREAK >NUL
 echo Purging %username%'s account data...
-POPD
+CD /D %GameLauncherDirectory%
 PUSHD %userDataLocation%
-DEL "%username%"
+RMDIR /S /Q "%username%"
 PAUSE
 goto START
 
 :CLIENTMAINMENU
-POPD
-PUSHD %appdata%
-PUSHD "NXT Studios"
-PUSHD savedData
-PUSHD userData
-PUSHD %regname%
-CALL localclass.bat
+Cd /D %GameLauncherDirectory%
+PUSHD data
+PUSHD services
+CALL version.bat
+Cd /D %GameLauncherDirectory%
 CLS
 TITLE Main Menu // %applicationName%
 echo.
 echo.
-echo               // Text Game \\
+echo                 // Text Game \\
 REM // Old Title Screen , did not support special characters and backfired the whole script. Version 0.4
 REM echo ___________              __      ________                       
 REM echo \__    ___/___ ___  ____/  |_   /  _____/_____    _____   ____  
@@ -902,15 +800,15 @@ REM echo              \/      \/                \/     \/      \/     \/
 echo.
 echo.
 echo  \
-echo   \         1] Singleplayer
+echo   \         1] Singleplayer [BETA]
 echo    \
-echo     \       2] Multiplayer
+echo     \       2] Multiplayer [DISABLED]
 echo      \
-echo       \     3] Store
+echo       \     3] Store [BETA]
 echo        \
-echo        /    4] Character
+echo        /    4] Character [BETA]
 echo       /
-echo      /      5] Settings
+echo      /      5] Settings [BETA]
 echo     /
 echo    /        6] Return to Launcher
 echo   /
@@ -919,7 +817,7 @@ echo.
 echo.
 set /p "selector=> "
 IF %selector%==1 goto SINGLEPLAYERMENU
-IF %selector%==2 goto MULTIPLAYERMENU
+IF %selector%==2 goto CLIENTMAINMENU
 IF %selector%==3 goto STOREMENU
 IF %selector%==4 goto CHARACTERMENU
 IF %selector%==5 goto SETTINGSMENU
@@ -935,10 +833,16 @@ PAUSE
 
 :SINGLEPLAYERMENU
 TITLE Singleplayer // %applicationName%
+CD /D %userDataLocation%
+PUSHD %username%
+CALL lastLocation.bat
 cls
 echo.
 echo.
 IF %lastLocation%==TUTORIAL goto TUTORIALNOTIFICATION
+CD /D %userDataLocation%
+PUSHD %username%
+PUSHD %%
 goto %lastLocation%
 
 :MULTIPLAYERMENU
@@ -993,17 +897,17 @@ echo.
 echo.
 echo Connecting to the Store...
 echo.
-TIMEOUT 8 /NOBREAK >NUL
+TIMEOUT 4 /NOBREAK >NUL
 IF %storeService%==online goto STORE
 cls
-
+echo.
 echo Failed to send packets to the Store.
 echo.
 echo Failed to receive packets from the Store.
 echo.
 echo.
 echo Sending TCP / UDP packets to Store Service...
-TIMEOUT 7 /NOBREAK >NUL
+TIMEOUT 3 /NOBREAK >NUL
 echo.
 echo.
 echo.
@@ -1018,7 +922,7 @@ echo /////////////////////////////////////
 echo.
 echo.
 echo Returning back to Main Menu...
-TIMEOUT 8 /NOBREAK >NUL
+TIMEOUT 3 /NOBREAK >NUL
 goto ANTICHEATWALL
 
 :TUTORIALNOTIFICATION
@@ -1047,6 +951,7 @@ goto TUTORIALNOTIFICATION
 
 :CHARACTERMENU
 CALL localclass.bat
+IF "nullPointer%localclassid%"=="nullPointer" goto ERRORLVL3
 TITLE Character // %applicationName%
 CLS
 echo.
@@ -1059,7 +964,10 @@ echo Rank: %userRank%
 echo.
 echo.
 echo Health: %currentHealth% / %maxHealth%
+echo Shield: %currentShield% / %maxShield%
+echo.
 echo Experience: %xp% xp
+echo Balance : %money% %currency%
 echo.
 echo Equipped Items:
 echo     Weapon  : %weapon%
@@ -1071,7 +979,7 @@ PAUSE
 goto ANTICHEATWALL
 
 :SETTINGSMENU
-POPD
+CD /d %gameLauncherDirectory%
 PUSHD data
 PUSHD services
 CALL version.bat
@@ -1106,10 +1014,484 @@ IF %settings%==3 goto SETTINGSGRAPHICS
 IF %settings%==4 goto UPDATORCLIENT
 IF %settings%==5 goto ANTICHEATWALL
 IF %settings%==version goto VERSIONSETTINGS
+IF %settings%==verify goto VERIFYINTEGRITY
 CLS
 echo Invalid option!
 echo.
 TIMEOUT 1 /NOBREAK >NUL
+goto SETTINGSMENU
+
+:VERIFYINTEGRITY
+REM // Setup Verification Directory Status for Report
+set VerifyLauncher=OK!
+set VerifyData=OK!
+set VerifyDistribution=OK!
+set VerifyAsset=OK!
+set VerifyCache=OK!
+set VerifyConfig=OK!
+set VerifyController=OK!
+set VerifyMono=OK!
+set VerifySaves=OK!
+set VerifyServices=OK!
+set VerifyUpdate=OK!
+
+REM // Setup Verification File Status for Report
+
+set VerifyLicense=OK!
+
+set VerifyPlugins=OK!
+set VerifySounds=OK!
+set VerifyTextures=OK!
+
+set VerifyConfigLib=OK!
+
+set VerifyMonoArc=OK!
+set VerifyMonoCore=OK!
+set VerifyMonoDLL=OK!
+set VerifyMonoEngine=OK!
+set VerifyMonoLib=OK!
+
+
+TITLE Verifying Game Files... // %applicationName%
+CLS
+echo Setting up new parameters...
+CD /D %gameLauncherDirectory%
+TIMEOUT 1 /NOBREAK >NUL
+CLS
+set filename=Launcher.bat
+echo.
+echo.
+echo Scanning files...
+echo.
+echo [ %filename% ]
+echo. 
+IF NOT EXIST "Launcher.bat" set VerifyLauncher=Failed!
+
+TIMEOUT 1 /NOBREAK >NUL
+CLS
+set filename=Data Directory
+echo.
+echo.
+echo Scanning files...
+echo.
+echo [ %filename% ]
+echo. 
+IF NOT EXIST "data" set VerifyData=Failed!
+
+REM // Data Directory
+PUSHD data
+
+TIMEOUT 1 /NOBREAK >NUL
+CLS
+set filename=_Distribution
+echo.
+echo.
+echo Scanning files...
+echo.
+echo [ %filename% ]
+echo. 
+IF NOT EXIST "_Distribution" set VerifyDistribution=Failed!
+
+TIMEOUT 1 /NOBREAK >NUL
+CLS
+set filename=Asset
+echo.
+echo.
+echo Scanning files...
+echo.
+echo [ %filename% ]
+echo. 
+IF NOT EXIST "asset" set VerifyAsset=Failed!
+
+TIMEOUT 1 /NOBREAK >NUL
+CLS
+set filename=cache
+echo.
+echo.
+echo Scanning files...
+echo.
+echo [ %filename% ]
+echo. 
+IF NOT EXIST "cache" set VerifyCache=Failed!
+
+TIMEOUT 1 /NOBREAK >NUL
+CLS
+set filename=config
+echo.
+echo.
+echo Scanning files...
+echo.
+echo [ %filename% ]
+echo. 
+IF NOT EXIST "config" set VerifyConfig=Failed!
+
+TIMEOUT 1 /NOBREAK >NUL
+CLS
+set filename=controller
+echo.
+echo.
+echo Scanning files...
+echo.
+echo [ %filename% ]
+echo. 
+IF NOT EXIST "controller" set VerifyController=Failed!
+
+TIMEOUT 1 /NOBREAK >NUL
+CLS
+set filename=mono
+echo.
+echo.
+echo Scanning files...
+echo.
+echo [ %filename% ]
+echo. 
+IF NOT EXIST "mono" set VerifyMono=Failed!
+
+TIMEOUT 1 /NOBREAK >NUL
+CLS
+set filename=saves
+echo.
+echo.
+echo Scanning files...
+echo.
+echo [ %filename% ]
+echo. 
+IF NOT EXIST "saves" set VerifySaves=Failed!
+
+TIMEOUT 1 /NOBREAK >NUL
+CLS
+set filename=services
+echo.
+echo.
+echo Scanning files...
+echo.
+echo [ %filename% ]
+echo. 
+IF NOT EXIST "services" set VerifyServices=Failed!
+
+TIMEOUT 1 /NOBREAK >NUL
+CLS
+set filename=update
+echo.
+echo.
+echo Scanning files...
+echo.
+echo [ %filename% ]
+echo. 
+IF NOT EXIST "update" set VerifyUpdate=Failed!
+TIMEOUT 1 /NOBREAK >NUL
+CLS
+
+REM // LEVEL 1 SCANNER FINISHED
+
+echo.
+echo Level 1 Integrity Scanned!
+echo.
+echo.
+TIMEOUT 2 /NOBREAK >NUL
+echo Initiating Level 2 Integrity Scanner...
+echo.
+TIMEOUT 1 /NOBREAK >NUL
+
+REM // INITIATE LEVEL 2 SCANNER
+
+REM // _Distribution Directory
+
+TIMEOUT 1 /NOBREAK >NUL
+PUSHD _Distribution
+CLS
+set filedirectory=_Distribution
+set filename=license.txt
+echo.
+echo.
+echo    Scanning files...
+echo.
+echo   Scanning Directory : [ %filedirectory% ]
+echo.
+echo   Scanning File      : [ %filename% ]
+echo. 
+IF NOT EXIST "%filename%" set VerifyLicense=Failed!
+
+REM // asset Directory
+
+TIMEOUT 1 /NOBREAK >NUL
+POPD
+PUSHD asset
+CLS
+set filedirectory=asset
+set filename=plugins
+echo.
+echo.
+echo    Scanning files...
+echo.
+echo   Scanning Directory : [ %filedirectory% ]
+echo.
+echo   Scanning File      : [ %filename% ]
+echo. 
+IF NOT EXIST "%filename%" set VerifyPlugins=Failed!
+
+TIMEOUT 1 /NOBREAK >NUL
+CLS
+set filedirectory=asset
+set filename=sounds
+echo.
+echo.
+echo    Scanning files...
+echo.
+echo   Scanning Directory : [ %filedirectory% ]
+echo.
+echo   Scanning File      : [ %filename% ]
+echo. 
+IF NOT EXIST "%filename%" set VerifySounds=Failed!
+
+TIMEOUT 1 /NOBREAK >NUL
+CLS
+set filedirectory=asset
+set filename=textures
+echo.
+echo.
+echo    Scanning files...
+echo.
+echo   Scanning Directory : [ %filedirectory% ]
+echo.
+echo   Scanning File      : [ %filename% ]
+echo. 
+IF NOT EXIST "%filename%" set VerifyTextures=Failed!
+
+REM // config Directory
+
+TIMEOUT 1 /NOBREAK >NUL
+POPD
+PUSHD config
+CLS
+set filedirectory=config
+set filename=lib.bat
+echo.
+echo.
+echo    Scanning files...
+echo.
+echo   Scanning Directory : [ %filedirectory% ]
+echo.
+echo   Scanning File      : [ %filename% ]
+echo. 
+IF NOT EXIST "%filename%" set VerifyConfigLib=Failed!
+
+REM // Mono Directory
+
+TIMEOUT 1 /NOBREAK >NUL
+POPD
+PUSHD mono
+CLS
+set filedirectory=mono
+set filename=architecture
+echo.
+echo.
+echo    Scanning files...
+echo.
+echo   Scanning Directory : [ %filedirectory% ]
+echo.
+echo   Scanning File      : [ %filename% ]
+echo. 
+IF NOT EXIST "%filename%" set VerifyMonoArc=Failed!
+
+TIMEOUT 1 /NOBREAK >NUL
+CLS
+set filedirectory=mono
+set filename=core
+echo.
+echo.
+echo    Scanning files...
+echo.
+echo   Scanning Directory : [ %filedirectory% ]
+echo.
+echo   Scanning File      : [ %filename% ]
+echo. 
+IF NOT EXIST "%filename%" set VerifyMonoCore=Failed!
+
+TIMEOUT 1 /NOBREAK >NUL
+CLS
+set filedirectory=mono
+set filename=dll
+echo.
+echo.
+echo    Scanning files...
+echo.
+echo   Scanning Directory : [ %filedirectory% ]
+echo.
+echo   Scanning File      : [ %filename% ]
+echo. 
+IF NOT EXIST "%filename%" set VerifyMonoDLL=Failed!
+
+TIMEOUT 1 /NOBREAK >NUL
+CLS
+set filedirectory=mono
+set filename=engine
+echo.
+echo.
+echo    Scanning files...
+echo.
+echo   Scanning Directory : [ %filedirectory% ]
+echo.
+echo   Scanning File      : [ %filename% ]
+echo. 
+IF NOT EXIST "%filename%" set VerifyMonoEngine=Failed!
+
+TIMEOUT 1 /NOBREAK >NUL
+CLS
+set filedirectory=mono
+set filename=lib
+echo.
+echo.
+echo    Scanning files...
+echo.
+echo   Scanning Directory : [ %filedirectory% ]
+echo.
+echo   Scanning File      : [ %filename% ]
+echo. 
+IF NOT EXIST "%filename%" set VerifyMonoLib=Failed!
+
+REM // Finish Scan
+
+CLS
+
+REM // Print Report
+
+TITLE Displaying Report // %applicationName%
+CLS
+echo.
+echo Level 2 Scan finished!
+echo.
+echo We are now preparing the results from the scans...
+echo.
+TIMEOUT 4 /NOBREAK >NUL
+echo.
+echo Generating the report...
+echo.
+echo.
+echo.
+TIMEOUT 1 /NOBREAK >NUL
+
+REM // Report Output
+:REPORTOUTPUT
+CLS
+
+echo ------ VERIFICATION INTEGRITY REPORT ------
+echo.
+echo Game Name: %applicationName%
+echo Game Version : %applicationVersion%
+echo.
+echo Assigned Username : %username%
+echo.
+echo Character Information:
+echo     Location         : %lastLocation%
+echo     Ammo             : %ammo%
+echo     Health           : %currentHealth%
+echo     Max Health       : %maxHealth%
+echo     Shield           : %currentShield%
+echo     Max Shield       : %maxShield%
+echo     Level            : %userLevel%
+echo     Rank             : %userRank%
+echo     EXP              : %xp%
+echo     Weapon           : %weapon%
+echo     Weapon DMG       : %weaponDMG%
+echo     Account Version  : %accountAge%
+echo.
+echo.
+echo Validated Files:
+echo.
+echo   Main Root File 'Launcher.Bat'            -      %VerifyLauncher%
+echo   Main Root File 'Data'                    -      %VerifyData%
+echo      Data -^>  _Distribution                -      %VerifyDistribution%
+echo           _Distribution -^>  license.txt    -      %VerifyLicense%
+echo      Data -^>  asset                        -      %VerifyAsset%
+echo           asset -^>  plugins                -      %VerifyPlugins%
+echo           asset -^>  sounds                 -      %VerifySounds%
+echo           asset -^>  textures               -      %VerifyTextures%
+echo      Data -^>  cache                        -      %VerifyCache%
+echo      Data -^>  config                       -      %VerifyConfig%
+echo           config -^> lib.bat                -      %VerifyConfigLib%
+echo      Data -^>  controller                   -      %VerifyController%
+echo      Data -^>  mono                         -      %VerifyMono%
+echo           mono -^> architecture             -      %VerifyMonoArc%
+echo           mono -^> core                     -      %VerifyMonoCore%
+echo           mono -^> dll                      -      %VerifyMonoDLL%
+echo           mono -^> engine                   -      %VerifyMonoEngine%
+echo           mono -^> lib                      -      %VerifyMonoLib%
+echo      Data -^>  saves                        -      %VerifySaves%
+echo      Data -^>  services                     -      %VerifyServices%
+echo      Data -^>  update                       -      %VerifyUpdate%
+echo.
+echo.
+echo End of Report File
+echo.
+echo --- EOF ---
+TIMEOUT 2 /NOBREAK >NUL
+PAUSE
+
+echo.
+echo.
+echo Would you like a log file of this report? [Y /N]
+set /p "report=> "
+IF %report%==Y goto PRINTREPORT
+IF %report%==y goto PRINTREPORT
+IF %report%==N goto SETTINGSMENU
+IF %report%==n goto SETTINGSMENU
+goto REPORTOUTPUT
+
+:PRINTREPORT
+CD /D %GameLauncherDirectory%
+(
+echo ------ VERIFICATION INTEGRITY REPORT ------
+echo.
+echo Game Name: %applicationName%
+echo Game Version : %applicationVersion%
+echo.
+echo Assigned Username : %username%
+echo.
+echo Character Information:
+echo     Location         : %lastLocation%
+echo     Ammo             : %ammo%
+echo     Health           : %currentHealth%
+echo     Max Health       : %maxHealth%
+echo     Shield           : %currentShield%
+echo     Max Shield       : %maxShield%
+echo     Level            : %userLevel%
+echo     Rank             : %userRank%
+echo     EXP              : %xp%
+echo     Weapon           : %weapon%
+echo     Weapon DMG       : %weaponDMG%
+echo     Account Version  : %accountAge%
+echo.
+echo.
+echo Validated Files:
+echo.
+echo   Main Root File 'Launcher.Bat'            -      %VerifyLauncher%
+echo   Main Root File 'Data'                    -      %VerifyData%
+echo      Data -^>  _Distribution                -      %VerifyDistribution%
+echo           _Distribution -^>  license.txt    -      %VerifyLicense%
+echo      Data -^>  asset                        -      %VerifyAsset%
+echo           asset -^>  plugins                -      %VerifyPlugins%
+echo           asset -^>  sounds                 -      %VerifySounds%
+echo           asset -^>  textures               -      %VerifyTextures%
+echo      Data -^>  cache                        -      %VerifyCache%
+echo      Data -^>  config                       -      %VerifyConfig%
+echo           config -^> lib.bat                -      %VerifyConfigLib%
+echo      Data -^>  controller                   -      %VerifyController%
+echo      Data -^>  mono                         -      %VerifyMono%
+echo           mono -^> architecture             -      %VerifyMonoArc%
+echo           mono -^> core                     -      %VerifyMonoCore%
+echo           mono -^> dll                      -      %VerifyMonoDLL%
+echo           mono -^> engine                   -      %VerifyMonoEngine%
+echo           mono -^> lib                      -      %VerifyMonoLib%
+echo      Data -^>  saves                        -      %VerifySaves%
+echo      Data -^>  services                     -      %VerifyServices%
+echo      Data -^>  update                       -      %VerifyUpdate%
+echo.
+echo.
+echo End of Report File
+echo.
+echo --- EOF ---
+) > validity-integrity-report.txt
 goto SETTINGSMENU
 
 :VERSIONSETTINGS
@@ -1153,11 +1535,13 @@ goto SETTINGSMENU
 
 :UPDATORCLIENT
 CD /d %gameLauncherDirectory%
-POPD
+
 PUSHD data
 PUSHD services
+
 IF EXIST updatorService.bat goto UPDATORCLIENTLAUNCH
-echo Failed to start the updator client/service!
+echo Failed to start the Updator Client/Service!
+
 TIMEOUT 3 /NOBREAK >NUL
 goto SETTINGSMENU
 
@@ -1166,41 +1550,25 @@ TITLE Validating // Updator Client
 cls
 echo Validating and syncing new ID and preferences
 CALL updatorService.bat
-TIMEOUT 60 /T /NOBREAK >NUL
-goto SETTINGSMENU
+EXIT
 
 :STORE
-TITLE Store // %applicationName%
-CLS
+Cd /D %GameLauncherDirectory%
+PUSHD data
+PUSHD services
+CALL version.bat
+cls
 echo.
-echo  MESSAGE FROM THE ADMINISTRATORS // %administratorMessageStore%
+echo Fetching the latest store items...
 echo.
-echo  GLOBAL ANNOUNCEMENTS // %administratorAnnouncement%
-echo.
-echo.
-echo /////////////////// [ STORE ] \\\\\\\\\\\\\\\\\\\\\
-echo I                                                 I
-echo I                                                 I
-echo I                                                 I
-echo I                                                 I
-echo I                                                 I
-echo I                                                 I
-echo I                                                 I
-echo I                                                 I
-echo I                                                 I
-echo I                                                 I
-echo I                                                 I
-echo I                                                 I
-echo I                                                 I
-echo I                                                 I
-echo I                                                 I
-echo I                                                 I
-echo I                                                 I
-echo I                                                 I
-echo I                                                 I
-echo \\\\\\\\\\\\\\\\\\\-------------///////////////////
-PAUSE
-SET/P "storeSelector=> "
+TIMEOUT 1 /NOBREAK >NUL
+CD /D %serverLocation%
+SET "FILENAME=%serverLocation%/store.bat"
+cls
+bitsadmin.exe /transfer "Store Service" "https://raw.githubusercontent.com/RediPanda/rediipanda.github.io/master/store.bat" %FILENAME%
+TIMEOUT 3 /NOBREAK >NUL
+CALL store.bat
+goto CLIENTMAINMENU
 
 :TUTORIAL
 POPD
@@ -1336,11 +1704,11 @@ goto TUTORIALCOMBAT
 
 :ACQUIREKRAR
 set weapon=KR-Assault Rifle
-set ammo=40
 set weapondmg=17
+set ammo=40
 goto TUTORIALCOMBAT
 
-:ACQUIREAK47
+:ACQUIREDLB
 set weapon=Demite's Longbow
 set weapondmg=14
 set ammo=40
@@ -1378,6 +1746,7 @@ echo.
 echo Equipped Weapon: %weapon%
 echo      Ammo: %ammo%
 echo.
+echo -----------------------------------
 echo -----------------------------------
 echo.
 echo.
@@ -1459,6 +1828,7 @@ echo Equipped Weapon: %weapon%
 echo      Ammo: %ammo%
 echo.
 echo -----------------------------------
+echo -----------------------------------
 echo.
 echo.
 echo  Enemy: %enemy%'s Stats
@@ -1493,6 +1863,7 @@ echo.
 echo Equipped Weapon: %weapon%
 echo      Ammo: %ammo%
 echo.
+echo -----------------------------------
 echo -----------------------------------
 echo.
 echo.
@@ -1529,6 +1900,7 @@ echo Equipped Weapon: %weapon%
 echo      Ammo: %ammo%
 echo.
 echo -----------------------------------
+echo -----------------------------------
 echo.
 echo.
 echo  Enemy: %enemy%'s Stats
@@ -1563,6 +1935,7 @@ echo.
 echo Equipped Weapon: %weapon%
 echo      Ammo: %ammo%
 echo.
+echo -----------------------------------
 echo -----------------------------------
 echo.
 echo.
@@ -1620,6 +1993,7 @@ echo.
 echo Equipped Weapon: %weapon%
 echo      Ammo: %ammo%
 echo.
+echo -----------------------------------
 echo -----------------------------------
 echo.
 echo.
@@ -1713,6 +2087,7 @@ echo Equipped Weapon: %weapon%
 echo      Ammo: %ammo%
 echo.
 echo -----------------------------------
+echo -----------------------------------
 echo.
 echo.
 echo  Enemy: %enemy%'s Stats
@@ -1746,6 +2121,7 @@ echo Equipped Weapon: %weapon%
 echo      Ammo: %ammo%
 echo.
 echo -----------------------------------
+echo -----------------------------------
 echo.
 echo.
 echo  Enemy: %enemy%'s Stats
@@ -1778,6 +2154,7 @@ echo.
 echo Equipped Weapon: %weapon%
 echo      Ammo: %ammo%
 echo.
+echo -----------------------------------
 echo -----------------------------------
 echo.
 echo.
@@ -1830,29 +2207,11 @@ goto COMBATTUT2RESET
 
 :COMBATTUTPARTTWO
 CLS
-echo.
-echo [Dave] Whoa, defeated 2 enemies huh? Great job back there!
-echo.
-TIMEOUT 3 /NOBREAK >NUL
-echo [Dave] But that's just the beginning, you got your own destiny, journey and adventure out there.
-echo.
-TIMEOUT 3 /NOBREAK >NUL
-echo [Dave] Looks like your ready to go out there and be a hero.
-echo.
+echo Thats the end of the tutorial! Continuing to the story-line...
 TIMEOUT 2 /NOBREAK >NUL
-echo [Dave] *bzz*
-echo.
-echo.
-TIMEOUT 1 /NOBREAK >NUL
-echo [Dave] Uh oh, looks like I got another person for training. Don't worry %username%, I think your special and unique. Let the world know that.
-echo.
-TIMEOUT 4 /NOBREAK >NUL
-echo [Dave] See you soon!
-echo.
-TIMEOUT 3 /NOBREAK >NUL
-
-
 :INITWORLD
+CD /D %userDataLocation%
+PUSHD %username%
 CLS
 echo.
 echo Dropping %username% to the drop-off zone...
@@ -1873,41 +2232,6 @@ echo.
 echo [Drop-Off Drone] You have arrived at : GREENVALE
 echo.
 TIMEOUT 3 /NOBREAK >NUL
-
-:GREENVALE
-CD /d %userDataLocation%
-PUSHD %username%
-(
-  echo set lastLocation=GREENVALE
-) > lastLocation.bat
-echo GREENVALE SET!
-PAUSE
-CD /d %userDataLocation%
-PUSHD %username%
-PUSHD mapData
-PUSHD GREENVALE
-rem // CALL instance.bat
-CLS
-:LOADINGBETA
-title Loading...
-set load=%load%%GBOX_LIGHT_SHADE%%GBOX_LIGHT_SHADE%%GBOX_LIGHT_SHADE%%GBOX_LIGHT_SHADE%%GBOX_LIGHT_SHADE%%GBOX_LIGHT_SHADE%%GBOX_LIGHT_SHADE%
-cls
-echo -------------------------------------------------
-echo                       Loading
-echo -------------------------------------------------
-echo.
-echo.
-echo                 Username : %username%
-echo                 Password : %password%
-echo.
-echo.
-echo          Logging in...
-echo          ===================================
-echo          %load%
-echo          ===================================
-echo.                              Please Wait...
-echo.
-ping localhost -n 2 >nul
-set/a timeLoad=%timeLoad% +1
-if %timeLoad%==5 goto LOADBETA
-goto LOADINGBETA
+echo set lastLocation=GREENVALE > lastLocation.bat
+TIMEOUT 1 /NOBREAK>NUL
+goto SINGLEPLAYERMENU
