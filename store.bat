@@ -39,7 +39,7 @@ EXIT
 
 :STOREMENU
 cls
-echo Welcome %username% to my Store! Please, look around and see anything new you would like to purchase?
+echo Welcome back, %username%! Please, look around and see anything new you would like to purchase.
 echo.
 echo WORLD NEWS // BUSHFIRE AT GREENVALE WOOD DEPOT. WOOD PRODUCTION AND RESOURCES IS REDUCED!
 echo.
@@ -70,6 +70,8 @@ echo =                                                        =                 
 echo =                                                        =                                           =
 echo =                                                        =                                           =
 echo ======================================================================================================
+echo.
+echo Type ['Quit'] to leave the Store!
 set /p "cho=>"
 IF %cho%==1 goto ITEM1
 IF %cho%==2 goto ITEM2
@@ -79,7 +81,17 @@ IF %cho%==5 goto ITEM5
 IF %cho%==6 goto ITEM6
 IF %cho%==7 goto ITEM7
 IF %cho%==8 goto ITEM8
+IF %cho%==quit goto LEAVE
+IF %cho%==Quit goto LEAVE
+IF %cho%==QUIT goto LEAVE
 echo.
 echo Invalid option!
 TIMEOUT 1 /NOBREAK >NUL
 goto STOREMENU
+
+:LEAVE
+CLS
+echo.
+echo Thanks for visiting the shop, %username%. See you next time!
+echo.
+echo.
