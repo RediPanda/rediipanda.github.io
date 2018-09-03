@@ -64,7 +64,7 @@ echo =     6] Health Potion x 2                     [1000]    =   [^<-]Concrete:
 echo =                                                        =                                           =
 echo =     7] Desmonic 'Shroom                      [145]     =   [-^>]Food: 654368                        =
 echo =                                                        =                                           =
-echo =     8] Desmonic Bowl                         [121]     =   [^<-]SekTech Fluid: 1834                 =
+echo =     8] Desmonic Bowl                         [125]     =   [^<-]SekTech Fluid: 1834                 =
 echo =                                                        =                                           =
 echo =                                                        =                                           =
 echo =                                                        =                                           =
