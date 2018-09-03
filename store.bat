@@ -72,6 +72,7 @@ echo =                                                        =                 
 echo ======================================================================================================
 echo.
 echo Type ['Quit'] to leave the Store!
+echo.
 set /p "cho=>"
 IF %cho%==1 goto ITEM1
 IF %cho%==2 goto ITEM2
@@ -95,3 +96,4 @@ echo.
 echo Thanks for visiting the shop, %username%. See you next time!
 echo.
 echo.
+TIMEOUT 2 /NOBREAK >NUL
