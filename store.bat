@@ -35,7 +35,7 @@ echo.
 echo.
 echo.
 PAUSE
-EXIT
+goto EXIT
 
 :STOREMENU
 cls
@@ -97,3 +97,4 @@ echo Thanks for visiting the shop, %username%. See you next time!
 echo.
 echo.
 TIMEOUT 2 /NOBREAK >NUL
+:EXIT
