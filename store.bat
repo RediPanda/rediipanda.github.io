@@ -41,7 +41,7 @@ goto EXIT
 cls
 echo Welcome back, %username%! Please, look around and see anything new you would like to purchase.
 echo.
-echo WORLD NEWS // BUSHFIRE AT GREENVALE WOOD DEPOT. WOOD PRODUCTION AND RESOURCES IS REDUCED!
+echo WORLD NEWS // FIRE AT GREENVALE WOOD DEPOT. WOOD PRODUCTION AND RESOURCES IS REDUCED!
 echo.
 echo.
 echo    COINS IN YOUR INVENTORY // %money%
