@@ -1,9 +1,10 @@
 :START
-set GameLauncherDirectory=%cd%
+@ECHO OFF
+set GameLauncherDirectory=%LauncherDirectory%
 MODE 215,80
 CD /D %gameLauncherDirectory%
-@ECHO OFF
 TITLE Loading...
+cls
 :REDIRECTION
 REM // REDIRECTING TO THE VARIABLES TAB
 REM // Default value is VARIABLE
@@ -84,7 +85,7 @@ PUSHD data
 PUSHD services
 CALL version.bat
 CD /D %gameLauncherDirectory%
-set installedVersion=1.3
+set installedVersion=1.4
 set corpData=%appdata%/"NXT Studios"
 set mapData=%appdata%/"NXT Studios"/library/mapData
 set userDataLocation=%appdata%/"NXT Studios"/savedData/userData
@@ -168,13 +169,6 @@ set ATCT3=DRCronium Nexus Cheat
 CLS
 goto CHECKLIST
 
-:DEBUGVAR
-set debugline1=Directory: %CD%
-set debugline2=FPS: !fps!
-PAUSE
-PAUSE
-EXIT
-
 :CREATE
 CLS
 TITLE Installation // %applicationName%
@@ -222,14 +216,18 @@ REM // Triggered event if theres no such file as lib.bat or failed to read the i
 cls
 echo.
 echo It seems like the application files are missing or corrupted during installation. Please delete the 'data' file and run the installation again!
-TIMEOUT /T 120
+echo.
+echo.
+echo Error Code : [ER1]
+TIMEOUT 120 /NOBREAK >NUL
 EXIT
 
 :ERRORLVL2
 REM // Disabled event trigger
 cls
+echo.
 echo The game is already running in a different instance! Please close this instance to play the application.
-TIMEOUT /T 120
+TIMEOUT 120 /NOBREAK >NUL
 EXIT
 
 :ERRORLVL3
@@ -257,11 +255,35 @@ echo.
 echo {SERVICE_USER_INPUT_2} ] (FAILED TO FIND ANY INPUT DATABASE NAMED "2"!)
 echo.
 echo {SERVICE_USER_INPUT_3} ] (FAILED TO FIND ANY INPUT DATABASE NAMED "3"!)
-PAUSE
+echo.
+echo.
+echo Error Code : [ER3]
+TIMEOUT 2 /NOBREAK >NUL
+goto ERRORLVL1
 
+:ERRORLVL4
+cls
+echo.
+echo The Launcher failed to sync and authorise data from the Client Application.
+echo.
+echo Please try running the Client Application instead of the Launcher Application,
+echo.
+echo Or try updating the Client Application if its outdated.
+echo.
+echo.
+echo Error Code : [ER4]
+echo.
+echo.
+TIMEOUT 120 /NOBREAK >NUL
 
 :INTRODUCTION
 TITLE Introduction // %applicationName%
+
+:CLIENTIDCHECKLIST
+IF NOT %serviceIsTextGameRunning%==true goto ERRORLVL4
+IF NOT %serviceIsTextGameResponding%==true goto ERRORLVL4
+IF NOT %serviceTextGameSpecialIDHandler%==83123895723857237623785462376846523685685646532674523845679653276523 goto ERRORLVL4
+IF NOT %serviceTextGameSpecialIDThrottler%==ADSHBFASIBETBKETBEABIKFDTEETBABTAEABFDSBKFASGAFIGFAIGATEIGAETRBRAEB goto ERRORLVL4
 
 :INFORMATIONREADER
 CD /D %gameLauncherDirectory%
@@ -272,7 +294,6 @@ CD /D %gameLauncherDirectory%
 
 REM // ADD IN EFFECTS AFTER THE ALPHA VERSION
 :IMAINMENU
-cd /d %gameLauncherDirectory%
 CD /D %gameLauncherDirectory%
 TITLE Launcher // %applicationName%
 cls
@@ -897,7 +918,7 @@ echo.
 echo.
 echo Connecting to the Store...
 echo.
-TIMEOUT 4 /NOBREAK >NUL
+TIMEOUT 2 /NOBREAK >NUL
 IF %storeService%==online goto STORE
 cls
 echo.
@@ -1549,6 +1570,7 @@ goto SETTINGSMENU
 TITLE Validating // Updator Client
 cls
 echo Validating and syncing new ID and preferences
+TIMEOUT 1 /NOBREAK >NUL
 CALL updatorService.bat
 EXIT
 
@@ -1563,10 +1585,10 @@ echo Fetching the latest store items...
 echo.
 TIMEOUT 1 /NOBREAK >NUL
 CD /D %serverLocation%
-SET "FILENAME=%serverLocation%/store.bat"
+DEL /Q "store.bat"
+SET "FILELOCATION=%serverLocation%/store.bat"
 cls
-bitsadmin.exe /transfer "Store Service" "https://raw.githubusercontent.com/RediPanda/rediipanda.github.io/master/store.bat" %FILENAME%
-TIMEOUT 3 /NOBREAK >NUL
+bitsadmin.exe /transfer "Store Service" "https://raw.githubusercontent.com/RediPanda/rediipanda.github.io/master/store.bat" %FILELOCATION%
 CALL store.bat
 goto CLIENTMAINMENU
 
