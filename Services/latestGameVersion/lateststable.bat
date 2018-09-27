@@ -1,0 +1,1 @@
+set latestStable=1.4

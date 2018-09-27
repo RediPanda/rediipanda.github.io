@@ -1,0 +1,1 @@
+set latestClientStable=1.4
