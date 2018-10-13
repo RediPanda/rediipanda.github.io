@@ -5,7 +5,7 @@ mode 150,30
 TITLE Client Launcher // TextGame
 cls
 set LauncherDirectory=%cd%
-set corporateRootDirectory=%appdata%/"NXT Studios"
+set corporateRootDirectory="%appdata%/"NXT Studios""
 set clientInstalledVersion=1.3
 set serviceIsTextGameRunning=true
 set serviceIsTextGameResponding=true
@@ -217,7 +217,7 @@ IF %updatorsel%==1 goto UPDATECLIENT1
 IF %updatorsel%==2 goto UPDATEGAME1
 goto UPDATESELECTOR
 
-:UPDATECLIENT2
+:UPDATECLIENT1
 cls
 echo.
 echo.
@@ -241,9 +241,9 @@ PING 1.1.1.1 -n 3 15000 >NUL
 
 IF "%clockUpdateClient%"=="28" goto UPDATESERVICECLIENT
 set /a clockUpdateClient="%clockUpdateClient%" + "1"
-goto UPDATECLIENT2
+goto UPDATECLIENT1
 
-:UPDATEGAME2
+:UPDATEGAME1
 cls
 echo.
 echo.
@@ -267,7 +267,7 @@ PING 1.1.1.1 -n 3 15000 >NUL
 
 IF "%clockUpdateClient%"=="28" goto UPDATESERVICEGAME
 set /a clockUpdateClient="%clockUpdateClient%" + "1"
-goto UPDATEGAME2
+goto UPDATEGAME1
 
 :LAUNCH
 PUSHD %appdata%
@@ -291,8 +291,8 @@ echo [Y/N]
 echo.
 echo.
 set /p "option=> "
-IF %option%==Y goto ACCEPT
-IF %option%==y goto ACCEPT
+IF %option%==Y goto ACCEPT1
+IF %option%==y goto ACCEPT1
 IF %option%==N goto ANIMATE
 IF %option%==n goto ANIMATE
 goto INSTALL
@@ -308,4 +308,4 @@ cd /d "%corporateRootDirectory%/library/game"
 DEL /Q "launcher.bat"
 SET "FILENAME=%corporateRootDirectory%/library/game/Launcher.bat"
 cls
-bitsadmin.exe /transfer "Store Service" "https://raw.githubusercontent.com/RediPanda/rediipanda.github.io/master/Launcher.bat" %FILENAME%
+bitsadmin.exe /transfer "Store Service" "https://raw.githubusercontent.com/RediPanda/rediipanda.github.io/master/Launcher.bat" "%FILENAME%"
