@@ -1,24 +1,8 @@
 @ECHO OFF
-REM BFCPEOPTIONSTART
-REM Advanced BAT to EXE Converter www.BatToExeConverter.com
-REM BFCPEEXE=
-REM BFCPEICON=
-REM BFCPEICONINDEX=-1
-REM BFCPEEMBEDDISPLAY=0
-REM BFCPEEMBEDDELETE=1
-REM BFCPEADMINEXE=0
-REM BFCPEINVISEXE=0
-REM BFCPEVERINCLUDE=1
-REM BFCPEVERVERSION=1.4.2.5
-REM BFCPEVERPRODUCT=Product Name
-REM BFCPEVERDESC=Product Description
-REM BFCPEVERCOMPANY=Your Company
-REM BFCPEVERCOPYRIGHT=Copyright Info
-REM BFCPEOPTIONEND
 @ECHO ON
 :START
 @ECHO OFF
-set GameLauncherDirectory=%LauncherDirectory%
+set GameLauncherDirectory="%LauncherDirectory%"
 MODE 215,80
 CD /D %gameLauncherDirectory%
 TITLE Loading...
@@ -26,6 +10,14 @@ cls
 :REDIRECTION
 REM // REDIRECTING TO THE VARIABLES TAB
 REM // Default value is VARIABLE
+
+:CLIENTIDCHECKLIST1
+REM // IF CLIENT IS NOT SYNCED WITH LAUNCHER, BREAK SESSION.
+IF NOT %serviceIsTextGameRunning%==true goto ERRORLVL4
+IF NOT %serviceIsTextGameResponding%==true goto ERRORLVL4
+IF NOT %serviceTextGameSpecialIDHandler%==83123895723857237623785462376846523685685646532674523845679653276523 goto ERRORLVL4
+IF NOT %serviceTextGameSpecialIDThrottler%==ADSHBFASIBETBKETBEABIKFDTEETBABTAEABFDSBKFASGAFIGFAIGATEIGAETRBRAEB goto ERRORLVL4
+
 goto VARIABLE
 
 REM //////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -95,7 +87,7 @@ goto %eventValue%
 :EXITTOLAUNCHERAPP
 CLS
 TITLE Returning to launcher // %applicationName%
-goto  IMAINMENU
+goto ENDOFFILE
 
 :VARIABLE
 CD /D %gameLauncherDirectory%
@@ -250,13 +242,13 @@ EXIT
 
 :ERRORLVL3
 TITLE [ERROR] Account Manager Service // Text Game
-REM // Triggered event if the application cannot start/read the localclass.bat located at ~appdata~/Roaming/NXT Studios/savedData/userData/ -> <USERNAME> <-
+REM // Triggered event if the application cannot start/read the localclass.bat located at ~appdata~/Roaming/NXT Studios/savedData/userData/~username~
 cls
 echo.
 echo %applicationName% failed to fetch account data for " %username% " . Please select one of the following actions provided and available below.
 echo.
 echo.
-echo [STATUS]   Logged in as "%adminLogin% " with the following permissions: %roleAdmin%
+echo [STATUS]   Logged in as "%adminLogin%" with the following permissions: %roleAdmin%
 echo.
 echo [ACCOUNT]  "%adminLogin% " is logged in by Game Administrator using: Local Account Sessions
 echo [WARNING]  This account was logged in by a mod/user under the details of: Account Services System
@@ -297,7 +289,7 @@ TIMEOUT 120 /NOBREAK >NUL
 :INTRODUCTION
 TITLE Introduction // %applicationName%
 
-:CLIENTIDCHECKLIST
+:CLIENTIDCHECKLIST2
 IF NOT %serviceIsTextGameRunning%==true goto ERRORLVL4
 IF NOT %serviceIsTextGameResponding%==true goto ERRORLVL4
 IF NOT %serviceTextGameSpecialIDHandler%==83123895723857237623785462376846523685685646532674523845679653276523 goto ERRORLVL4
@@ -1036,7 +1028,7 @@ echo   2] %soundState% Sounds
 echo.
 echo   3] %graphicState% Detailed Graphics
 echo.
-echo   4] Force Update the Game
+echo   4] Force Update the Game [CLIENT]
 echo.
 echo   5] Go back to the Main Menu
 echo.
@@ -1050,7 +1042,7 @@ SET /p "settings=> "
 IF %settings%==1 goto SETTINGSDEBUG
 IF %settings%==2 goto SETTINGSSOUNDS
 IF %settings%==3 goto SETTINGSGRAPHICS
-IF %settings%==4 goto UPDATORCLIENT
+IF %settings%==4 goto GOBACKHERE
 IF %settings%==5 goto ANTICHEATWALL
 IF %settings%==version goto VERSIONSETTINGS
 IF %settings%==verify goto VERIFYINTEGRITY
@@ -2275,3 +2267,7 @@ TIMEOUT 3 /NOBREAK >NUL
 echo set lastLocation=GREENVALE > lastLocation.bat
 TIMEOUT 1 /NOBREAK>NUL
 goto SINGLEPLAYERMENU
+
+REM // ALWAYS LEAVE THIS LINE AS THE LAST LINE!!!
+REM // THE PROGRAM WILL NOT RUN EFFICIENT IF THIS LINE IS MODIFIED OR REMOVED!!!
+:ENDOFFILED
