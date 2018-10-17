@@ -2,7 +2,7 @@
 :INIT
 TITLE Welcome to the Store // TextGame
 REM set applicationVersion=1.3
-set latestVersion=1.4
+set latestVersion=1.5
 
 REM // STORE VARIABLES
 
