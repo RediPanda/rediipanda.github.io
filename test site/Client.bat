@@ -304,6 +304,6 @@ goto ACCEPT
 :ACCEPT
 cd /d "%LauncherDirectory%"
 DEL /Q "Launcher.bat"
-SET "FILENAME=%corporateRootDirectory%/library/game/Launcher.bat"
+SET "FILENAME=%corporateRootDirectory%/library/game/"
 cls
 bitsadmin.exe /transfer "Store Service" "https://raw.githubusercontent.com/RediPanda/rediipanda.github.io/master/Updates/latest/Launcher.bat" "%FILENAME%"

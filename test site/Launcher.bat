@@ -1029,8 +1029,6 @@ echo   2] %soundState% Sounds
 echo.
 echo   3] %graphicState% Detailed Graphics
 echo.
-echo   4] Force Update the Game [CLIENT]
-echo.
 echo   5] Go back to the Main Menu
 echo.
 echo.
@@ -1043,7 +1041,6 @@ SET /p "settings=> "
 IF %settings%==1 goto SETTINGSDEBUG
 IF %settings%==2 goto SETTINGSSOUNDS
 IF %settings%==3 goto SETTINGSGRAPHICS
-IF %settings%==4 goto GOBACKHERE
 IF %settings%==5 goto ANTICHEATWALL
 IF %settings%==version goto VERSIONSETTINGS
 IF %settings%==verify goto VERIFYINTEGRITY
@@ -1599,7 +1596,7 @@ CD /D %serverLocation%
 DEL /Q "store.bat"
 SET "FILELOCATION=%serverLocation%/store.bat"
 cls
-bitsadmin.exe /transfer "Store Service" "https://raw.githubusercontent.com/RediPanda/rediipanda.github.io/master/store.bat" %FILELOCATION%
+bitsadmin.exe /transfer "Store Service" "https://raw.githubusercontent.com/RediPanda/rediipanda.github.io/master/Servers/Game Integration/store.bat" %FILELOCATION%
 CALL store.bat
 goto CLIENTMAINMENU
 
