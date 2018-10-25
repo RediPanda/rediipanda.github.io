@@ -1,5 +1,3 @@
-@ECHO OFF
-@ECHO ON
 :START
 @ECHO OFF
 set GameLauncherDirectory="%LauncherDirectory%"
@@ -95,7 +93,10 @@ PUSHD data
 PUSHD services
 CALL version.bat
 CD /D %gameLauncherDirectory%
+
 set installedVersion=1.5
+set versionBuild=151
+
 set corpData=%appdata%/"NXT Studios"
 set mapData=%appdata%/"NXT Studios"/library/mapData
 set userDataLocation=%appdata%/"NXT Studios"/savedData/userData
@@ -242,7 +243,7 @@ EXIT
 
 :ERRORLVL3
 TITLE [ERROR] Account Manager Service // Text Game
-REM // Triggered event if the application cannot start/read the localclass.bat located at ~appdata~/Roaming/NXT Studios/savedData/userData/~username~
+REM // Triggered event if the application cannot start/read the localclass.bat located at ~appdata~/Roaming/NXT Studios/savedData/userData/~username~/localclass.bat
 cls
 echo.
 echo %applicationName% failed to fetch account data for " %username% " . Please select one of the following actions provided and available below.
@@ -1411,6 +1412,7 @@ echo ------ VERIFICATION INTEGRITY REPORT ------
 echo.
 echo Game Name: %applicationName%
 echo Game Version : %applicationVersion%
+echo Game Build: %versionBuild%
 echo.
 echo Assigned Username : %username%
 echo.
@@ -1477,6 +1479,7 @@ echo ------ VERIFICATION INTEGRITY REPORT ------
 echo.
 echo Game Name: %applicationName%
 echo Game Version : %applicationVersion%
+echo Game Build: %versionBuild%
 echo.
 echo Assigned Username : %username%
 echo.

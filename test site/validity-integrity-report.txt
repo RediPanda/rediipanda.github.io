@@ -2,11 +2,12 @@
 
 Game Name: Text Game
 Game Version : 1.5 
+Game Build: 151
 
-Assigned Username : update
+Assigned Username : Maestro
 
 Character Information:
-    Location         : TUTORIAL
+    Location         : GREENVALE 
     Ammo             : 12
     Health           : 250
     Max Health       : 250
@@ -17,12 +18,12 @@ Character Information:
     EXP              : 0
     Weapon           : P250
     Weapon DMG       : 7
-    Account Version  : 1.5 
+    Account Version  : 1.3 
 
 
 Validated Files:
 
-  Main Root File 'Launcher.Bat'            -      FAILED!
+  Main Root File 'Launcher.Bat'            -      OK!
   Main Root File 'Data'                    -      OK!
      Data ->  _Distribution                -      OK!
           _Distribution ->  license.txt    -      OK!
