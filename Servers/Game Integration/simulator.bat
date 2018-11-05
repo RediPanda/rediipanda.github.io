@@ -71,6 +71,7 @@ PAUSE
 goto ACCOUNTSYSTEM
 
 :EXECUTE
+set applicationVersion=1.5
 CLS
 echo.
 echo.
