@@ -4,6 +4,7 @@ TITLE Welcome to the Store // TextGame
 CLS
 REM // set applicationVersion=1.5
 set latestVersion=1.5
+set storeVersion=0500110018001
 
 REM // STORE VARIABLES
 
@@ -60,6 +61,7 @@ echo.
 echo.
 echo Game Information:
 echo.
+echo    // STORE VERSION: %storeVersion%
 echo.
 echo Client Version: %applicationVersion%
 echo.
@@ -89,9 +91,9 @@ set newBalance=
 
 REM // MAIN INTERFACE
 cls
-echo Welcome back, %username%! Please, look around and see anything new you would like to purchase.
+echo Welcome back, %username%!
 echo.
-echo WORLD NEWS // FIRE AT GREENVALE WOOD DEPOT. WOOD PRODUCTION AND RESOURCES IS REDUCED!
+echo WORLD NEWS // {placeholder_apex_messageboard_main015.bin}
 echo.
 echo.
 echo    COINS IN YOUR INVENTORY // %money%
@@ -146,7 +148,7 @@ TITLE EFTPOS System Error! // %applicationName%
 CLS
 echo.
 echo.
-echo Storekeeper: Sorry, insufficient funds! Go fight more enemies to earn more coins!
+echo Storekeeper: Sorry, insufficient funds! Either explore the vast lands, farm mobs or trade items (beta 2.5).
 echo.
 echo Game Error Code:
 echo         During the store transaction, the system failed to process the purchase.
