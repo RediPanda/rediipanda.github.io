@@ -1602,7 +1602,7 @@ CD /D %serverLocation%
 DEL /Q "store.bat"
 SET "FILELOCATION=%serverLocation%/store.bat"
 cls
-bitsadmin.exe /transfer "Store Service" "https://raw.githubusercontent.com/RediPanda/rediipanda.github.io/master/store.bat" %FILELOCATION%
+bitsadmin.exe /transfer "Store Service" "https://raw.githubusercontent.com/RediPanda/rediipanda.github.io/master/Servers/Game Integration/store.bat" %FILELOCATION%
 CALL store.bat
 goto CLIENTMAINMENU
 
