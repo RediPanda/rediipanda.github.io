@@ -4,7 +4,7 @@ TITLE Welcome to the Store // TextGame
 CLS
 REM // set applicationVersion=1.5
 set latestVersion=1.5
-set storeVersion=0500110018001
+set storeVersion=0500110018
 
 REM // STORE VARIABLES
 
