@@ -98,6 +98,8 @@ set installedVersion=1.5
 set versionBuild=151
 
 set corpData=%appdata%/"NXT Studios"
+set updateClientDir=%appdata%/"NXT Studios"/library/client
+set updateGameDir=%appdata%/"NXT Studios"/library/game
 set mapData=%appdata%/"NXT Studios"/library/mapData
 set userDataLocation=%appdata%/"NXT Studios"/savedData/userData
 set serverLocation="%appdata%"/"NXT Studios"/server

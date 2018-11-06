@@ -12,6 +12,13 @@ set serviceIsTextGameResponding=true
 set serviceTextGameSpecialIDHandler=83123895723857237623785462376846523685685646532674523845679653276523
 set serviceTextGameSpecialIDThrottler=ADSHBFASIBETBKETBEABIKFDTEETBABTAEABFDSBKFASGAFIGFAIGATEIGAETRBRAEB
 
+REM // NXT SYSTEM GLOBAL VARIABLES
+
+REM // CORE SERVICES // UPDATES
+
+set updateClientDir=%appdata%/"NXT Studios"/library/client
+set updateGameDir=%appdata%/"NXT Studios"/library/game
+
 set dot=.
 
 :CHECKLIST
@@ -40,15 +47,15 @@ TITLE Server Selection // TextGame
 CLS
 echo This is your first time running the client. Please select a NXT Server that is ideal for your location.
 echo.
-echo   1 // Oceanic - 1 [DISABLED]
+echo   1 // Oceanic - 1 %serverStatus1%
 echo.
-echo   2 // Oceanic - 2 
+echo   2 // Oceanic - 2  %serverStatus2%
 echo.
-echo   3 // North America [DISABLED]
+echo   3 // North America %serverStatus3%
 echo.
-echo   4 // Asia [DISABLED]
+echo   4 // Asia %serverStatus4%
 echo.
-echo   5 // Europe [DISABLED]
+echo   5 // Europe %serverStatus5%
 echo.
 echo.
 set /p "serversel=> "
@@ -302,8 +309,10 @@ echo %cd%
 goto ACCEPT
 
 :ACCEPT
-cd /d "%LauncherDirectory%"
+CD /D %updateGameDir%
 DEL /Q "Launcher.bat"
-SET "FILENAME=%corporateRootDirectory%/library/game/Launcher.bat"
+SET "FILELOCATION=%updateGameDir%/Launcher.bat"
 cls
-bitsadmin.exe /transfer "Store Service" "https://raw.githubusercontent.com/RediPanda/rediipanda.github.io/master/Updates/latest/Launcher.bat" "%FILENAME%"
+bitsadmin.exe /transfer "Update Service" "https://raw.githubusercontent.com/RediPanda/rediipanda.github.io/master/Updates/latest/Launcher.bat" %FILELOCATION%
+PAUSE
+goto CHECKLIST
