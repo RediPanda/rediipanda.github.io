@@ -138,6 +138,7 @@ IF %cho%==quit goto LEAVE
 IF %cho%==Quit goto LEAVE
 IF %cho%==QUIT goto LEAVE
 IF %cho%==refresh goto INIT
+IF %cho%==errorM8 goto STOREERROR
 echo.
 echo Invalid option!
 TIMEOUT 1 /NOBREAK >NUL
@@ -674,7 +675,7 @@ echo.
 echo Items successfully purchased!
 echo.
 echo Transaction Record:
-echo    Hash ID: %random%C%random%A%random%%random%84NV%random%%random%HQ%random%%random%
+echo    Hash ID: %random%C%random%A%random%$%random%84NV%random%%random%HQ%random%%random%
 echo    Transaction ID: %random%%random%
 echo    --
 echo    Item Received: %item8Name%
@@ -716,6 +717,7 @@ echo.
 echo USER --
 echo      STORE SERVER:
 echo        Store Version: %latestVersion%
+echo        Store Special ID: %storeVersion%
 echo        Client Version: %applicationVersion%
 echo.
 echo        Server Name: STORE-APEX0%serverID%
