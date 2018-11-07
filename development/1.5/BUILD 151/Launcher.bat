@@ -356,7 +356,7 @@ echo.
 echo.
 echo [STATUS]   Logged in as "%adminLogin%" with the following permissions: %roleAdmin%
 echo.
-echo [ACCOUNT]  "%adminLogin% " is logged in by Game Administrator using: Local Account Sessions
+echo [ACCOUNT]  "%adminLogin% " is logged in by the Game Administrator using: Local Account Sessions
 echo [WARNING]  This account was logged in by a mod/user under the details of: Account Services System
 echo [WARNING]  Type of Logger: "Services"         Reason: "ERRORCODE (FAILED_USER_ACCOUNT_JOINT_SERVICES)"
 echo.
@@ -366,11 +366,11 @@ echo.
 echo Please select an action.
 echo.
 echo.
-echo {SERVICE_USER_INPUT_1} ] (FAILED TO FIND ANY INPUT DATABASE NAMED "1"!)
+echo {SERVICE_USER_INPUT_1} ] (FAILED TO FIND ANY INPUT DATABASE NAMED "1_UAMS_INPUT"!)
 echo.
-echo {SERVICE_USER_INPUT_2} ] (FAILED TO FIND ANY INPUT DATABASE NAMED "2"!)
+echo {SERVICE_USER_INPUT_2} ] (FAILED TO FIND ANY INPUT DATABASE NAMED "2_UAMS_INPUT"!)
 echo.
-echo {SERVICE_USER_INPUT_3} ] (FAILED TO FIND ANY INPUT DATABASE NAMED "3"!)
+echo {SERVICE_USER_INPUT_3} ] (FAILED TO FIND ANY INPUT DATABASE NAMED "3_UAMS_INPUT"!)
 echo.
 echo.
 echo Error Code : [ER3]
@@ -960,7 +960,7 @@ IF %selector%==3 goto STOREMENU
 IF %selector%==4 goto CHARACTERMENU
 IF %selector%==5 goto SETTINGSMENU
 IF %selector%==6 goto EXITTOLAUNCHERAPP
-IF %selector%==7 goto END
+IF %selector%==7 goto ENDOFFILE
 echo.
 cls
 echo.

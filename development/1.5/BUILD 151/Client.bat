@@ -285,6 +285,8 @@ IF EXIST launcher.bat goto LAUNCHCLIENT
 goto INSTALL
 
 :LAUNCHCLIENT
+echo.
+echo Starting Game Client...
 START launcher.bat
 goto SPLASHPAGE
 
