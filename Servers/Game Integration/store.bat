@@ -745,6 +745,9 @@ echo        err: debug.game: failed to allocate new updated data!
 echo        err: debug.game: checking for item id...
 echo        err: debug.game: item id is not valid in the game registry!
 echo.
+echo        [SERVER] Establishing a secure connecting to APEX Server 0-%serverID% via proxy1.cdn.nxtstudios.ga and proxy2.cdn.nxtstudios.ga as a backup proxy(ies)
+echo        [SERVER] Connected! Session Manager is now hooked up to the server: APEX Server 0-%serverID%
+echo.
 echo        apex: inbound.Port(80,14335) failed receiving any confirmation packets...
 echo        apex: inbound.Port(80,14335) failed receiving any confirmation packets... 1
 echo        apex: inbound.Port(80,14335) failed receiving any confirmation packets... 2
