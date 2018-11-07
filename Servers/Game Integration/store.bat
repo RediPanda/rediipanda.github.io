@@ -309,8 +309,8 @@ echo.
 echo.
 echo             --- [Y/N] ---
 set /p "itempurchase=> "
-IF "%itempurchase%"=="Y" goto DISABLEDBETA
-IF "%itempurchase%"=="y" goto DISABLEDBETA
+IF "%itempurchase%"=="Y" goto ITEM2YES
+IF "%itempurchase%"=="y" goto ITEM2YES
 IF "%itempurchase%"=="N" goto INIT
 IF "%itempurchase%"=="n" goto INIT
 GOTO ITEM2
@@ -334,8 +334,8 @@ echo set money=%totalMoney% > money.bat
 
 REM // ITEM RECEIVED ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-echo set resourceWood=500 > weaponDMG.bat
-echo set weapon=Karachi Gun > weapon.bat
+set /a totalAmmo=%ammo%+120
+echo set ammo=%totalAmmo% > ammo.bat
 
 REM // END OF ITEM RECEIVED ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
