@@ -218,10 +218,13 @@ echo.   1] Update the Client Application
 echo.
 echo    2] Update the Game Application
 echo.
+echo    3] Exit the Updater Service
+echo.
 echo.
 set /p "updatorsel=> "
 IF %updatorsel%==1 goto UPDATECLIENT1
 IF %updatorsel%==2 goto UPDATEGAME1
+IF %updatorsel%==3 goto ANIMATE
 goto UPDATESELECTOR
 
 :UPDATECLIENT1

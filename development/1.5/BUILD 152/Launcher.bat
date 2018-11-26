@@ -309,6 +309,11 @@ PUSHD _Distribution
 CD /D %gameLauncherDirectory%
 PUSHD data
 MD update
+MD services
+PUSHD services
+echo set applicationVersion=%installedVersion% > version.bat
+CD /d %gameLauncherDirectory%
+PUSHD data
 PUSHD config
 echo set id=239542289318745164517661485119292356978222100021815192116140 >> lib.bat
 CD /D %gameLauncherDirectory%
@@ -321,10 +326,17 @@ CD /D %gameLauncherDirectory%
 if NOT EXIST data goto CREATE
 PUSHD data
 if NOT EXIST config goto CREATE
+if NOT EXIST services goto CREATE
 PUSHD config
+IF NOT EXIST lib.bat goto CREATE
 CALL lib.bat
 PING 1.1.1.1 -n 1 -w 2500 >NUL
 if %id%==239542289318745164517661485119292356978222100021815192116140 goto INTRODUCTION
+CD /D %GameLauncherDirectory%
+PUSHD data
+PUSHD services
+IF NOT EXIST version.bat goto CREATE
+CALL version.bat
 goto ERRORLVL1
 
 :ERRORLVL1
@@ -595,10 +607,6 @@ PUSHD plugins
 CD /d %gameLauncherDirectory%
 PUSHD data
 MD cache
-MD services
-PUSHD services
-echo set applicationVersion=%installedVersion% > version.bat
-CD /d %gameLauncherDirectory%
 PUSHD data
 MD mono
 MD saves
