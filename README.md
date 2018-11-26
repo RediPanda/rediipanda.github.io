@@ -1,5 +1,2 @@
 # rediipanda.github.io
-NXT Studio's Updation Service
-test1
-
-test2
+<h1 align="center">Choo</h1>
