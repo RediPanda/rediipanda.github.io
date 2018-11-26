@@ -18,6 +18,7 @@ REM // CORE SERVICES // UPDATES
 
 set updateClientDir=%appdata%/"NXT Studios"/library/client
 set updateGameDir=%appdata%/"NXT Studios"/library/game
+set defaultTransferFile=%appdata%/"NXT Studios"/library/client/dl
 
 set dot=.
 
@@ -31,6 +32,8 @@ IF NOT EXIST library goto CREATE
 PUSHD library
 IF NOT EXIST client goto CREATE
 IF NOT EXIST game goto CREATE
+PUSHD client
+IF NOT EXIST dl goto CREATE
 goto CHECKLIST2
 
 :CHECKLIST2
@@ -87,6 +90,13 @@ echo (if statement has internet connection via google.com.au)
 echo.
 echo installer.Identifier.Class.Handler(NoException_OpenNAT) > installerIdentifier.bat
 echo set hostServer=OCEANIC2 > hostName.bat
+(
+echo CD /D %%defaultTransferFile%%
+echo DEL /Q "%%File%%"
+echo SET "FILELOCATION=%%defaultTransferFile%%/%%File%%"
+echo cls
+echo bitsadmin.exe /transfer "Update Service" %%DLLink%% %%FILELOCATION%%
+) > serviceDownloadClient.bat
 goto ANIMATE
 
 :SERVERDIS
@@ -117,10 +127,16 @@ MD services
 MD worldConfig
 MD pluginConfig
 MD monoLibrary
-
+PUSHD %appdata%
+PUSHD "NXT Studios"
+PUSHD library
+PUSHD client
+MD dl
 goto CHECKLIST
 
 :ANIMATE
+set clockUpdateClient=0
+set UclockUpdateClient=0
 CD /D %LauncherDirectory%
 echo.
 echo.
@@ -194,6 +210,17 @@ IF "%cho%"=="3" EXIT
 goto SPLASHPAGE
 
 :UPDATE
+CD /D %LauncherDirectory%
+PUSHD %corporateRootDirectory%
+PUSHD library
+PUSHD client
+
+REM // Update Version Variables
+set File=latestStable.bat
+set DLLink=https://raw.githubusercontent.com/RediPanda/rediipanda.github.io/master/Services/latestClientVersion/lateststable.bat
+START /min serviceDownloadClient.bat
+
+:UPDATELOOPHOLDER
 cls
 echo.
 echo.
@@ -214,7 +241,9 @@ echo.
 echo Establishing a connection to a host server [...]
 echo.
 TIMEOUT 1 /NOBREAK >NUL
-goto UPDATESELECTOR
+IF "%UclockUpdateClient%"=="2" goto UPDATESELECTOR
+set /a UclockUpdateClient="%UclockUpdateClient%" + "1"
+goto UPDATELOOPHOLDER
 
 :UPDATESELECTOR
 set clockUpdateClient=0
