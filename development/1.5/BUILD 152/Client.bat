@@ -40,6 +40,14 @@ PUSHD library
 PUSHD client
 IF NOT EXIST installerIdentifier.bat goto FIRSTTIME1
 IF NOT EXIST serviceDownloadClient.bat goto FIRSTTIME1
+CD /D %LauncherDirectory%
+IF NOT EXIST data goto ANIMATE
+PUSHD data
+IF NOT EXIST services goto ANIMATE
+PUSHD services
+IF NOT EXIST version.bat goto ANIMATE
+CALL version.bat
+CD /D %LauncherDirectory%
 goto ANIMATE
 
 :FIRSTTIME1
@@ -214,11 +222,15 @@ CLS
 echo.
 echo            Updater Service
 echo.
-echo.   1] Update the Client Application
+echo.   1] Update the Client Application [Current: %clientInstalledVersion% -- Latest: %latestClientStable%]
 echo.
-echo    2] Update the Game Application
+echo    2] Update the Game Application [Current: %applicationVersion% -- Latest: %latestStable%]
 echo.
 echo    3] Exit the Updater Service
+echo.
+echo.
+echo  * If the Game Application Current Version is empty, it usually means the Game hasn't been properly
+echo    set-up or done it's first stage initialization. It's best to start the game first before updating.
 echo.
 echo.
 set /p "updatorsel=> "

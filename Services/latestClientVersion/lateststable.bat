@@ -1,1 +1,1 @@
-set latestClientStable=1.4
+set latestClientStable=1.6
