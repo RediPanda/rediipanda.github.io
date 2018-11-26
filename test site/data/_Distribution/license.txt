@@ -1,2 +1,0 @@
-[LICENSE]
-Distributions of this software to any third party is illegal.

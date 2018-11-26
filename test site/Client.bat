@@ -18,6 +18,7 @@ REM // CORE SERVICES // UPDATES
 
 set updateClientDir=%appdata%/"NXT Studios"/library/client
 set updateGameDir=%appdata%/"NXT Studios"/library/game
+set defaultTransferFile=%appdata%/"NXT Studios"/library/client/dl
 
 set dot=.
 
@@ -31,6 +32,8 @@ IF NOT EXIST library goto CREATE
 PUSHD library
 IF NOT EXIST client goto CREATE
 IF NOT EXIST game goto CREATE
+PUSHD client
+IF NOT EXIST dl goto CREATE
 goto CHECKLIST2
 
 :CHECKLIST2
@@ -40,6 +43,14 @@ PUSHD library
 PUSHD client
 IF NOT EXIST installerIdentifier.bat goto FIRSTTIME1
 IF NOT EXIST serviceDownloadClient.bat goto FIRSTTIME1
+CD /D %LauncherDirectory%
+IF NOT EXIST data goto ANIMATE
+PUSHD data
+IF NOT EXIST services goto ANIMATE
+PUSHD services
+IF NOT EXIST version.bat goto ANIMATE
+CALL version.bat
+CD /D %LauncherDirectory%
 goto ANIMATE
 
 :FIRSTTIME1
@@ -79,6 +90,13 @@ echo (if statement has internet connection via google.com.au)
 echo.
 echo installer.Identifier.Class.Handler(NoException_OpenNAT) > installerIdentifier.bat
 echo set hostServer=OCEANIC2 > hostName.bat
+(
+echo CD /D %%defaultTransferFile%%
+echo DEL /Q "%%File%%"
+echo SET "FILELOCATION=%%defaultTransferFile%%/%%File%%"
+echo cls
+echo bitsadmin.exe /transfer "Update Service" %%DLLink%% %%FILELOCATION%%
+) > serviceDownloadClient.bat
 goto ANIMATE
 
 :SERVERDIS
@@ -109,10 +127,16 @@ MD services
 MD worldConfig
 MD pluginConfig
 MD monoLibrary
-
+PUSHD %appdata%
+PUSHD "NXT Studios"
+PUSHD library
+PUSHD client
+MD dl
 goto CHECKLIST
 
 :ANIMATE
+set clockUpdateClient=0
+set UclockUpdateClient=0
 CD /D %LauncherDirectory%
 echo.
 echo.
@@ -186,6 +210,23 @@ IF "%cho%"=="3" EXIT
 goto SPLASHPAGE
 
 :UPDATE
+CD /D %LauncherDirectory%
+PUSHD %corporateRootDirectory%
+PUSHD library
+PUSHD client
+
+REM // Update Version Variables
+set File=latestClientStable.bat
+set DLLink=https://raw.githubusercontent.com/RediPanda/rediipanda.github.io/master/Services/latestClientVersion/latestClientStable.bat
+START /min serviceDownloadClient.bat
+CLS
+TIMEOUT 1 /NOBREAK >NUL
+set File=latestGameStable.bat
+set DLLink=https://raw.githubusercontent.com/RediPanda/rediipanda.github.io/master/Services/latestGameVersion/latestGameStable.bat
+START /min serviceDownloadClient.bat
+CLS
+
+:UPDATELOOPHOLDER
 cls
 echo.
 echo.
@@ -206,22 +247,34 @@ echo.
 echo Establishing a connection to a host server [...]
 echo.
 TIMEOUT 1 /NOBREAK >NUL
-goto UPDATESELECTOR
+IF "%UclockUpdateClient%"=="2" goto UPDATESELECTOR
+set /a UclockUpdateClient="%UclockUpdateClient%" + "1"
+goto UPDATELOOPHOLDER
 
 :UPDATESELECTOR
 set clockUpdateClient=0
+set UclockUpdateClient=0
+CALL latestClientStable.bat
+CALL latestGameStable.bat
 CLS
 echo.
 echo            Updater Service
 echo.
-echo.   1] Update the Client Application
+echo.   1] Update the Client Application [Current: %clientInstalledVersion% -- Latest: %latestClientStable%]
 echo.
-echo    2] Update the Game Application
+echo    2] Update the Game Application [Current: %applicationVersion% -- Latest: %latestStable%]
+echo.
+echo    3] Exit the Updater Service
+echo.
+echo.
+echo  * If the Game Application Current Version is empty, it usually means the Game hasn't been properly
+echo    set-up or done it's first stage initialization. It's best to start the game first before updating.
 echo.
 echo.
 set /p "updatorsel=> "
 IF %updatorsel%==1 goto UPDATECLIENT1
 IF %updatorsel%==2 goto UPDATEGAME1
+IF %updatorsel%==3 goto ANIMATE
 goto UPDATESELECTOR
 
 :UPDATECLIENT1

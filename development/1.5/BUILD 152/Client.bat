@@ -216,9 +216,16 @@ PUSHD library
 PUSHD client
 
 REM // Update Version Variables
-set File=latestStable.bat
-set DLLink=https://raw.githubusercontent.com/RediPanda/rediipanda.github.io/master/Services/latestClientVersion/lateststable.bat
+set File=latestClientStable.bat
+set DLLink=https://raw.githubusercontent.com/RediPanda/rediipanda.github.io/master/Services/latestClientVersion/latestClientStable.bat
 START /min serviceDownloadClient.bat
+CLS
+START testService.bat
+TIMEOUT 1 /NOBREAK >NUL
+set File=latestGameStable.bat
+set DLLink=https://raw.githubusercontent.com/RediPanda/rediipanda.github.io/master/Services/latestGameVersion/latestGameStable.bat
+START /min serviceDownloadClient.bat
+CLS
 
 :UPDATELOOPHOLDER
 cls
@@ -247,6 +254,9 @@ goto UPDATELOOPHOLDER
 
 :UPDATESELECTOR
 set clockUpdateClient=0
+set UclockUpdateClient=0
+CALL latestClientStable.bat
+CALL latestGameStable.bat
 CLS
 echo.
 echo            Updater Service
