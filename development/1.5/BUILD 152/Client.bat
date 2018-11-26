@@ -18,7 +18,6 @@ REM // CORE SERVICES // UPDATES
 
 set updateClientDir=%appdata%/"NXT Studios"/library/client
 set updateGameDir=%appdata%/"NXT Studios"/library/game
-
 set dot=.
 
 :CHECKLIST
