@@ -5,11 +5,11 @@
 </div>
 <div align="center">
   <h3>
-    <a href="https://github.com/RediPanda/rediipanda.github.io/tree/master/github-assets/Wiki">
+    <a href="https://github.com/RediPanda/rediipanda.github.io/tree/master/github-assets">
       Wiki
     </a>
     <span> | </span>
-    <a href="https://github.com/RediPanda/rediipanda.github.io/tree/master/github-assets/Handbook">
+    <a href="https://github.com/choojs/choo-handbook">
       Handbook
     </a>
   </h3>
