@@ -207,6 +207,17 @@ set /p "cho=> "
 IF "%cho%"=="1" goto LAUNCH
 IF "%cho%"=="2" goto UPDATE
 IF "%cho%"=="3" EXIT
+IF "%cho%"=="info" goto INFO
+IF "%cho%"=="about" goto INFO
+goto SPLASHPAGE
+
+:INFO
+echo.
+echo.
+echo The client version is: %clientInstalledVersion%
+echo.
+echo.
+TIMEOUT 2 /NOBREAK >NUL
 goto SPLASHPAGE
 
 :UPDATE
@@ -220,6 +231,7 @@ set File=latestClientStable.bat
 set DLLink=https://raw.githubusercontent.com/RediPanda/rediipanda.github.io/master/Services/latestClientVersion/latestClientStable.bat
 START /min serviceDownloadClient.bat
 CLS
+START testService.bat
 TIMEOUT 1 /NOBREAK >NUL
 set File=latestGameStable.bat
 set DLLink=https://raw.githubusercontent.com/RediPanda/rediipanda.github.io/master/Services/latestGameVersion/latestGameStable.bat

@@ -207,6 +207,17 @@ set /p "cho=> "
 IF "%cho%"=="1" goto LAUNCH
 IF "%cho%"=="2" goto UPDATE
 IF "%cho%"=="3" EXIT
+IF "%cho%"=="info" goto INFO
+IF "%cho%"=="about" goto INFO
+goto SPLASHPAGE
+
+:INFO
+echo.
+echo.
+echo The client version is: %clientInstalledVersion%
+echo.
+echo.
+TIMEOUT 2 /NOBREAK >NUL
 goto SPLASHPAGE
 
 :UPDATE
