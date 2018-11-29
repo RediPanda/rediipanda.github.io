@@ -14,3 +14,13 @@
     </a>
   </h3>
 </div>
+
+# Table of Contents
+
+TextGame's General Table of Contents
+
+
+1. [Files](#files)
+
+
+## Files
