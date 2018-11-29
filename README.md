@@ -20,7 +20,7 @@
 TextGame's General Table of Contents
 
 
-1. [Files](##files)
+1. [Files](#files)
 
 
 ## Files
