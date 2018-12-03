@@ -92,10 +92,8 @@ echo installer.Identifier.Class.Handler(NoException_OpenNAT) > installerIdentifi
 echo set hostServer=OCEANIC2 > hostName.bat
 (
 echo CD /D %%defaultTransferFile%%
-echo DEL /Q "%%File%%"
-echo SET "FILELOCATION=%%defaultTransferFile%%/%%File%%"
 echo cls
-echo bitsadmin.exe /transfer "Update Service" %%DLLink%% %%FILELOCATION%%
+echo bitsadmin.exe /transfer UpdateJob "%%DLLink%%" "%%appdata%%\NXT Studios\library\client\dl\%file%"
 ) > serviceDownloadClient.bat
 goto ANIMATE
 
@@ -209,6 +207,7 @@ IF "%cho%"=="2" goto UPDATE
 IF "%cho%"=="3" EXIT
 IF "%cho%"=="info" goto INFO
 IF "%cho%"=="about" goto INFO
+IF "%cho%"=="reboot" goto CHECKLIST
 goto SPLASHPAGE
 
 :INFO
