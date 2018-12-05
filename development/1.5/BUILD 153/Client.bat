@@ -224,6 +224,13 @@ CD /D %LauncherDirectory%
 PUSHD %corporateRootDirectory%
 PUSHD library
 PUSHD client
+PUSHD dl
+DEL /Q *
+
+CD /D %LauncherDirectory%
+PUSHD %corporateRootDirectory%
+PUSHD library
+PUSHD client
 
 REM // Update Version Variables
 set File=latestClientStable.bat
@@ -266,6 +273,8 @@ goto UPDATELOOPHOLDER
 CD /D %defaultTransferFile%
 set clockUpdateClient=0
 set UclockUpdateClient=0
+set latestClientStable=N/A
+set latestGameStable=N/A
 CALL latestClientStable.bat
 CALL latestGameStable.bat
 CLS

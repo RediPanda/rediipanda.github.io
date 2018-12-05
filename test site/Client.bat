@@ -43,6 +43,7 @@ PUSHD library
 PUSHD client
 IF NOT EXIST installerIdentifier.bat goto FIRSTTIME1
 IF NOT EXIST serviceDownloadClient.bat goto FIRSTTIME1
+IF NOT EXIST serviceUpdateGame.bat goto FIRSTTIME1
 CD /D %LauncherDirectory%
 IF NOT EXIST data goto ANIMATE
 PUSHD data
@@ -93,8 +94,15 @@ echo set hostServer=OCEANIC2 > hostName.bat
 (
 echo CD /D %%defaultTransferFile%%
 echo cls
-echo bitsadmin.exe /transfer UpdateJob "%%DLLink%%" "%%appdata%%\NXT Studios\library\client\dl\%file%"
+echo bitsadmin.exe /transfer UpdateJob "%%DLLink%%" "%%appdata%%\NXT Studios\library\client\dl\%%file%%"
+echo exit
 ) > serviceDownloadClient.bat
+(
+echo CD /D %%updateGameDir%%
+echo cls
+echo bitsadmin.exe /transfer GameUpdate "https://raw.githubusercontent.com/RediPanda/rediipanda.github.io/master/Updates/latest/Launcher.bat" "%%appdata%%\NXT Studios\library\game\launcher.bat"
+echo exit
+) > serviceUpdateGame.bat
 goto ANIMATE
 
 :SERVERDIS
@@ -224,6 +232,13 @@ CD /D %LauncherDirectory%
 PUSHD %corporateRootDirectory%
 PUSHD library
 PUSHD client
+PUSHD dl
+DEL /Q *
+
+CD /D %LauncherDirectory%
+PUSHD %corporateRootDirectory%
+PUSHD library
+PUSHD client
 
 REM // Update Version Variables
 set File=latestClientStable.bat
@@ -266,6 +281,8 @@ goto UPDATELOOPHOLDER
 CD /D %defaultTransferFile%
 set clockUpdateClient=0
 set UclockUpdateClient=0
+set latestClientStable=N/A
+set latestStable=N/A
 CALL latestClientStable.bat
 CALL latestGameStable.bat
 CLS
@@ -376,10 +393,15 @@ echo %cd%
 goto ACCEPT
 
 :ACCEPT
-CD /D %updateGameDir%
+CD /D %LauncherDirectory%
+PUSHD %corporateRootDirectory%
+PUSHD library
+PUSHD game
 DEL /Q "Launcher.bat"
-SET "FILELOCATION=%updateGameDir%/Launcher.bat"
-cls
-bitsadmin.exe /transfer "Update Service" "https://raw.githubusercontent.com/RediPanda/rediipanda.github.io/master/Updates/latest/Launcher.bat" %FILELOCATION%
-PAUSE
+
+CD /D %LauncherDirectory%
+PUSHD %corporateRootDirectory%
+PUSHD library
+PUSHD client
+start /min serviceUpdateGame.bat
 goto CHECKLIST
