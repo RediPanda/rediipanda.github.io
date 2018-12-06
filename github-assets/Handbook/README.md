@@ -10,7 +10,7 @@
     </a>
     <span> | </span>
     <a href="https://github.com/choojs/choo-handbook">
-      Handbook
+      <strong>Handbook</strong>
     </a>
   </h3>
 </div>

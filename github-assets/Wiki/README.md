@@ -6,7 +6,7 @@
 <div align="center">
   <h3>
     <a href="https://github.com/RediPanda/rediipanda.github.io/tree/master/github-assets">
-      Wiki
+      <strong>Wiki</strong>
     </a>
     <span> | </span>
     <a href="https://github.com/choojs/choo-handbook">
