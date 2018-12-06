@@ -43,7 +43,6 @@ PUSHD library
 PUSHD client
 IF NOT EXIST installerIdentifier.bat goto FIRSTTIME1
 IF NOT EXIST serviceDownloadClient.bat goto FIRSTTIME1
-IF NOT EXIST serviceUpdateGame.bat goto FIRSTTIME1
 CD /D %LauncherDirectory%
 IF NOT EXIST data goto ANIMATE
 PUSHD data
@@ -94,15 +93,8 @@ echo set hostServer=OCEANIC2 > hostName.bat
 (
 echo CD /D %%defaultTransferFile%%
 echo cls
-echo bitsadmin.exe /transfer UpdateJob "%%DLLink%%" "%%appdata%%\NXT Studios\library\client\dl\%%file%%"
-echo exit
+echo bitsadmin.exe /transfer UpdateJob "%%DLLink%%" "%%appdata%%\NXT Studios\library\client\dl\%file%"
 ) > serviceDownloadClient.bat
-(
-echo CD /D %%updateGameDir%%
-echo cls
-echo bitsadmin.exe /transfer GameUpdate "https://raw.githubusercontent.com/RediPanda/rediipanda.github.io/master/Updates/latest/Launcher.bat" "%%appdata%%\NXT Studios\library\game\launcher.bat"
-echo exit
-) > serviceUpdateGame.bat
 goto ANIMATE
 
 :SERVERDIS
@@ -281,8 +273,8 @@ goto UPDATELOOPHOLDER
 CD /D %defaultTransferFile%
 set clockUpdateClient=0
 set UclockUpdateClient=0
-set latestClientStable=N/A
 set latestStable=N/A
+set latestGameStable=N/A
 CALL latestClientStable.bat
 CALL latestGameStable.bat
 CLS
@@ -298,6 +290,9 @@ echo.
 echo.
 echo  * If the Game Application Current Version is empty, it usually means the Game hasn't been properly
 echo    set-up or done it's first stage initialization. It's best to start the game first before updating.
+echo.
+echo  ** If for the first time it pops up with N/A, try opening the Updator service to refresh the fetched data.
+echo     If it continues to fetch N/A, check the status website at https://nxtstudios.github.io/status.
 echo.
 echo.
 set /p "updatorsel=> "
@@ -393,15 +388,10 @@ echo %cd%
 goto ACCEPT
 
 :ACCEPT
-CD /D %LauncherDirectory%
-PUSHD %corporateRootDirectory%
-PUSHD library
-PUSHD game
+CD /D %updateGameDir%
 DEL /Q "Launcher.bat"
-
-CD /D %LauncherDirectory%
-PUSHD %corporateRootDirectory%
-PUSHD library
-PUSHD client
-start /min serviceUpdateGame.bat
+SET "FILELOCATION=%updateGameDir%/Launcher.bat"
+cls
+bitsadmin.exe /transfer "Update Service" "https://raw.githubusercontent.com/RediPanda/rediipanda.github.io/master/Updates/latest/Launcher.bat" %FILELOCATION%
+PAUSE
 goto CHECKLIST
