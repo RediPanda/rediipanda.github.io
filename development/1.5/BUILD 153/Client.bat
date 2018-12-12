@@ -292,7 +292,7 @@ echo  * If the Game Application Current Version is empty, it usually means the G
 echo    set-up or done it's first stage initialization. It's best to start the game first before updating.
 echo.
 echo  ** If for the first time it pops up with N/A, try opening the Updator service to refresh the fetched data.
-echo     If it continues to fetch N/A, check the status website at https://nxtstudios.github.io/status.
+echo     If it continues to fetch N/A, check the status website at https://exana.io/s/7l8979okutloe67t/public.
 echo.
 echo.
 set /p "updatorsel=> "
