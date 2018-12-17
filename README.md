@@ -26,5 +26,5 @@ TextGame's General Table of Contents
 ## Files
 <strong>Fresh Install of Text Game</strong>
 
- $ROOT <br>
-   └ Client.exe
+ $ROOT 
+ <br>   └ Client.exe
