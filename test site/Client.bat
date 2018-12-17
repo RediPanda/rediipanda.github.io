@@ -265,7 +265,7 @@ echo.
 echo Establishing a connection to a host server [...]
 echo.
 TIMEOUT 1 /NOBREAK >NUL
-IF "%UclockUpdateClient%"=="1" goto UPDATESELECTOR
+IF "%UclockUpdateClient%"=="2" goto UPDATESELECTOR
 set /a UclockUpdateClient="%UclockUpdateClient%" + "1"
 goto UPDATELOOPHOLDER
 

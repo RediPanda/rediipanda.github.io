@@ -1,1 +1,2 @@
-set applicationVersion=1.5 
+set applicationVersion=1.5
+
