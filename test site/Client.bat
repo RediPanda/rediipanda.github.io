@@ -14,6 +14,11 @@ set serviceTextGameSpecialIDThrottler=ADSHBFASIBETBKETBEABIKFDTEETBABTAEABFDSBKF
 
 REM // NXT SYSTEM GLOBAL VARIABLES
 
+REM // VARIABLE CLEARANCE
+
+set username=
+set password=
+
 REM // CORE SERVICES // UPDATES
 
 set updateClientDir=%appdata%/"NXT Studios"/library/client

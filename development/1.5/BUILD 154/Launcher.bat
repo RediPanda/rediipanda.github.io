@@ -386,7 +386,7 @@ echo {SERVICE_USER_INPUT_3} ] (FAILED TO FIND ANY INPUT DATABASE NAMED "3_UAMS_I
 echo.
 echo.
 echo Error Code : [ER3]
-TIMEOUT 2 /NOBREAK >NUL
+TIMEOUT 10 /NOBREAK >NUL
 goto ERRORLVL1
 
 :ERRORLVL4
@@ -440,15 +440,15 @@ echo =    4] Quit                     =
 echo =                                =
 echo ==================================
 set /p "cho=> "
-IF %cho%==1 goto LAUNCHERTOCLIENT
-IF %cho%==2 goto IABOUT
-IF %cho%==3 goto ILICENSE
-IF %cho%==4 EXIT
-IF %cho%==event.EasterEgg goto EVENTREDIRECTION
-IF %cho%==%SSLauncher% goto IMAINMENUECHO
-IF %cho%==fastLoad goto CLIENTMAINMENULOGIN
-IF %cho%==applicationReboot goto RESTARTAPP
-IF %cho%==ERRORM8 goto ERRORLVL3
+IF "%cho%"=="1" goto LAUNCHERTOCLIENT
+IF "%cho%"=="2" goto IABOUT
+IF "%cho%"=="3" goto ILICENSE
+IF "%cho%"=="4" EXIT
+IF "%cho%"=="event.EasterEgg" goto EVENTREDIRECTION
+IF "%cho%"=="%SSLauncher%" goto IMAINMENUECHO
+IF "%cho%"=="fastLoad" goto CLIENTMAINMENULOGIN
+IF "%cho%"=="applicationReboot" goto RESTARTAPP
+IF "%cho%"=="ERRORM8 goto" ERRORLVL3
 echo.
 echo Incorrect option!
 TIMEOUT 1 /NOBREAK >NUL
@@ -503,7 +503,7 @@ CD /D %gameLauncherDirectory%
 CLS
 echo ========================================================
 echo.
-echo Application: %appName%
+echo Application: %applicationName%
 echo.
 echo API Loaded:
 echo.
@@ -710,9 +710,9 @@ echo.
 echo   3] Go back to the launcher.
 echo.
 set /p "loginselect=> "
-IF %loginselect%==1 goto LOGIN
-IF %loginselect%==2 goto REGISTER
-IF %loginselect%==3 goto EXITTOLAUNCHERAPP
+IF "%loginselect%"=="1" goto LOGIN
+IF "%loginselect%"=="2" goto REGISTER
+IF "%loginselect%"=="3" goto EXITTOLAUNCHERAPP
 echo.
 echo Incorrect option!
 goto CLIENTMAINMENULOGIN
@@ -738,7 +738,9 @@ PUSHD savedData
 PUSHD userData
 PUSHD %regname%
 CALL %regname%-login.bat
-if %regname%==%username% goto SUCCESSLOGINUSERNAME
+if "reg-%regname%"=="reg-" goto ACCOUNTLOGINFAILUSERNAME
+if "reg-%regname%"=="reg-%username%"goto SUCCESSLOGINUSERNAME
+:ACCOUNTLOGINFAILUSERNAME
 cls
 echo.
 echo.
