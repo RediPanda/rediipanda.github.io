@@ -14,11 +14,6 @@ set serviceTextGameSpecialIDThrottler=ADSHBFASIBETBKETBEABIKFDTEETBABTAEABFDSBKF
 
 REM // NXT SYSTEM GLOBAL VARIABLES
 
-REM // VARIABLE CLEARANCE
-
-set username=
-set password=
-
 REM // CORE SERVICES // UPDATES
 
 set updateClientDir=%appdata%/"NXT Studios"/library/client
@@ -39,6 +34,21 @@ IF NOT EXIST client goto CREATE
 IF NOT EXIST game goto CREATE
 PUSHD client
 IF NOT EXIST dl goto CREATE
+
+PUSHD %appdata%
+PUSHD "NXT Studios"
+PUSHD library
+PUSHD game
+IF NOT EXIST dlc goto CREATE
+IF NOT EXIST dlc goto CREATE
+IF NOT EXIST packs goto CREATE
+IF NOT EXIST configuration goto CREATE
+IF NOT EXIST services goto CREATE
+IF NOT EXIST worldConfig goto CREATE
+IF NOT EXIST pluginConfig goto CREATE
+IF NOT EXIST monoLibrary goto CREATE
+IF NOT EXIST worldData goto CREATE
+
 goto CHECKLIST2
 
 :CHECKLIST2
@@ -98,7 +108,7 @@ echo set hostServer=OCEANIC2 > hostName.bat
 (
 echo CD /D %%defaultTransferFile%%
 echo cls
-echo bitsadmin.exe /transfer UpdateJob "%%DLLink%%" "%%appdata%%\NXT Studios\library\client\dl\%file%"
+echo bitsadmin.exe /transfer UpdateJob "%%DLLink%%" "%%appdata%%\NXT Studios\library\client\dl\%%file%%"
 ) > serviceDownloadClient.bat
 goto ANIMATE
 
@@ -130,6 +140,7 @@ MD services
 MD worldConfig
 MD pluginConfig
 MD monoLibrary
+MD worldData
 PUSHD %appdata%
 PUSHD "NXT Studios"
 PUSHD library

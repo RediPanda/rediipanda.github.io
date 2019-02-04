@@ -93,7 +93,7 @@ echo.
 echo Assigned Username : %username%
 echo.
 echo Character Information:
-echo     Location         : %lastLocation%
+echo     Location         : %lastLocation%, %worldName%
 echo     Ammo             : %ammo%
 echo     Health           : %currentHealth%
 echo     Max Health       : %maxHealth%

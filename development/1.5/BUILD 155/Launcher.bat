@@ -7,7 +7,7 @@ set loggingDirectory="%GameLauncherDirectory%"/data/mono/logs
 set startLog=CD /D %loggingDirectory%
 set endLog=CD /D %GameLauncherDirectory%
 
-set versionBuild2=154
+set versionBuild2=155
 MODE 215,80
 CD /D %gameLauncherDirectory%
 TITLE Loading...
@@ -24,27 +24,29 @@ IF NOT %serviceTextGameSpecialIDHandler%==83123895723857237623785462376846523685
 IF NOT %serviceTextGameSpecialIDThrottler%==ADSHBFASIBETBKETBEABIKFDTEETBABTAEABFDSBKFASGAFIGFAIGATEIGAETRBRAEB goto ERRORLVL4
 REM CD /D %loggingDirectory%
 %startLog%
+echo.>>latest.log
 echo ------------------------ START PROCEDURE --------------------------- >>latest.log
-echo [SYSTEM] Starting Application...>>latest.log
-echo [SYSTEM] Starting Task #%random%>>latest.log
-echo [SYSTEM] Starting Task #%random%>>latest.log
-echo [SYSTEM] Starting Task #%random%>>latest.log
-echo [SYSTEM] Starting Task #%random%>>latest.log
-echo [SYSTEM] Starting independent services...>>latest.log
-echo [GAME] Unpacking data...>>latest.log
-echo [GAME] @CONSOLE : Executing command: textgame.loadgame.state>>latest.log
-echo [SYSTEM] Loading Last Game State...>>latest.log
-echo [GAME] Checking Game State...>>latest.log
-echo [SYSTEM] Service (Game) REQUEST event.GameState>>latest.log
-echo [SYSTEM] Service (Game) POST event.GameState>>latest.log
-echo [ENGINE] Checking if GameState matches latest with current...>>latest.log
-echo [ENGINE] Checking if GameState matches latest with current... OK!>>latest.log
-echo [SYSTEM] Start Procedures Completed!>>latest.log
+echo [INFO: %date% - %time%] [SYSTEM] Starting Application...>>latest.log
+echo [INFO: %date% - %time%] [SYSTEM] Starting Task #%random%>>latest.log
+echo [INFO: %date% - %time%] [SYSTEM] Starting Task #%random%>>latest.log
+echo [INFO: %date% - %time%] [SYSTEM] Starting Task #%random%>>latest.log
+echo [INFO: %date% - %time%] [SYSTEM] Starting Task #%random%>>latest.log
+echo [INFO: %date% - %time%] [SYSTEM] Starting independent services...>>latest.log
+echo [INFO: %date% - %time%] [GAME] Unpacking data...>>latest.log
+echo [INFO: %date% - %time%] [GAME] @CONSOLE : Executing command: textgame.loadgame.state>>latest.log
+echo [INFO: %date% - %time%] [SYSTEM] Loading Last Game State...>>latest.log
+echo [INFO: %date% - %time%] [GAME] Checking Game State...>>latest.log
+echo [INFO: %date% - %time%] [SYSTEM] Service (Game) REQUEST event.GameState>>latest.log
+echo [INFO: %date% - %time%] [SYSTEM] Service (Game) POST event.GameState>>latest.log
+echo [INFO: %date% - %time%] [ENGINE] Checking if GameState matches latest with current...>>latest.log
+echo [INFO: %date% - %time%] [ENGINE] Checking if GameState matches latest with current... OK!>>latest.log
+echo [INFO: %date% - %time%] [SYSTEM] Start Procedures Completed!>>latest.log
 echo ------------------------ START PROCEDURE --------------------------- >>latest.log
-echo [SYSTEM] INFO: Date: %date%>>latest.log
-echo [SYSTEM] INFO: Time: %time%>>latest.log
-echo [SYSTEM] INFO: Reporting: Version: %applicationVersion% Build %versionBuild2%>>latest.log
+echo [INFO: %date% - %time%] [SYSTEM] INFO: Date: %date%>>latest.log
+echo [INFO: %date% - %time%] [SYSTEM] INFO: Time: %time%>>latest.log
+echo [INFO: %date% - %time%] [SYSTEM] INFO: Reporting: Version: %applicationVersion% Build %versionBuild2%>>latest.log
 echo ------------------------ START OF LOGGING --------------------------- >>latest.log
+echo.>>latest.log
 REM CD /D %GameLauncherDirectory%
 %endLog%
 
@@ -116,9 +118,9 @@ cls
 TITLE Rebooting // %applicationName%
 echo Rebooting application...
 CD /D %loggingDirectory%
-echo [SYSTEM] Resetting application ports... >>latest.log
-echo [SYSTEM] Resetting applicatiion storage... >>latest.log
-echo [GAME] Rebooting Game... >>latest.log
+echo [INFO: %date% - %time%] [SYSTEM] Resetting application ports... >>latest.log
+echo [INFO: %date% - %time%] [SYSTEM] Resetting application storage... >>latest.log
+echo [INFO: %date% - %time%] [GAME] Rebooting Game... >>latest.log
 CD /D %GameLauncherDirectory%
 TIMEOUT 2 /NOBREAK >NUL
 goto REDIRECTION
@@ -134,29 +136,33 @@ goto %eventValue%
 :EXITTOLAUNCHERAPP
 CLS
 TITLE Returning to launcher // %applicationName%
-CD /D %loggingDirectory%
+REM CD /D %loggingDirectory%
+%startLog%
+echo.>>latest.log
 echo ------------------------ EXIT PROCEDURE --------------------------- >>latest.log
-echo [SYSTEM] Exiting Application...>>latest.log
-echo [SYSTEM] Cancelling Task #%random%>>latest.log
-echo [SYSTEM] Cancelling Task #%random%>>latest.log
-echo [SYSTEM] Cancelling Task #%random%>>latest.log
-echo [SYSTEM] Cancelling Task #%random%>>latest.log
-echo [SYSTEM] Shutting off services...>>latest.log
-echo [GAME] Wrapping up data...>>latest.log
-echo [GAME] @CONSOLE : Executing command: textgame.savegame.state>>latest.log
-echo [SYSTEM] Saving Game State...>>latest.log
-echo [GAME] Checking Game State...>>latest.log
-echo [SYSTEM] Service (Game) REQUEST event.GameState>>latest.log
-echo [SYSTEM] Service (Game) POST event.GameState>>latest.log
-echo [ENGINE] Checking if GameState matches latest with current...>>latest.log
-echo [ENGINE] Checking if GameState matches latest with current... OK!>>latest.log
-echo [SYSTEM] Exit Procedures Completed!>>latest.log
+echo [INFO: %date% - %time%] [SYSTEM] Exiting Application...>>latest.log
+echo [INFO: %date% - %time%] [SYSTEM] Cancelling Task #%random%>>latest.log
+echo [INFO: %date% - %time%] [SYSTEM] Cancelling Task #%random%>>latest.log
+echo [INFO: %date% - %time%] [SYSTEM] Cancelling Task #%random%>>latest.log
+echo [INFO: %date% - %time%] [SYSTEM] Cancelling Task #%random%>>latest.log
+echo [INFO: %date% - %time%] [SYSTEM] Shutting off services...>>latest.log
+echo [INFO: %date% - %time%] [GAME] Wrapping up data...>>latest.log
+echo [INFO: %date% - %time%] [GAME] @CONSOLE : Executing command: textgame.savegame.state>>latest.log
+echo [INFO: %date% - %time%] [SYSTEM] Saving Game State...>>latest.log
+echo [INFO: %date% - %time%] [GAME] Checking Game State...>>latest.log
+echo [INFO: %date% - %time%] [SYSTEM] Service (Game) REQUEST event.GameState>>latest.log
+echo [INFO: %date% - %time%] [SYSTEM] Service (Game) POST event.GameState>>latest.log
+echo [INFO: %date% - %time%] [ENGINE] Checking if GameState matches latest with current...>>latest.log
+echo [INFO: %date% - %time%] [ENGINE] Checking if GameState matches latest with current... OK!>>latest.log
+echo [INFO: %date% - %time%] [SYSTEM] Exit Procedures Completed!>>latest.log
 echo ------------------------ EXIT PROCEDURE --------------------------- >>latest.log
-echo [SYSTEM] INFO: Date: %date%>>latest.log
-echo [SYSTEM] INFO: Time: %time%>>latest.log
-echo [SYSTEM] INFO: Reporting: Version: %applicationVersion% Build %versionBuild%>>latest.log
+echo [INFO: %date% - %time%] [SYSTEM] INFO: Date: %date%>>latest.log
+echo [INFO: %date% - %time%] [SYSTEM] INFO: Time: %time%>>latest.log
+echo [INFO: %date% - %time%] [SYSTEM] INFO: Reporting: Version: %applicationVersion% Build %versionBuild%>>latest.log
 echo ------------------------ END OF LOGGING --------------------------- >>latest.log
-CD /D %GameLauncherDirectory%
+echo.>>latest.log
+%endLog%
+REM CD /D %GameLauncherDirectory%
 EXIT
 
 :VARIABLE
@@ -520,13 +526,12 @@ set /p "cho=> "
 IF "%cho%"=="1" goto LAUNCHERTOCLIENT
 IF "%cho%"=="2" goto IABOUT
 IF "%cho%"=="3" goto ILICENSE
-IF "%cho%"=="4" EXIT
+IF "%cho%"=="4" goto EXITTOLAUNCHERAPP
 IF "%cho%"=="event.EasterEgg" goto EVENTREDIRECTION
 IF "%cho%"=="%SSLauncher%" goto IMAINMENUECHO
 IF "%cho%"=="fastLoad" goto CLIENTMAINMENULOGIN
 IF "%cho%"=="applicationReboot" goto RESTARTAPP
 IF "%cho%"=="ERRORM8 goto" ERRORLVL3
-echo.
 echo Incorrect option!
 TIMEOUT 1 /NOBREAK >NUL
 goto IMAINMENU
