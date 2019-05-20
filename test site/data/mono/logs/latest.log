@@ -166,3 +166,30 @@
 
 [INFO: Wed 15/05/2019 - 11:51:00.91] [SYSTEM] Checking if Text Game is synced with the Client Service...
 [INFO: Wed 15/05/2019 - 11:51:00.91] [GAME] @CONSOLE : Issued the command: textgame.client.checksync
+[INFO: Mon 20/05/2019 - 18:35:25.59] [SYSTEM] Checking if  is synced with the Client Service...
+[INFO: Mon 20/05/2019 - 18:35:25.61] [GAME] @CONSOLE : Issued the command: textgame.client.checksync
+
+------------------------ START PROCEDURE --------------------------- 
+[INFO: Mon 20/05/2019 - 18:35:25.63] [SYSTEM] Starting Application...
+[INFO: Mon 20/05/2019 - 18:35:25.63] [SYSTEM] Starting Task #16692
+[INFO: Mon 20/05/2019 - 18:35:25.63] [SYSTEM] Starting Task #25260
+[INFO: Mon 20/05/2019 - 18:35:25.64] [SYSTEM] Starting Task #488
+[INFO: Mon 20/05/2019 - 18:35:25.64] [SYSTEM] Starting Task #3194
+[INFO: Mon 20/05/2019 - 18:35:25.65] [SYSTEM] Starting independent services...
+[INFO: Mon 20/05/2019 - 18:35:25.65] [GAME] Unpacking data...
+[INFO: Mon 20/05/2019 - 18:35:25.66] [GAME] @CONSOLE : Executing command: textgame.loadgame.state
+[INFO: Mon 20/05/2019 - 18:35:25.66] [SYSTEM] Loading Last Game State...
+[INFO: Mon 20/05/2019 - 18:35:25.66] [GAME] Checking Game State...
+[INFO: Mon 20/05/2019 - 18:35:25.66] [SYSTEM] Service (Game) REQUEST event.GameState
+[INFO: Mon 20/05/2019 - 18:35:25.67] [SYSTEM] Service (Game) POST event.GameState
+[INFO: Mon 20/05/2019 - 18:35:25.67] [ENGINE] Checking if GameState matches latest with current...
+[INFO: Mon 20/05/2019 - 18:35:25.68] [ENGINE] Checking if GameState matches latest with current... OK!
+[INFO: Mon 20/05/2019 - 18:35:25.68] [SYSTEM] Start Procedures Completed!
+------------------------ START PROCEDURE --------------------------- 
+[INFO: Mon 20/05/2019 - 18:35:25.70] [SYSTEM] INFO: Date: Mon 20/05/2019
+[INFO: Mon 20/05/2019 - 18:35:25.70] [SYSTEM] INFO: Time: 18:35:25.70
+[INFO: Mon 20/05/2019 - 18:35:25.70] [SYSTEM] INFO: Reporting: Version: 1.5  Build 156
+------------------------ START OF LOGGING --------------------------- 
+
+[INFO: Mon 20/05/2019 - 18:35:25.94] [SYSTEM] Checking if Text Game is synced with the Client Service...
+[INFO: Mon 20/05/2019 - 18:35:25.96] [GAME] @CONSOLE : Issued the command: textgame.client.checksync

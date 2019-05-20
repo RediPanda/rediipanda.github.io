@@ -84,8 +84,6 @@ call localclass.bat
 
 REM // RESETTERS
 
-goto DISABLEDBETA
-
 set itemPrice=
 set failedPurchase=
 set oldBalance=
