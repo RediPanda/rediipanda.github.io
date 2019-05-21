@@ -11,6 +11,9 @@ set serviceIsTextGameRunning=true
 set serviceIsTextGameResponding=true
 set serviceTextGameSpecialIDHandler=83123895723857237623785462376846523685685646532674523845679653276523
 set serviceTextGameSpecialIDThrottler=ADSHBFASIBETBKETBEABIKFDTEETBABTAEABFDSBKFASGAFIGFAIGATEIGAETRBRAEB
+set isInstanceRunning-true
+
+
 
 REM // NXT SYSTEM GLOBAL VARIABLES
 
@@ -34,21 +37,6 @@ IF NOT EXIST client goto CREATE
 IF NOT EXIST game goto CREATE
 PUSHD client
 IF NOT EXIST dl goto CREATE
-
-PUSHD %appdata%
-PUSHD "NXT Studios"
-PUSHD library
-PUSHD game
-IF NOT EXIST dlc goto CREATE
-IF NOT EXIST dlc goto CREATE
-IF NOT EXIST packs goto CREATE
-IF NOT EXIST configuration goto CREATE
-IF NOT EXIST services goto CREATE
-IF NOT EXIST worldConfig goto CREATE
-IF NOT EXIST pluginConfig goto CREATE
-IF NOT EXIST monoLibrary goto CREATE
-IF NOT EXIST worldData goto CREATE
-
 goto CHECKLIST2
 
 :CHECKLIST2

@@ -68,9 +68,11 @@ REM List of usable variables executed by the TextGame Engine.
 
 REM Fetches the latest playerdata 	-	%execute.data.playerdata% (DO NOT CONFUSED THIS WITH YOUR LOCAL ACCOUNT DATA! THIS IS THE OFFICIAL ACCOUNT DATA STREAM!)
 REM Fetches the latest world data	-	%execute.data.worlds% (Local worlds, not from the server.)
+
 REM Start Log Directory Script		- 	%engine.startLog%
 REM Finish Log Directory Script 	- 	%engine.endLog%
 REM Reset directory to root/dir~ 	- 	%engine.resetDir%
+
 REM Initiate the local save account -	%local.PlayerData.Save%
 REM Load the local account data		-	%local.PlayerData.Load%
 

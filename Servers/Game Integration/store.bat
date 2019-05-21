@@ -43,7 +43,7 @@ set serverID=%apexID%
 REM // For arrow indicators // -^> and ^<-
 
 :CHECKLIST
-IF %applicationVersion% EQU %latestVersion% goto STOREMENU
+IF "v%applicationVersion%" EQU "v%latestVersion%" goto STOREMENU
 goto STOREERROR
 
 :STOREERROR

@@ -18,22 +18,14 @@ cls
 REM // REDIRECTING TO THE VARIABLES TAB
 REM // Default value is VARIABLE
 
-CD /D %GameLauncherDirectory%
-IF NOT EXIST data goto CREATE
-PUSHD data
-IF NOT EXIST mono goto CREATE
-PUSHD mono
-IF NOT EXIST logs goto CREATE
-CD /D %GameLauncherDirectory%
-
 :CLIENTIDCHECKLIST1
 REM // IF CLIENT IS NOT SYNCED WITH LAUNCHER, BREAK SESSION.
 %startLog%
 echo [INFO: %date% - %time%] [SYSTEM] Checking if %applicationName% is synced with the Client Service...>>latest.log
 echo [INFO: %date% - %time%] [GAME] @CONSOLE : Issued the command: textgame.client.checksync>>latest.log
 %endLog%
-IF NOT %serviceIsTextGameRunning%==true goto ERRORLVL4
-IF NOT %serviceIsTextGameResponding%==true goto ERRORLVL4
+IF NOT %serviceIsTextGameRunning%P==trueP goto ERRORLVL4
+IF NOT %serviceIsTextGameResponding%P==trueP goto ERRORLVL4
 IF NOT %serviceTextGameSpecialIDHandler%==83123895723857237623785462376846523685685646532674523845679653276523 goto ERRORLVL4
 IF NOT %serviceTextGameSpecialIDThrottler%==ADSHBFASIBETBKETBEABIKFDTEETBABTAEABFDSBKFASGAFIGFAIGATEIGAETRBRAEB goto ERRORLVL4
 REM CD /D %loggingDirectory%
@@ -63,8 +55,6 @@ echo ------------------------ START OF LOGGING --------------------------- >>lat
 echo.>>latest.log
 REM CD /D %GameLauncherDirectory%
 %endLog%
-
-
 
 goto VARIABLE
 
@@ -464,16 +454,16 @@ EXIT
 
 :ERRORLVL3
 %startLog%
-echo [INFO: %date% - %time%] [ERROR] Detected bad class at: class.accountManager(dataMigrationService).>>latest.log
-echo [INFO: %date% - %time%] [ERROR] error.lang at AccountManagerFail.NXT.net : line 847>>latest.log
-echo [INFO: %date% - %time%] [ERROR] error.lang at AccountManagerFail.NXT.net : line 848>>latest.log
-echo [INFO: %date% - %time%] [ERROR] error.lang at AccountManagerFail.NXT.net : line 849>>latest.log
-echo [INFO: %date% - %time%] [ERROR] error.lang at AccountManagerFail.NXT.net : line 850>>latest.log
-echo [INFO: %date% - %time%] [ERROR] error.lang at AccountManagerFail.NXT.net : line 851>>latest.log
-echo [INFO: %date% - %time%] [ERROR] error.lang at AccountManagerFail.NXT.net : line 852>>latest.log
-echo [INFO: %date% - %time%] [ERROR] Failed to connect to account (Joint Services missing)>>latest.log
+echo [WARN: %date% - %time%] [ERROR] Detected bad class at: class.accountManager(dataMigrationService).>>latest.log
+echo [WARN: %date% - %time%] [ERROR] error.lang at AccountManagerFail.NXT.net : line 847>>latest.log
+echo [WARN: %date% - %time%] [ERROR] error.lang at AccountManagerFail.NXT.net : line 848>>latest.log
+echo [WARN: %date% - %time%] [ERROR] error.lang at AccountManagerFail.NXT.net : line 849>>latest.log
+echo [WARN: %date% - %time%] [ERROR] error.lang at AccountManagerFail.NXT.net : line 850>>latest.log
+echo [WARN: %date% - %time%] [ERROR] error.lang at AccountManagerFail.NXT.net : line 851>>latest.log
+echo [WARN: %date% - %time%] [ERROR] error.lang at AccountManagerFail.NXT.net : line 852>>latest.log
+echo [WARN: %date% - %time%] [ERROR] Failed to connect to account (Joint Services missing)>>latest.log
 echo [INFO: %date% - %time%] [ERROR] Displaying Error Code [ER3]...>>latest.log
-echo [INFO: %date% - %time%] [ERROR] Failed to detect user database input spreadsheet [provided with datasheet name: (UserInput.tgss)]>>latest.log
+echo [WARN: %date% - %time%] [ERROR] Failed to detect user database input spreadsheet [provided with datasheet name: (UserInput.tgss)]>>latest.log
 echo [INFO: %date% - %time%] [ERROR] Listing existing database spreadsheets...>>latest.log
 echo [INFO: %date% - %time%] [SYSTEM] Connecting to Logistics Network...>>latest.log
 echo [INFO: %date% - %time%] [SYSTEM] Connected! [User=TextGameNativeService156 Pass=TextGame9218264657355] [DB=DBTextGame Type=Local SS=UI]>>latest.log
@@ -483,7 +473,7 @@ echo [INFO: %date% - %time%] [SYSTEM] Re-establishing Error Service...>>latest.l
 echo [INFO: %date% - %time%] [ERROR] Sending a 3-way handshake request...>>latest.log
 echo [INFO: %date% - %time%] [SYSTEM] Request received! Sending a confirmation request...>>latest.log
 echo [INFO: %date% - %time%] [ERROR] 3-way handshake complete!>>latest.log
-echo [INFO: %date% - %time%] [ERROR] Failed to request user input command! (NOT EXISTING)>>latest.log
+echo [WARN: %date% - %time%] [ERROR] Failed to request user input command! (NOT EXISTING)>>latest.log
 %endLog%
 TITLE [ERROR] Account Manager Service // Text Game
 REM // Triggered event if the application cannot start/read the localclass.bat located at ~appdata~/Roaming/NXT Studios/savedData/userData/~username~/localclass.bat
@@ -516,8 +506,9 @@ TIMEOUT 18 /NOBREAK >NUL
 goto ERRORLVL1
 
 :ERRORLVL4
+REM // TRIGGERED IF THE LAUNCHER PROCESS ISNT LAUNCHED FROM THE CLIENT EXECUTABLE.
 %startLog%
-echo [INFO: %date% - %time%] [SYSTEM] Failed to sync with client service! >>latest.log
+echo [WARN: %date% - %time%] [SYSTEM] Failed to sync with client service! >>latest.log
 echo [INFO: %date% - %time%] [ERROR] Displaying error scene: [ER4]>>latest.log
 echo [INFO: %date% - %time%] [SYSTEM] Forcing application to shutdown...>>latest.log
 %endLog%
@@ -544,10 +535,10 @@ TITLE Introduction // %applicationName%
 echo [INFO: %date% - %time%] [SYSTEM] Checking if %applicationName% is synced with the Client Service...>>latest.log
 echo [INFO: %date% - %time%] [GAME] @CONSOLE : Issued the command: textgame.client.checksync>>latest.log
 %endLog%
-IF NOT %serviceIsTextGameRunning%==true goto ERRORLVL4
-IF NOT %serviceIsTextGameResponding%==true goto ERRORLVL4
-IF NOT %serviceTextGameSpecialIDHandler%==83123895723857237623785462376846523685685646532674523845679653276523 goto ERRORLVL4
-IF NOT %serviceTextGameSpecialIDThrottler%==ADSHBFASIBETBKETBEABIKFDTEETBABTAEABFDSBKFASGAFIGFAIGATEIGAETRBRAEB goto ERRORLVL4
+IF NOT %serviceIsTextGameRunning%Pointer==truePointer goto ERRORLVL4
+IF NOT %serviceIsTextGameResponding%Pointer==truePointer goto ERRORLVL4
+IF NOT %serviceTextGameSpecialIDHandler%Pointer==83123895723857237623785462376846523685685646532674523845679653276523Pointer goto ERRORLVL4
+IF NOT %serviceTextGameSpecialIDThrottler%Pointer==ADSHBFASIBETBKETBEABIKFDTEETBABTAEABFDSBKFASGAFIGFAIGATEIGAETRBRAEBPointer goto ERRORLVL4
 
 :INFORMATIONREADER
 CD /D %gameLauncherDirectory%
@@ -1078,6 +1069,20 @@ if "%currentHealth%" GEQ "%cheatMaxInHealthSensor%" goto DETECTEDCHEAT
 if %maxHealth% GEQ %cheatMaxHealthSensor% goto DETECTEDCHEAT
 if %maxShield% GTR %cheatMaxShieldSensor% goto DETECTEDCHEAT
 if "%currentShield%" GEQ "%cheatMaxInShieldSensor%" goto DETECTEDCHEAT
+
+REM // ADVANCED HEALTH CHECKER
+
+REM // ADVANCED INV CHECKER
+
+REM // ADVANCED PROGRAM PROTOCOLS
+
+REM // ADVANCED DAMAGE CONTROL
+
+REM // ADVANCED MEMORY REGISTRY CHECKER
+
+REM // ADVANCED ACCOUNT MANAGEMENT
+
+REM // ADVANCED SERVER TUNNELLING
 goto CLIENTMAINMENU
 
 :DETECTEDCHEAT
