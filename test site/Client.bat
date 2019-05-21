@@ -94,9 +94,11 @@ echo.
 echo installer.Identifier.Class.Handler(NoException_OpenNAT) > installerIdentifier.bat
 echo set hostServer=OCEANIC2 > hostName.bat
 (
+echo TITLE NXT Webhook Bootstrap
 echo CD /D %%defaultTransferFile%%
 echo cls
 echo bitsadmin.exe /transfer UpdateJob "%%DLLink%%" "%%appdata%%\NXT Studios\library\client\dl\%%file%%"
+echo EXIT
 ) > serviceDownloadClient.bat
 goto ANIMATE
 
