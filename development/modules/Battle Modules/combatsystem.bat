@@ -1,3 +1,5 @@
+@ECHO OFF
+
 :COMBATTUT2RESET
 set enemy=Rogue Bandit
 set enemyHealth=125

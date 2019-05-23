@@ -1336,6 +1336,8 @@ echo.
 echo.
 echo Type 'version' to find the version number.
 echo.
+echo Type 'account' to manage your account.
+echo.
 echo \\\\\\\\\\\\\\\---------///////////////////
 echo.
 echo.
@@ -1347,11 +1349,44 @@ IF %settings%==4 goto CLIENT
 IF %settings%==5 goto ANTICHEATWALL
 IF %settings%==version goto VERSIONSETTINGS
 IF %settings%==verify goto VERIFYINTEGRITY
+IF %settings%==account goto ACCOUNTMANAGEMENT
 CLS
 echo Invalid option!
 echo.
 TIMEOUT 1 /NOBREAK >NUL
 goto SETTINGSMENU
+
+:ACCOUNTMANAGEMENT
+cls
+TITLE Account Management // %applicationName%
+cls
+echo.
+echo.
+echo 	/!\ -- Account Management:
+echo.
+echo.
+echo Managing %username%'s account...
+echo.
+echo	Please select an option to edit your account:
+echo.
+echo	1 ] Change your GameTag
+echo.
+echo	2 ] Change your password
+echo.
+echo	3 ] Wipe account data
+echo.
+echo	4 ] Delete account
+echo.
+echo	5 ] Back to Settings
+echo.
+echo.
+set/p "accmgmt=> "
+IF "%accmgmt%"==1 goto ACCOUNTMANAGEMENT1
+IF "%accmgmt%"==2 goto ACCOUNTMANAGEMENT2
+IF "%accmgmt%"==3 goto ACCOUNTMANAGEMENT3
+IF "%accmgmt%"==4 goto ACCOUNTMANAGEMENT4
+IF "%accmgmt%"==5 goto SETTINGSMENU
+goto ACCOUNTMANAGEMENT
 
 :VERIFYINTEGRITY
 REM // Setup Verification Directory Status for Report
