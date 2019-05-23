@@ -1,1 +1,1 @@
-set latestStable=1.5
+set latestStable=1.9
