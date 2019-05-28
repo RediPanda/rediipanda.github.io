@@ -1,6 +1,15 @@
 :START
 @ECHO OFF
 set GameLauncherDirectory="%LauncherDirectory%"
+set gameLauncherDirectory="%LauncherDirectory%"
+set loggingDirectory="%GameLauncherDirectory%"/data/mono/logs
+
+set startLog=CD /D %loggingDirectory%
+set endLog=CD /D %GameLauncherDirectory%
+
+set resetDir=CD /D %GameLauncherDirectory%
+
+set versionBuild2=156
 MODE 215,80
 CD /D %gameLauncherDirectory%
 TITLE Loading...
@@ -11,10 +20,41 @@ REM // Default value is VARIABLE
 
 :CLIENTIDCHECKLIST1
 REM // IF CLIENT IS NOT SYNCED WITH LAUNCHER, BREAK SESSION.
-IF NOT %serviceIsTextGameRunning%==true goto ERRORLVL4
-IF NOT %serviceIsTextGameResponding%==true goto ERRORLVL4
+%startLog%
+echo [INFO: %date% - %time%] [SYSTEM] Checking if %applicationName% is synced with the Client Service...>>latest.log
+echo [INFO: %date% - %time%] [GAME] @CONSOLE : Issued the command: textgame.client.checksync>>latest.log
+%endLog%
+IF NOT %serviceIsTextGameRunning%P==trueP goto ERRORLVL4
+IF NOT %serviceIsTextGameResponding%P==trueP goto ERRORLVL4
 IF NOT %serviceTextGameSpecialIDHandler%==83123895723857237623785462376846523685685646532674523845679653276523 goto ERRORLVL4
 IF NOT %serviceTextGameSpecialIDThrottler%==ADSHBFASIBETBKETBEABIKFDTEETBABTAEABFDSBKFASGAFIGFAIGATEIGAETRBRAEB goto ERRORLVL4
+REM CD /D %loggingDirectory%
+%startLog%
+echo.>>latest.log
+echo ------------------------ START PROCEDURE --------------------------- >>latest.log
+echo [INFO: %date% - %time%] [SYSTEM] Starting Application...>>latest.log
+echo [INFO: %date% - %time%] [SYSTEM] Starting Task #%random%>>latest.log
+echo [INFO: %date% - %time%] [SYSTEM] Starting Task #%random%>>latest.log
+echo [INFO: %date% - %time%] [SYSTEM] Starting Task #%random%>>latest.log
+echo [INFO: %date% - %time%] [SYSTEM] Starting Task #%random%>>latest.log
+echo [INFO: %date% - %time%] [SYSTEM] Starting independent services...>>latest.log
+echo [INFO: %date% - %time%] [GAME] Unpacking data...>>latest.log
+echo [INFO: %date% - %time%] [GAME] @CONSOLE : Executing command: textgame.loadgame.state>>latest.log
+echo [INFO: %date% - %time%] [SYSTEM] Loading Last Game State...>>latest.log
+echo [INFO: %date% - %time%] [GAME] Checking Game State...>>latest.log
+echo [INFO: %date% - %time%] [SYSTEM] Service (Game) REQUEST event.GameState>>latest.log
+echo [INFO: %date% - %time%] [SYSTEM] Service (Game) POST event.GameState>>latest.log
+echo [INFO: %date% - %time%] [ENGINE] Checking if GameState matches latest with current...>>latest.log
+echo [INFO: %date% - %time%] [ENGINE] Checking if GameState matches latest with current... OK!>>latest.log
+echo [INFO: %date% - %time%] [SYSTEM] Start Procedures Completed!>>latest.log
+echo ------------------------ START PROCEDURE --------------------------- >>latest.log
+echo [INFO: %date% - %time%] [SYSTEM] INFO: Date: %date%>>latest.log
+echo [INFO: %date% - %time%] [SYSTEM] INFO: Time: %time%>>latest.log
+echo [INFO: %date% - %time%] [SYSTEM] INFO: Reporting: Version: %applicationVersion% Build %versionBuild2%>>latest.log
+echo ------------------------ START OF LOGGING --------------------------- >>latest.log
+echo.>>latest.log
+REM CD /D %GameLauncherDirectory%
+%endLog%
 
 goto VARIABLE
 
@@ -23,6 +63,16 @@ REM RANKS:
 REM BEGINNER, RECRUIT, REGIMENT-5, REGIMENT-22, REGIMENT-54, REGIMENT-84, REGIMENT-108, MERCENARY, ASSAULTAIR, SHARPSHOOTER, A-FORCE-A, A-FORCE-B, A-FORCE-C
 REM KREGIMEIRS-GUARD, ROYAL-GUARDIAN, ROYAL-GUARDIAN-GENERAL, ALPHA-RECRUIT, ALPHA-INFANTRY, ALPHA-TEAM-LEADER, ALPHA-GENERAL, ALPHA-LEADER
 REM EXTERNAT-ASSASSIN, EXTERNAT-ETERNAL-LEADER, EXTERNAT-GUARDIAN
+REM
+REM
+REM LOGGING DEBUG FORMAT:
+REM
+REM [SYSTEM] - Game Mechanic/Logistics and Services
+REM [USER] - User input
+REM [ERROR] - Error Logistics
+REM [WORLD] - World Logistics, Services, Data and Settings
+REM [ENGINE] - Game Engine Initialization and Services
+REM
 REM 
 REM LOCATIONS:
 REM 
@@ -71,13 +121,18 @@ CD /D %gameLauncherDirectory%
 cls
 TITLE Rebooting // %applicationName%
 echo Rebooting application...
+CD /D %loggingDirectory%
+echo [INFO: %date% - %time%] [SYSTEM] Resetting application ports... >>latest.log
+echo [INFO: %date% - %time%] [SYSTEM] Resetting application storage... >>latest.log
+echo [INFO: %date% - %time%] [GAME] Rebooting Game... >>latest.log
+CD /D %GameLauncherDirectory%
 TIMEOUT 2 /NOBREAK >NUL
 goto REDIRECTION
 
 :EVENTREDIRECTION
 TITLE Event // %applicationName%
 CLS
-REM // Default value if theres no event - NOEVENT
+REM // Default value if theres no event - IMAINMENU
 REM // Default value if there is a event - EVENT
 set eventValue=IMAINMENU
 goto %eventValue%
@@ -85,6 +140,33 @@ goto %eventValue%
 :EXITTOLAUNCHERAPP
 CLS
 TITLE Returning to launcher // %applicationName%
+REM CD /D %loggingDirectory%
+%startLog%
+echo.>>latest.log
+echo ------------------------ EXIT PROCEDURE --------------------------- >>latest.log
+echo [INFO: %date% - %time%] [SYSTEM] Exiting Application...>>latest.log
+echo [INFO: %date% - %time%] [SYSTEM] Cancelling Task #%random%>>latest.log
+echo [INFO: %date% - %time%] [SYSTEM] Cancelling Task #%random%>>latest.log
+echo [INFO: %date% - %time%] [SYSTEM] Cancelling Task #%random%>>latest.log
+echo [INFO: %date% - %time%] [SYSTEM] Cancelling Task #%random%>>latest.log
+echo [INFO: %date% - %time%] [SYSTEM] Shutting off services...>>latest.log
+echo [INFO: %date% - %time%] [GAME] Wrapping up data...>>latest.log
+echo [INFO: %date% - %time%] [GAME] @CONSOLE : Executing command: textgame.savegame.state>>latest.log
+echo [INFO: %date% - %time%] [SYSTEM] Saving Game State...>>latest.log
+echo [INFO: %date% - %time%] [GAME] Checking Game State...>>latest.log
+echo [INFO: %date% - %time%] [SYSTEM] Service (Game) REQUEST event.GameState>>latest.log
+echo [INFO: %date% - %time%] [SYSTEM] Service (Game) POST event.GameState>>latest.log
+echo [INFO: %date% - %time%] [ENGINE] Checking if GameState matches latest with current...>>latest.log
+echo [INFO: %date% - %time%] [ENGINE] Checking if GameState matches latest with current... OK!>>latest.log
+echo [INFO: %date% - %time%] [SYSTEM] Exit Procedures Completed!>>latest.log
+echo ------------------------ EXIT PROCEDURE --------------------------- >>latest.log
+echo [INFO: %date% - %time%] [SYSTEM] INFO: Date: %date%>>latest.log
+echo [INFO: %date% - %time%] [SYSTEM] INFO: Time: %time%>>latest.log
+echo [INFO: %date% - %time%] [SYSTEM] INFO: Reporting: Version: %applicationVersion% Build %versionBuild%>>latest.log
+echo ------------------------ END OF LOGGING --------------------------- >>latest.log
+echo.>>latest.log
+%endLog%
+REM CD /D %GameLauncherDirectory%
 EXIT
 
 :VARIABLE
@@ -95,7 +177,9 @@ CALL version.bat
 CD /D %gameLauncherDirectory%
 
 set installedVersion=1.5
-set versionBuild=151
+set versionBuild=%versionBuild2%
+
+REM // PATH ENVIRONMENTAL GLOBAL VARIABLES
 
 set corpData=%appdata%/"NXT Studios"
 set updateClientDir=%appdata%/"NXT Studios"/library/client
@@ -103,6 +187,9 @@ set updateGameDir=%appdata%/"NXT Studios"/library/game
 set mapData=%appdata%/"NXT Studios"/library/mapData
 set userDataLocation=%appdata%/"NXT Studios"/savedData/userData
 set serverLocation="%appdata%"/"NXT Studios"/server
+set antiCheatEngine="%appdata%"/"NXT Studios"/library/game/services/antiCheatEngine
+set worldInitDirectory="%appdata%"/"NXT Studios"/library/game/worldData
+
 set applicationName=Text Game
 
 set applicationAuthor=NXT Studios
@@ -309,11 +396,18 @@ PUSHD _Distribution
 CD /D %gameLauncherDirectory%
 PUSHD data
 MD update
+MD services
+PUSHD services
+echo set applicationVersion=%installedVersion% > version.bat
+CD /d %gameLauncherDirectory%
+PUSHD data
 PUSHD config
 echo set id=239542289318745164517661485119292356978222100021815192116140 >> lib.bat
 CD /D %gameLauncherDirectory%
 PUSHD data
-PUSHD update
+MD mono
+PUSHD mono
+MD logs
 goto RESTARTAPP
 
 :CHECKLIST
@@ -321,10 +415,22 @@ CD /D %gameLauncherDirectory%
 if NOT EXIST data goto CREATE
 PUSHD data
 if NOT EXIST config goto CREATE
+if NOT EXIST services goto CREATE
+IF NOT EXIST mono goto CREATE
 PUSHD config
+IF NOT EXIST lib.bat goto CREATE
 CALL lib.bat
 PING 1.1.1.1 -n 1 -w 2500 >NUL
 if %id%==239542289318745164517661485119292356978222100021815192116140 goto INTRODUCTION
+CD /D %GameLauncherDirectory%
+PUSHD data
+PUSHD services
+IF NOT EXIST version.bat goto CREATE
+CD /D %GameLauncherDirectory%
+PUSHD data
+PUSHD mono
+IF NOT EXIST logs goto CREATE
+CALL version.bat
 goto ERRORLVL1
 
 :ERRORLVL1
@@ -347,6 +453,28 @@ TIMEOUT 120 /NOBREAK >NUL
 EXIT
 
 :ERRORLVL3
+%startLog%
+echo [WARN: %date% - %time%] [ERROR] Detected bad class at: class.accountManager(dataMigrationService).>>latest.log
+echo [WARN: %date% - %time%] [ERROR] error.lang at AccountManagerFail.NXT.net : line 847>>latest.log
+echo [WARN: %date% - %time%] [ERROR] error.lang at AccountManagerFail.NXT.net : line 848>>latest.log
+echo [WARN: %date% - %time%] [ERROR] error.lang at AccountManagerFail.NXT.net : line 849>>latest.log
+echo [WARN: %date% - %time%] [ERROR] error.lang at AccountManagerFail.NXT.net : line 850>>latest.log
+echo [WARN: %date% - %time%] [ERROR] error.lang at AccountManagerFail.NXT.net : line 851>>latest.log
+echo [WARN: %date% - %time%] [ERROR] error.lang at AccountManagerFail.NXT.net : line 852>>latest.log
+echo [WARN: %date% - %time%] [ERROR] Failed to connect to account (Joint Services missing)>>latest.log
+echo [INFO: %date% - %time%] [ERROR] Displaying Error Code [ER3]...>>latest.log
+echo [WARN: %date% - %time%] [ERROR] Failed to detect user database input spreadsheet [provided with datasheet name: (UserInput.tgss)]>>latest.log
+echo [INFO: %date% - %time%] [ERROR] Listing existing database spreadsheets...>>latest.log
+echo [INFO: %date% - %time%] [SYSTEM] Connecting to Logistics Network...>>latest.log
+echo [INFO: %date% - %time%] [SYSTEM] Connected! [User=TextGameNativeService156 Pass=TextGame9218264657355] [DB=DBTextGame Type=Local SS=UI]>>latest.log
+echo [INFO: %date% - %time%] [SYSTEM] Database INFO: Existing spreadsheets=(userInputDB.tgss, questInfo.tgss, worldData.tgss, accountInfo.tgss, displayScenes.tgss)>>latest.log
+echo [INFO: %date% - %time%] [SYSTEM] Disconnecting from database...>>latest.log
+echo [INFO: %date% - %time%] [SYSTEM] Re-establishing Error Service...>>latest.log
+echo [INFO: %date% - %time%] [ERROR] Sending a 3-way handshake request...>>latest.log
+echo [INFO: %date% - %time%] [SYSTEM] Request received! Sending a confirmation request...>>latest.log
+echo [INFO: %date% - %time%] [ERROR] 3-way handshake complete!>>latest.log
+echo [WARN: %date% - %time%] [ERROR] Failed to request user input command! (NOT EXISTING)>>latest.log
+%endLog%
 TITLE [ERROR] Account Manager Service // Text Game
 REM // Triggered event if the application cannot start/read the localclass.bat located at ~appdata~/Roaming/NXT Studios/savedData/userData/~username~/localclass.bat
 cls
@@ -357,7 +485,7 @@ echo.
 echo [STATUS]   Logged in as "%adminLogin%" with the following permissions: %roleAdmin%
 echo.
 echo [ACCOUNT]  "%adminLogin% " is logged in by the Game Administrator using: Local Account Sessions
-echo [WARNING]  This account was logged in by a mod/user under the details of: Account Services System
+echo [WARNING]  This account   was logged in by a mod/user under the details of: Account Services System
 echo [WARNING]  Type of Logger: "Services"         Reason: "ERRORCODE (FAILED_USER_ACCOUNT_JOINT_SERVICES)"
 echo.
 echo.
@@ -374,10 +502,16 @@ echo {SERVICE_USER_INPUT_3} ] (FAILED TO FIND ANY INPUT DATABASE NAMED "3_UAMS_I
 echo.
 echo.
 echo Error Code : [ER3]
-TIMEOUT 2 /NOBREAK >NUL
+TIMEOUT 18 /NOBREAK >NUL
 goto ERRORLVL1
 
 :ERRORLVL4
+REM // TRIGGERED IF THE LAUNCHER PROCESS ISNT LAUNCHED FROM THE CLIENT EXECUTABLE.
+%startLog%
+echo [WARN: %date% - %time%] [SYSTEM] Failed to sync with client service! >>latest.log
+echo [INFO: %date% - %time%] [ERROR] Displaying error scene: [ER4]>>latest.log
+echo [INFO: %date% - %time%] [SYSTEM] Forcing application to shutdown...>>latest.log
+%endLog%
 cls
 echo.
 echo The Launcher failed to sync and authorise data from the Client Application.
@@ -397,10 +531,14 @@ EXIT
 TITLE Introduction // %applicationName%
 
 :CLIENTIDCHECKLIST2
-IF NOT %serviceIsTextGameRunning%==true goto ERRORLVL4
-IF NOT %serviceIsTextGameResponding%==true goto ERRORLVL4
-IF NOT %serviceTextGameSpecialIDHandler%==83123895723857237623785462376846523685685646532674523845679653276523 goto ERRORLVL4
-IF NOT %serviceTextGameSpecialIDThrottler%==ADSHBFASIBETBKETBEABIKFDTEETBABTAEABFDSBKFASGAFIGFAIGATEIGAETRBRAEB goto ERRORLVL4
+%startLog%
+echo [INFO: %date% - %time%] [SYSTEM] Checking if %applicationName% is synced with the Client Service...>>latest.log
+echo [INFO: %date% - %time%] [GAME] @CONSOLE : Issued the command: textgame.client.checksync>>latest.log
+%endLog%
+IF NOT %serviceIsTextGameRunning%Pointer==truePointer goto ERRORLVL4
+IF NOT %serviceIsTextGameResponding%Pointer==truePointer goto ERRORLVL4
+IF NOT %serviceTextGameSpecialIDHandler%Pointer==83123895723857237623785462376846523685685646532674523845679653276523Pointer goto ERRORLVL4
+IF NOT %serviceTextGameSpecialIDThrottler%Pointer==ADSHBFASIBETBKETBEABIKFDTEETBABTAEABFDSBKFASGAFIGFAIGATEIGAETRBRAEBPointer goto ERRORLVL4
 
 :INFORMATIONREADER
 CD /D %gameLauncherDirectory%
@@ -428,16 +566,15 @@ echo =    4] Quit                     =
 echo =                                =
 echo ==================================
 set /p "cho=> "
-IF %cho%==1 goto LAUNCHERTOCLIENT
-IF %cho%==2 goto IABOUT
-IF %cho%==3 goto ILICENSE
-IF %cho%==4 EXIT
-IF %cho%==event.EasterEgg goto EVENTREDIRECTION
-IF %cho%==%SSLauncher% goto IMAINMENUECHO
-IF %cho%==fastLoad goto CLIENTMAINMENULOGIN
-IF %cho%==applicationReboot goto RESTARTAPP
-IF %cho%==ERRORM8 goto ERRORLVL3
-echo.
+IF "%cho%"=="1" goto LAUNCHERTOCLIENT
+IF "%cho%"=="2" goto IABOUT
+IF "%cho%"=="3" goto ILICENSE
+IF "%cho%"=="4" goto EXITTOLAUNCHERAPP
+IF "%cho%"=="event.EasterEgg" goto EVENTREDIRECTION
+IF "%cho%"=="%SSLauncher%" goto IMAINMENUECHO
+IF "%cho%"=="fastLoad" goto CLIENTMAINMENULOGIN
+IF "%cho%"=="applicationReboot" goto RESTARTAPP
+IF "%cho%"=="ERRORM8" goto ERRORLVL3
 echo Incorrect option!
 TIMEOUT 1 /NOBREAK >NUL
 goto IMAINMENU
@@ -491,7 +628,7 @@ CD /D %gameLauncherDirectory%
 CLS
 echo ========================================================
 echo.
-echo Application: %appName%
+echo Application: %applicationName%
 echo.
 echo API Loaded:
 echo.
@@ -560,6 +697,7 @@ IF NOT EXIST architecture goto INSTALL
 IF NOT EXIST engine goto INSTALL
 IF NOT EXIST core goto INSTALL
 IF NOT EXIST dll goto INSTALL
+IF NOT EXIST logs goto INSTALL
 POPD
 POPD
 PUSHD data
@@ -595,19 +733,23 @@ PUSHD plugins
 CD /d %gameLauncherDirectory%
 PUSHD data
 MD cache
-MD services
-PUSHD services
-echo set applicationVersion=%installedVersion% > version.bat
-CD /d %gameLauncherDirectory%
 PUSHD data
 MD mono
 MD saves
 PUSHD mono
 MD lib
+PUSHD lib
+echo ahfas79yf9asf9af9u3f9afs98yf7ayfew64fwe84f4ar5ht465gd4ngioutyb5d4g54gc54xa4xd6r64xe84e4cg65r56vr6rgsacagrsc4racs64c4acrarcar64yacr5rcagrcs8agsc7 >LibraryClass.dll
+echo ahfas79yf9asf9af9u3f9afs98yf7ayfew64fwe84f4ar5ht465gd4ngioutyb5d4g54gc54xa4xd6r64xe84e4cg65r56vr6rgsacagrsc4racs64c4acrarcar64yacr5rcagrcs8agsc7 >MonoLib.dll
+echo ahfas79yf9asf9af9u3f9afs98yf7ayfew64fwe84f4ar5ht465gd4ngioutyb5d4g54gc54xa4xd6r64xe84e4cg65r56vr6rgsacagrsc4racs64c4acrarcar64yacr5rcagrcs8agsc7 >classHandler.dll
+echo ahfas79yf9asf9af9u3f9afs98yf7ayfew64fwe84f4ar5ht465gd4ngioutyb5d4g54gc54xa4xd6r64xe84e4cg65r56vr6rgsacagrsc4racs64c4acrarcar64yacr5rcagrcs8agsc7 >engine64.dll
+echo ahfas79yf9asf9af9u3f9afs98yf7ayfew64fwe84f4ar5ht465gd4ngioutyb5d4g54gc54xa4xd6r64xe84e4cg65r56vr6rgsacagrsc4racs64c4acrarcar64yacr5rcagrcs8agsc7 >errorReporter.dll
+POPD
 MD architecture
 MD engine
 MD core
 MD dll
+MD logs
 CD /d %gameLauncherDirectory%
 PUSHD data
 PUSHD saves
@@ -702,9 +844,9 @@ echo.
 echo   3] Go back to the launcher.
 echo.
 set /p "loginselect=> "
-IF %loginselect%==1 goto LOGIN
-IF %loginselect%==2 goto REGISTER
-IF %loginselect%==3 goto EXITTOLAUNCHERAPP
+IF "%loginselect%"=="1" goto LOGIN
+IF "%loginselect%"=="2" goto REGISTER
+IF "%loginselect%"=="3" goto EXITTOLAUNCHERAPP
 echo.
 echo Incorrect option!
 goto CLIENTMAINMENULOGIN
@@ -725,12 +867,21 @@ echo.
 echo.
 echo Checking for user data...
 PUSHD %appdata%
+cls
 PUSHD "NXT Studios"
+cls
 PUSHD savedData
+cls
 PUSHD userData
+cls
 PUSHD %regname%
 CALL %regname%-login.bat
-if %regname%==%username% goto SUCCESSLOGINUSERNAME
+cls
+if "%regname%"=="%username%" goto SUCCESSLOGINUSERNAME
+cls
+goto ACCOUNTLOGINFAILUSERNAME
+
+:ACCOUNTLOGINFAILUSERNAME
 cls
 echo.
 echo.
@@ -769,7 +920,18 @@ echo.
 TIMEOUT 2 /NOBREAK >NUL
 goto CLIENTMAINMENULOGIN
 
+:REGISTERBLANK
+CLS
+title Registration Account Error // %applicationName%
+echo.
+echo You cannot register an account with a blank field!
+echo.
+echo.
+TIMEOUT 2 /NOBREAK >NUL
+goto CLIENTMAINMENULOGIN
+
 :REGISTER
+CD /D %GameLauncherDirectory%
 POPD
 cls
 echo.
@@ -781,12 +943,14 @@ echo.
 echo Enter the desired username:
 echo.
 set /p "registername=> "
+IF "%registername%nullPointer"=="nullPointer" goto REGISTERBLANK
 POPD
 PUSHD %appdata%
 PUSHD "NXT Studios"
 PUSHD savedData
 PUSHD userData
-IF EXIST "%registername%.bat" goto ACCOUNTEXISTED
+PUSHD %registername%
+IF EXIST "%registername%-login.bat" goto ACCOUNTEXISTED
 POPD
 cls
 echo.
@@ -798,6 +962,7 @@ echo.
 echo Enter the desired password:
 echo.
 set /p "registerpass=> "
+IF "%registerpass%nullPointer"=="nullPointer" goto REGISTERBLANK
 PUSHD %appdata%
 PUSHD "NXT Studios"
 PUSHD savedData
@@ -859,6 +1024,9 @@ PUSHD %registername%
   echo set accountAge=%applicationVersion%
 ) > accountAge.bat
 (
+  echo set worldName=Arenotik
+) > worldData.bat
+(
   echo CALL health.bat
   echo CALL shield.bat
   echo CALL weapon.bat
@@ -875,6 +1043,7 @@ PUSHD %registername%
   echo CALL graphicSetting.bat
   echo CALL money.bat
   echo CALL accountAge.bat
+  echo CALL worldData.bat
   echo SET localclassid=23789078239075230793392579035212390123258953289
   echo cls
 ) > localclass.bat
@@ -900,6 +1069,20 @@ if "%currentHealth%" GEQ "%cheatMaxInHealthSensor%" goto DETECTEDCHEAT
 if %maxHealth% GEQ %cheatMaxHealthSensor% goto DETECTEDCHEAT
 if %maxShield% GTR %cheatMaxShieldSensor% goto DETECTEDCHEAT
 if "%currentShield%" GEQ "%cheatMaxInShieldSensor%" goto DETECTEDCHEAT
+
+REM // ADVANCED HEALTH CHECKER
+
+REM // ADVANCED INV CHECKER
+
+REM // ADVANCED PROGRAM PROTOCOLS
+
+REM // ADVANCED DAMAGE CONTROL
+
+REM // ADVANCED MEMORY REGISTRY CHECKER
+
+REM // ADVANCED ACCOUNT MANAGEMENT
+
+REM // ADVANCED SERVER TUNNELLING
 goto CLIENTMAINMENU
 
 :DETECTEDCHEAT
@@ -954,13 +1137,13 @@ echo  /          7] Return to Desktop
 echo.
 echo.
 set /p "selector=> "
-IF %selector%==1 goto SINGLEPLAYERMENU
-IF %selector%==2 goto CLIENTMAINMENU
-IF %selector%==3 goto STOREMENU
-IF %selector%==4 goto CHARACTERMENU
-IF %selector%==5 goto SETTINGSMENU
-IF %selector%==6 goto EXITTOLAUNCHERAPP
-IF %selector%==7 goto ENDOFFILE
+IF "%selector%"=="1" goto SINGLEPLAYERMENU
+IF "%selector%"=="2" goto CLIENTMAINMENU
+IF "%selector%"=="3" goto STOREMENU
+IF "%selector%"=="4" goto CHARACTERMENU
+IF "%selector%"=="5" goto SETTINGSMENU
+IF "%selector%"=="6" goto EXITTOLAUNCHERAPP
+IF "%selector%"=="7" goto ENDOFFILE
 echo.
 cls
 echo.
@@ -973,15 +1156,26 @@ PAUSE
 TITLE Singleplayer // %applicationName%
 CD /D %userDataLocation%
 PUSHD %username%
-CALL lastLocation.bat
+CALL localclass.bat
 cls
 echo.
 echo.
 IF %lastLocation%==TUTORIAL goto TUTORIALNOTIFICATION
-CD /D %userDataLocation%
-PUSHD %username%
-PUSHD %%
-goto %lastLocation%
+CD /D %worldInitDirectory%
+:WORLDDATABASE
+
+IF GREENVALE==%lastLocation% set transferLocationID=1-1
+IF FIDDLESDOCK==%lastLocation% set transferLocationID=1-2
+IF KINDLETOWN==%lastLocation% set transferLocationID=1-3
+IF MICARVALE==%lastLocation% set transferLocationID=1-4
+IF OPENFIELD1-5==%lastLocation% set transferLocationID=1-5
+IF OPENFIELD1-6==%lastLocation% set transferLocationID=1-6
+IF OPENFIELD1-7==%lastLocation% set transferLocationID=1-7
+IF OPENFIELD1-8==%lastLocation% set transferLocationID=1-8
+IF MERCHANTBERALD==%lastLocation% set transferLocationID=2-1
+IF OPENFIELD1-6==%lastLocation% set transferLocationID=2-2
+IF OPENFIELD1-7==%lastLocation% set transferLocationID=2-3
+IF OPENFIELD1-8==%lastLocation% set transferLocationID=2-4
 
 :MULTIPLAYERMENU
 TITLE Multiplayer // %applicationName%
@@ -1112,7 +1306,7 @@ echo     Weapon  : %weapon%
 echo     Ammo    : %ammo%
 echo.
 echo.
-echo Last seen at: %lastLocation%
+echo Last seen at: %lastLocation%, %worldName%
 PAUSE
 goto ANTICHEATWALL
 
@@ -1142,6 +1336,8 @@ echo.
 echo.
 echo Type 'version' to find the version number.
 echo.
+echo Type 'account' to manage your account.
+echo.
 echo \\\\\\\\\\\\\\\---------///////////////////
 echo.
 echo.
@@ -1149,15 +1345,48 @@ SET /p "settings=> "
 IF %settings%==1 goto SETTINGSDEBUG
 IF %settings%==2 goto SETTINGSSOUNDS
 IF %settings%==3 goto SETTINGSGRAPHICS
-IF %settings%==4 goto GOBACKHERE
+IF %settings%==4 goto CLIENT
 IF %settings%==5 goto ANTICHEATWALL
 IF %settings%==version goto VERSIONSETTINGS
 IF %settings%==verify goto VERIFYINTEGRITY
+IF %settings%==account goto ACCOUNTMANAGEMENT
 CLS
 echo Invalid option!
 echo.
 TIMEOUT 1 /NOBREAK >NUL
 goto SETTINGSMENU
+
+:ACCOUNTMANAGEMENT
+cls
+TITLE Account Management // %applicationName%
+cls
+echo.
+echo.
+echo 	/!\ -- Account Management:
+echo.
+echo.
+echo Managing %username%'s account...
+echo.
+echo	Please select an option to edit your account:
+echo.
+echo	1 ] Change your GameTag
+echo.
+echo	2 ] Change your password
+echo.
+echo	3 ] Wipe account data
+echo.
+echo	4 ] Delete account
+echo.
+echo	5 ] Back to Settings
+echo.
+echo.
+set/p "accmgmt=> "
+IF "%accmgmt%"==1 goto ACCOUNTMANAGEMENT1
+IF "%accmgmt%"==2 goto ACCOUNTMANAGEMENT2
+IF "%accmgmt%"==3 goto ACCOUNTMANAGEMENT3
+IF "%accmgmt%"==4 goto ACCOUNTMANAGEMENT4
+IF "%accmgmt%"==5 goto SETTINGSMENU
+goto ACCOUNTMANAGEMENT
 
 :VERIFYINTEGRITY
 REM // Setup Verification Directory Status for Report
@@ -1522,7 +1751,7 @@ echo.
 echo Assigned Username : %username%
 echo.
 echo Character Information:
-echo     Location         : %lastLocation%
+echo     Location         : %lastLocation%, %worldName%
 echo     Ammo             : %ammo%
 echo     Health           : %currentHealth%
 echo     Max Health       : %maxHealth%
@@ -1589,7 +1818,7 @@ echo.
 echo Assigned Username : %username%
 echo.
 echo Character Information:
-echo     Location         : %lastLocation%
+echo     Location         : %lastLocation%, %worldName%
 echo     Ammo             : %ammo%
 echo     Health           : %currentHealth%
 echo     Max Health       : %maxHealth%
@@ -1638,6 +1867,8 @@ goto SETTINGSMENU
 TITLE Settings // %applicationName%
 echo.
 echo The current version is : %applicationVersion%
+echo.
+echo Stable build of: %versionBuild%
 echo.
 echo.
 PAUSE
@@ -2379,4 +2610,7 @@ goto SINGLEPLAYERMENU
 
 REM // ALWAYS LEAVE THIS LINE AS THE LAST LINE!!!
 REM // THE PROGRAM WILL NOT RUN EFFICIENT IF THIS LINE IS MODIFIED OR REMOVED!!!
+:CLIENT
+EXIT
 :ENDOFFILE
+EXIT

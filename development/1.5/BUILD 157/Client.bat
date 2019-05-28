@@ -21,7 +21,9 @@ REM // CORE SERVICES // UPDATES
 
 set updateClientDir=%appdata%/"NXT Studios"/library/client
 set updateGameDir=%appdata%/"NXT Studios"/library/game
+set updateNoQGameDir
 set defaultTransferFile=%appdata%/"NXT Studios"/library/client/dl
+set defaultNoQTransferFile=%appdata%/NXT Studios/library/client/dl
 
 set dot=.
 
@@ -37,6 +39,7 @@ IF NOT EXIST client goto CREATE
 IF NOT EXIST game goto CREATE
 PUSHD client
 IF NOT EXIST dl goto CREATE
+IF NOT EXIST state goto CREATE
 goto CHECKLIST2
 
 :CHECKLIST2
@@ -98,6 +101,7 @@ echo TITLE NXT Webhook Bootstrap
 echo CD /D %%defaultTransferFile%%
 echo cls
 echo bitsadmin.exe /transfer UpdateJob "%%DLLink%%" "%%appdata%%\NXT Studios\library\client\dl\%%file%%"
+echo echo 
 echo EXIT
 ) > serviceDownloadClient.bat
 goto ANIMATE
@@ -136,6 +140,7 @@ PUSHD "NXT Studios"
 PUSHD library
 PUSHD client
 MD dl
+MD state
 goto CHECKLIST
 
 :ANIMATE
@@ -193,6 +198,7 @@ echo                   NXT Studios
 PING 1.1.1.1 -n 3 15000 >NUL
 cls
 :SPLASHPAGE
+CD /D %LauncherDirectory%
 TITLE Main Menu // Client
 cls
 echo.
@@ -280,6 +286,7 @@ CD /D %defaultTransferFile%
 set clockUpdateClient=0
 set UclockUpdateClient=0
 set latestStable=N/A
+set latestClientStable=N/A
 set latestGameStable=N/A
 CALL latestClientStable.bat
 CALL latestGameStable.bat
@@ -357,7 +364,7 @@ PING 1.1.1.1 -n 3 15000 >NUL
 
 IF "%clockUpdateClient%"=="28" goto UPDATESERVICEGAME
 set /a clockUpdateClient="%clockUpdateClient%" + "1"
-goto UPDATEGAME1
+goto ACCEPT
 
 :LAUNCH
 PUSHD %appdata%
@@ -394,10 +401,18 @@ echo %cd%
 goto ACCEPT
 
 :ACCEPT
-CD /D %updateGameDir%
+CD /D %LauncherDirectory%
+PUSHD %corporateRootDirectory%
+PUSHD library
+PUSHD client
 DEL /Q "Launcher.bat"
-SET "FILELOCATION=%updateGameDir%/Launcher.bat"
-cls
-bitsadmin.exe /transfer "Update Service" "https://raw.githubusercontent.com/RediPanda/rediipanda.github.io/master/Updates/latest/Launcher.bat" %FILELOCATION%
+set File=Launcher.bat
+set DLLink=https://raw.githubusercontent.com/RediPanda/rediipanda.github.io/master/Updates/latest/Launcher.bat
+START /min serviceDownloadClient.bat
+PAUSE
+cd /d "%defaultTransferFile%"
+xcopy Launcher.bat "%updateNoQGameDir%"
+echo %defaultTransferFile%
+echo %updateGameDir%
 PAUSE
 goto CHECKLIST
