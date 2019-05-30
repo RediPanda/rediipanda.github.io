@@ -21,9 +21,11 @@ REM // CORE SERVICES // UPDATES
 
 set updateClientDir=%appdata%/"NXT Studios"/library/client
 set updateGameDir=%appdata%/"NXT Studios"/library/game
-set updateNoQGameDir
+set updateNoQGameDir%appdata%/NXT Studios/library/game
 set defaultTransferFile=%appdata%/"NXT Studios"/library/client/dl
 set defaultNoQTransferFile=%appdata%/NXT Studios/library/client/dl
+set defaultTransferFileState=%appdata%/NXT Studios/library/client/state
+set defaultNoQTransferFileState=%appdata%/NXT Studios/library/client/state
 
 set dot=.
 
@@ -101,7 +103,8 @@ echo TITLE NXT Webhook Bootstrap
 echo CD /D %%defaultTransferFile%%
 echo cls
 echo bitsadmin.exe /transfer UpdateJob "%%DLLink%%" "%%appdata%%\NXT Studios\library\client\dl\%%file%%"
-echo echo 
+echo cd /d %%defaultTransferFileState%%
+echo echo downloadState{finished} > dlstate.dat
 echo EXIT
 ) > serviceDownloadClient.bat
 goto ANIMATE
@@ -409,10 +412,43 @@ DEL /Q "Launcher.bat"
 set File=Launcher.bat
 set DLLink=https://raw.githubusercontent.com/RediPanda/rediipanda.github.io/master/Updates/latest/Launcher.bat
 START /min serviceDownloadClient.bat
-PAUSE
+
+:GAMEINSTALLLOOP
+cls
+echo.
+echo.
+echo [NXT Proxy] Awaiting for the module response...
+echo.
+echo [NXT Proxy Manager] (.  )
+echo.
+echo.
+TIMEOUT 1 /NOBREAK >NUL
+cls
+echo.
+echo.
+echo [NXT Proxy] Awaiting for the module response...
+echo.
+echo [NXT Proxy Manager] (.. )
+echo.
+echo.
+TIMEOUT 1 /NOBREAK >NUL
+cls
+echo.
+echo.
+echo [NXT Proxy] Awaiting for the module response...
+echo.
+echo [NXT Proxy Manager] (...)
+echo.
+echo.
+TIMEOUT 1 /NOBREAK >NUL
+cd /d %defaultTransferFileState%
+IF EXIST "dlstate.dat" goto INSTALLCONFIRMED
+goto GAMEINSTALLLOOP
+
+:INSTALLCONFIRMED
 cd /d "%defaultTransferFile%"
 xcopy Launcher.bat "%updateNoQGameDir%"
-echo %defaultTransferFile%
-echo %updateGameDir%
+echo Default - %defaultTransferFile%
+echo Update -%updateGameDir%
 PAUSE
 goto CHECKLIST
