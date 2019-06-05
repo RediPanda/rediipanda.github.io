@@ -9,7 +9,7 @@ set endLog=CD /D %GameLauncherDirectory%
 
 set resetDir=CD /D %GameLauncherDirectory%
 
-set versionBuild2=156
+set versionBuild2=158
 MODE 215,80
 CD /D %gameLauncherDirectory%
 TITLE Loading...
@@ -1387,6 +1387,21 @@ IF "%accmgmt%"==3 goto ACCOUNTMANAGEMENT3
 IF "%accmgmt%"==4 goto ACCOUNTMANAGEMENT4
 IF "%accmgmt%"==5 goto SETTINGSMENU
 goto ACCOUNTMANAGEMENT
+
+:ACCOUNTMANAGEMENT1
+TITLE Change GameTag // %applicationName%
+cls
+echo.
+echo.
+echo change tag:
+echo.
+echo.
+set /p "newName=> "
+:ACCOUNTMANAGEMENT2
+
+:ACCOUNTMANAGEMENT3
+
+:ACCOUNTMANAGEMENT4
 
 :VERIFYINTEGRITY
 REM // Setup Verification Directory Status for Report

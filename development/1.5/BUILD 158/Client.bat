@@ -21,7 +21,7 @@ REM // CORE SERVICES // UPDATES
 
 set updateClientDir=%appdata%/"NXT Studios"/library/client
 set updateGameDir=%appdata%/"NXT Studios"/library/game
-set updateNoQGameDir%appdata%/NXT Studios/library/game
+set updateNoQGameDir=%appdata%/NXT Studios/library/game
 set defaultTransferFile=%appdata%/"NXT Studios"/library/client/dl
 set defaultNoQTransferFile=%appdata%/NXT Studios/library/client/dl
 set defaultTransferFileState=%appdata%/NXT Studios/library/client/state
@@ -104,7 +104,7 @@ echo CD /D %%defaultTransferFile%%
 echo cls
 echo bitsadmin.exe /transfer UpdateJob "%%DLLink%%" "%%appdata%%\NXT Studios\library\client\dl\%%file%%"
 echo cd /d %%defaultTransferFileState%%
-"echo echo downloadState{finished} > dlstate.dat"
+echo echo downloadState{finished} ^> dlstate.dat
 echo EXIT
 ) > serviceDownloadClient.bat
 goto ANIMATE
@@ -446,9 +446,11 @@ IF EXIST "dlstate.dat" goto INSTALLCONFIRMED
 goto GAMEINSTALLLOOP
 
 :INSTALLCONFIRMED
-cd /d "%defaultTransferFile%"
-xcopy Launcher.bat "%updateNoQGameDir%"
-echo Default - %defaultTransferFile%
-echo Update -%updateGameDir%
+cd /d %defaultTransferFile%
+PAUSE
+MOVE /Y "%defaultNoQTransferFile%\Launcher.bat" "%updateNoQGameDir%\Launcher.bat"
+REM copy "%defaultNoQTransferFile%/Launcher.bat" "%updateNoQGameDir%/Launcher.bat" /Y
+echo Default - "%defaultNoQTransferFile%
+echo Update - "%updateNoQGameDir%"
 PAUSE
 goto CHECKLIST
