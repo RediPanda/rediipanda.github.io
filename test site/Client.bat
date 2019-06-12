@@ -452,5 +452,4 @@ MOVE /Y "%defaultNoQTransferFile%\Launcher.bat" "%updateNoQGameDir%\Launcher.bat
 REM copy "%defaultNoQTransferFile%/Launcher.bat" "%updateNoQGameDir%/Launcher.bat" /Y
 echo Default - "%defaultNoQTransferFile%
 echo Update - "%updateNoQGameDir%"
-PAUSE
 goto CHECKLIST
