@@ -1391,23 +1391,23 @@ echo.
 echo.
 echo --- === COMMUNITY MODS === ---
 echo.
-echo M1 ] %mod1-name% v: %mod1-version%
+echo M1 ] %mod1-name% -- v: %mod1-version%
 echo.
-echo M2 ] %mod2-name% v: %mod2-version%
+echo M2 ] %mod2-name% -- v: %mod2-version%
 echo.
-echo M3 ] %mod3-name% v: %mod3-version%
+echo M3 ] %mod3-name% -- v: %mod3-version%
 echo.
-echo M4 ] %mod4-name% v: %mod4-version%
+echo M4 ] %mod4-name% -- v: %mod4-version%
 echo.
-echo M5 ] %mod5-name% v: %mod5-version%
+echo M5 ] %mod5-name% -- v: %mod5-version%
 echo.
-echo M6 ] %mod6-name% v: %mod6-version%
+echo M6 ] %mod6-name% -- v: %mod6-version%
 echo.
-echo M7 ] %mod7-name% v: %mod7-version%
+echo M7 ] %mod7-name% -- v: %mod7-version%
 echo.
-echo M8 ] %mod8-name% v: %mod8-version%
+echo M8 ] %mod8-name% -- v: %mod8-version%
 echo.
-echo M9 ] %mod9-name% v: %mod9-version%
+echo M9 ] %mod9-name% -- v: %mod9-version%
 echo.
 echo.
 PAUSE
