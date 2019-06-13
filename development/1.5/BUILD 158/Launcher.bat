@@ -1127,13 +1127,15 @@ echo     \       2] Multiplayer [DISABLED]
 echo      \
 echo       \     3] Store [BETA]
 echo        \
-echo        /    4] Character [BETA]
+echo         \   4] Character
+echo         /
+echo        /    5] Settings
 echo       /
-echo      /      5] Settings [BETA]
+echo      /      6] Mod Workshop
 echo     /
-echo    /        6] Return to Launcher
+echo    /        7] Return to Launcher
 echo   /
-echo  /          7] Return to Desktop
+echo  /          8] Return to Desktop
 echo.
 echo.
 set /p "selector=> "
@@ -1142,8 +1144,9 @@ IF "%selector%"=="2" goto CLIENTMAINMENU
 IF "%selector%"=="3" goto STOREMENU
 IF "%selector%"=="4" goto CHARACTERMENU
 IF "%selector%"=="5" goto SETTINGSMENU
-IF "%selector%"=="6" goto EXITTOLAUNCHERAPP
-IF "%selector%"=="7" goto ENDOFFILE
+IF "%selector%"=="6" goto MODLOADERMENU
+IF "%selector%"=="7" goto EXITTOLAUNCHERAPP
+IF "%selector%"=="8" goto ENDOFFILE
 echo.
 cls
 echo.
@@ -1309,6 +1312,55 @@ echo.
 echo Last seen at: %lastLocation%, %worldName%
 PAUSE
 goto ANTICHEATWALL
+
+:MODLOADERMENU
+TITLE Scanning for mods...
+CLS
+echo.
+echo Scanning for mods in [data/config/mods]
+echo.
+echo.
+TIMEOUT 1 /NOBREAK >NUL
+CD /D %GameLauncherDirectory%
+PUSHD data
+PUSHD config
+IF EXIST mods goto MODLOADERMENU2
+cls
+echo.
+echo Failed to detect the mods file, reconfiguring modules...
+echo.
+echo.
+mkdir mods
+pushd mods
+(
+  echo @ECHO OFF
+  echo cls
+  echo CALL mod1.bat
+  echo CALL mod2.bat
+  echo CALL mod3.bat
+  echo CALL mod4.bat
+  echo CALL mod5.bat
+  echo CALL mod6.bat
+  echo CALL mod7.bat
+  echo CALL mod8.bat
+  echo CALL mod9.bat
+  echo CLS
+) > mod-list.bat
+  
+TIMEOUT 2 /NOBREAK >NUL
+
+:MODLOADERMENU2
+cls
+
+
+:MODLOADERSELECTOR
+TITLE Mod Workshop // %applicationName%
+CLS
+echo.
+echo.
+echo --- === OFFICIAL MODS === ---
+echo.
+echo 1 ] CustomWorldLoader
 
 :SETTINGSMENU
 CD /d %gameLauncherDirectory%
