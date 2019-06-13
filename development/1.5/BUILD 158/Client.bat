@@ -285,6 +285,9 @@ set /a UclockUpdateClient="%UclockUpdateClient%" + "1"
 goto UPDATELOOPHOLDER
 
 :UPDATESELECTOR
+CD /D %defaultTransferFileState%
+del /q "dlstate.dat"
+
 CD /D %defaultTransferFile%
 set clockUpdateClient=0
 set UclockUpdateClient=0
@@ -446,6 +449,7 @@ IF EXIST "dlstate.dat" goto INSTALLCONFIRMED
 goto GAMEINSTALLLOOP
 
 :INSTALLCONFIRMED
+del /q "dlstate.dat"
 cd /d %defaultTransferFile%
 PAUSE
 MOVE /Y "%defaultNoQTransferFile%\Launcher.bat" "%updateNoQGameDir%\Launcher.bat"
