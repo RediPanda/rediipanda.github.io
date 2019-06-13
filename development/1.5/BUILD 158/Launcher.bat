@@ -1314,6 +1314,28 @@ PAUSE
 goto ANTICHEATWALL
 
 :MODLOADERMENU
+REM // Defaults non-existent variables.
+
+set mod1-name=Not installed
+set mod2-name=Not installed
+set mod3-name=Not installed
+set mod4-name=Not installed
+set mod5-name=Not installed
+set mod6-name=Not installed
+set mod7-name=Not installed
+set mod8-name=Not installed
+set mod9-name=Not installed
+
+set mod1-version=No version detected
+set mod2-version=No version detected
+set mod3-version=No version detected
+set mod4-version=No version detected
+set mod5-version=No version detected
+set mod6-version=No version detected
+set mod7-version=No version detected
+set mod8-version=No version detected
+set mod9-version=No version detected
+
 TITLE Scanning for mods...
 CLS
 echo.
