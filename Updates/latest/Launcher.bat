@@ -1373,7 +1373,7 @@ TIMEOUT 2 /NOBREAK >NUL
 
 :MODLOADERMENU2
 cls
-
+CALL mod-list.bat
 
 :MODLOADERSELECTOR
 TITLE Mod Workshop // %applicationName%
