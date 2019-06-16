@@ -1414,7 +1414,7 @@ echo Menu ] Takes you back to the main menu.
 echo.
 echo.
 
-set /p="cho=> "
+set /p "cho=> "
 IF "%cho%"=="1" goto LOADOFFMOD1
 IF "%cho%"=="2" goto MODLOADERSELECTOR
 IF "%cho%"=="3" goto MODLOADERSELECTOR
