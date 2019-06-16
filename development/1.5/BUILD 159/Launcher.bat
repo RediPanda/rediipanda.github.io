@@ -1444,7 +1444,7 @@ goto MODLOADERSELECTOR
 :LOADCOMMOD1
 CLS
 TITLE Loading Mod...
-IF NOT %mod1-exist%==1 goto MISSINGMOD
+IF NOT "e%mod1-exist%"=="e1" goto MISSINGMOD
 echo Works!
 PAUSE
 :MISSINGMOD
