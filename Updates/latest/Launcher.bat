@@ -1415,29 +1415,29 @@ echo.
 echo.
 
 set /p="cho=> "
-IF "%cho%"==1 goto LOADOFFMOD1
-IF "%cho%"==2 goto MODLOADERSELECTOR
-IF "%cho%"==3 goto MODLOADERSELECTOR
-IF "%cho%"==4 goto MODLOADERSELECTOR
-IF "%cho%"==5 goto MODLOADERSELECTOR
-IF "%cho%"==6 goto MODLOADERSELECTOR
-IF "%cho%"==7 goto MODLOADERSELECTOR
-IF "%cho%"==8 goto MODLOADERSELECTOR
-IF "%cho%"==9 goto MODLOADERSELECTOR
+IF "%cho%"=="1" goto LOADOFFMOD1
+IF "%cho%"=="2" goto MODLOADERSELECTOR
+IF "%cho%"=="3" goto MODLOADERSELECTOR
+IF "%cho%"=="4" goto MODLOADERSELECTOR
+IF "%cho%"=="5" goto MODLOADERSELECTOR
+IF "%cho%"=="6" goto MODLOADERSELECTOR
+IF "%cho%"=="7" goto MODLOADERSELECTOR
+IF "%cho%"=="8" goto MODLOADERSELECTOR
+IF "%cho%"=="9" goto MODLOADERSELECTOR
 
-IF "%cho%"==M1 goto LOADCOMMOD1
-IF "%cho%"==M2 goto LOADCOMMOD2
-IF "%cho%"==M3 goto LOADCOMMOD3
-IF "%cho%"==M4 goto LOADCOMMOD4
-IF "%cho%"==M5 goto LOADCOMMOD5
-IF "%cho%"==M6 goto LOADCOMMOD6
-IF "%cho%"==M7 goto LOADCOMMOD7
-IF "%cho%"==M8 goto LOADCOMMOD8
-IF "%cho%"==M9 goto LOADCOMMOD9
+IF "%cho%"=="M1" goto LOADCOMMOD1
+IF "%cho%"=="M2" goto LOADCOMMOD2
+IF "%cho%"=="M3" goto LOADCOMMOD3
+IF "%cho%"=="M4" goto LOADCOMMOD4
+IF "%cho%"=="M5" goto LOADCOMMOD5
+IF "%cho%"=="M6" goto LOADCOMMOD6
+IF "%cho%"=="M7" goto LOADCOMMOD7
+IF "%cho%"=="M8" goto LOADCOMMOD8
+IF "%cho%"=="M9" goto LOADCOMMOD9
 
-IF "%cho%"==Menu goto ANTICHEATWALL
-IF "%cho%"==menu goto ANTICHEATWALL
-IF "%cho%"==MENU goto ANTICHEATWALL
+IF "%cho%"=="Menu" goto ANTICHEATWALL
+IF "%cho%"=="menu" goto ANTICHEATWALL
+IF "%cho%"=="MENU" goto ANTICHEATWALL
 
 goto MODLOADERSELECTOR
 
