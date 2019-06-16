@@ -1373,6 +1373,10 @@ TIMEOUT 2 /NOBREAK >NUL
 
 :MODLOADERMENU2
 cls
+CD /D %GameLauncherDirectory%
+PUSHD data
+PUSHD config
+PUSHD mods
 CALL mod-list.bat
 
 :MODLOADERSELECTOR
@@ -1440,6 +1444,24 @@ IF "%cho%"=="menu" goto ANTICHEATWALL
 IF "%cho%"=="MENU" goto ANTICHEATWALL
 
 goto MODLOADERSELECTOR
+
+:LOADOFFMOD1
+
+IF EXIST CustomWorldLoader.bat goto CWLLOAD
+cls
+echo.
+echo.
+echo Failed to detect an official mod: CustomWorldLoader !
+echo.
+echo.
+TIMEOUT 4 /NOBREAK >NUL
+goto MODLOADERMENU
+
+:CWLLOAD
+
+call CustomWorldLoader.bat
+
+goto MODLOADERMENU
 
 :LOADCOMMOD1
 CLS
