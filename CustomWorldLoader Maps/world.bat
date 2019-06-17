@@ -47,3 +47,33 @@ echo 	** IF YOU DO WISH TO REPLAY THIS WORLD TO PLAY A DIFFERENT PATHWAY, OPEN T
 echo.
 echo.
 echo Thank you for taking your time for browsing through this multimodal assignment. Have a good day and enjoy!
+TIMEOUT /NOBREAK >NUL
+
+:CWLLOADLOCAL
+
+CD /D %GameLauncherDirectory%
+PUSHD data
+PUSHD config
+PUSHD mods
+PUSHD cwl
+
+IF EXIST data goto EXIST
+
+cls
+echo.
+echo.
+echo 	There was no local save detected. Starting a new session...
+echo.
+echo.
+TIMEOUT 2 /NOBREAK >NUL
+md data
+pushd data
+md local.player
+pushd local.player
+
+:SAVEPLAYERDATA
+cls
+
+(
+	echo set playername=%username%
+) > username.bat
