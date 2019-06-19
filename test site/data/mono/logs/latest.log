@@ -998,3 +998,269 @@
 
 [INFO: Sun 16/06/2019 - 16:54:50.56] [SYSTEM] Checking if Text Game is synced with the Client Service...
 [INFO: Sun 16/06/2019 - 16:54:50.56] [GAME] @CONSOLE : Issued the command: textgame.client.checksync
+[INFO: Tue 18/06/2019 - 17:54:28.65] [SYSTEM] Checking if  is synced with the Client Service...
+[INFO: Tue 18/06/2019 - 17:54:28.66] [GAME] @CONSOLE : Issued the command: textgame.client.checksync
+
+------------------------ START PROCEDURE --------------------------- 
+[INFO: Tue 18/06/2019 - 17:54:28.66] [SYSTEM] Starting Application...
+[INFO: Tue 18/06/2019 - 17:54:28.66] [SYSTEM] Starting Task #31672
+[INFO: Tue 18/06/2019 - 17:54:28.66] [SYSTEM] Starting Task #1710
+[INFO: Tue 18/06/2019 - 17:54:28.68] [SYSTEM] Starting Task #19949
+[INFO: Tue 18/06/2019 - 17:54:28.68] [SYSTEM] Starting Task #10305
+[INFO: Tue 18/06/2019 - 17:54:28.68] [SYSTEM] Starting independent services...
+[INFO: Tue 18/06/2019 - 17:54:28.68] [GAME] Unpacking data...
+[INFO: Tue 18/06/2019 - 17:54:28.68] [GAME] @CONSOLE : Executing command: textgame.loadgame.state
+[INFO: Tue 18/06/2019 - 17:54:28.68] [SYSTEM] Loading Last Game State...
+[INFO: Tue 18/06/2019 - 17:54:28.69] [GAME] Checking Game State...
+[INFO: Tue 18/06/2019 - 17:54:28.69] [SYSTEM] Service (Game) REQUEST event.GameState
+[INFO: Tue 18/06/2019 - 17:54:28.69] [SYSTEM] Service (Game) POST event.GameState
+[INFO: Tue 18/06/2019 - 17:54:28.69] [ENGINE] Checking if GameState matches latest with current...
+[INFO: Tue 18/06/2019 - 17:54:28.69] [ENGINE] Checking if GameState matches latest with current... OK!
+[INFO: Tue 18/06/2019 - 17:54:28.69] [SYSTEM] Start Procedures Completed!
+------------------------ START PROCEDURE --------------------------- 
+[INFO: Tue 18/06/2019 - 17:54:28.71] [SYSTEM] INFO: Date: Tue 18/06/2019
+[INFO: Tue 18/06/2019 - 17:54:28.71] [SYSTEM] INFO: Time: 17:54:28.71
+[INFO: Tue 18/06/2019 - 17:54:28.71] [SYSTEM] INFO: Reporting: Version:  1.5 Build 159
+------------------------ START OF LOGGING --------------------------- 
+
+[INFO: Tue 18/06/2019 - 17:54:28.85] [SYSTEM] Checking if Text Game is synced with the Client Service...
+[INFO: Tue 18/06/2019 - 17:54:28.85] [GAME] @CONSOLE : Issued the command: textgame.client.checksync
+[INFO: Tue 18/06/2019 - 19:17:59.38] [SYSTEM] Checking if  is synced with the Client Service...
+[INFO: Tue 18/06/2019 - 19:17:59.38] [GAME] @CONSOLE : Issued the command: textgame.client.checksync
+
+------------------------ START PROCEDURE --------------------------- 
+[INFO: Tue 18/06/2019 - 19:17:59.39] [SYSTEM] Starting Application...
+[INFO: Tue 18/06/2019 - 19:17:59.41] [SYSTEM] Starting Task #15268
+[INFO: Tue 18/06/2019 - 19:17:59.41] [SYSTEM] Starting Task #24150
+[INFO: Tue 18/06/2019 - 19:17:59.41] [SYSTEM] Starting Task #15136
+[INFO: Tue 18/06/2019 - 19:17:59.41] [SYSTEM] Starting Task #5330
+[INFO: Tue 18/06/2019 - 19:17:59.41] [SYSTEM] Starting independent services...
+[INFO: Tue 18/06/2019 - 19:17:59.41] [GAME] Unpacking data...
+[INFO: Tue 18/06/2019 - 19:17:59.42] [GAME] @CONSOLE : Executing command: textgame.loadgame.state
+[INFO: Tue 18/06/2019 - 19:17:59.42] [SYSTEM] Loading Last Game State...
+[INFO: Tue 18/06/2019 - 19:17:59.42] [GAME] Checking Game State...
+[INFO: Tue 18/06/2019 - 19:17:59.42] [SYSTEM] Service (Game) REQUEST event.GameState
+[INFO: Tue 18/06/2019 - 19:17:59.42] [SYSTEM] Service (Game) POST event.GameState
+[INFO: Tue 18/06/2019 - 19:17:59.42] [ENGINE] Checking if GameState matches latest with current...
+[INFO: Tue 18/06/2019 - 19:17:59.42] [ENGINE] Checking if GameState matches latest with current... OK!
+[INFO: Tue 18/06/2019 - 19:17:59.44] [SYSTEM] Start Procedures Completed!
+------------------------ START PROCEDURE --------------------------- 
+[INFO: Tue 18/06/2019 - 19:17:59.44] [SYSTEM] INFO: Date: Tue 18/06/2019
+[INFO: Tue 18/06/2019 - 19:17:59.44] [SYSTEM] INFO: Time: 19:17:59.44
+[INFO: Tue 18/06/2019 - 19:17:59.44] [SYSTEM] INFO: Reporting: Version:  1.5 Build 159
+------------------------ START OF LOGGING --------------------------- 
+
+[INFO: Tue 18/06/2019 - 19:17:59.56] [SYSTEM] Checking if Text Game is synced with the Client Service...
+[INFO: Tue 18/06/2019 - 19:17:59.56] [GAME] @CONSOLE : Issued the command: textgame.client.checksync
+
+------------------------ EXIT PROCEDURE --------------------------- 
+[INFO: Tue 18/06/2019 - 19:18:04.72] [SYSTEM] Exiting Application...
+[INFO: Tue 18/06/2019 - 19:18:04.72] [SYSTEM] Cancelling Task #1956
+[INFO: Tue 18/06/2019 - 19:18:04.72] [SYSTEM] Cancelling Task #27925
+[INFO: Tue 18/06/2019 - 19:18:04.72] [SYSTEM] Cancelling Task #7971
+[INFO: Tue 18/06/2019 - 19:18:04.73] [SYSTEM] Cancelling Task #32394
+[INFO: Tue 18/06/2019 - 19:18:04.73] [SYSTEM] Shutting off services...
+[INFO: Tue 18/06/2019 - 19:18:04.73] [GAME] Wrapping up data...
+[INFO: Tue 18/06/2019 - 19:18:04.73] [GAME] @CONSOLE : Executing command: textgame.savegame.state
+[INFO: Tue 18/06/2019 - 19:18:04.73] [SYSTEM] Saving Game State...
+[INFO: Tue 18/06/2019 - 19:18:04.73] [GAME] Checking Game State...
+[INFO: Tue 18/06/2019 - 19:18:04.73] [SYSTEM] Service (Game) REQUEST event.GameState
+[INFO: Tue 18/06/2019 - 19:18:04.75] [SYSTEM] Service (Game) POST event.GameState
+[INFO: Tue 18/06/2019 - 19:18:04.75] [ENGINE] Checking if GameState matches latest with current...
+[INFO: Tue 18/06/2019 - 19:18:04.75] [ENGINE] Checking if GameState matches latest with current... OK!
+[INFO: Tue 18/06/2019 - 19:18:04.75] [SYSTEM] Exit Procedures Completed!
+------------------------ EXIT PROCEDURE --------------------------- 
+[INFO: Tue 18/06/2019 - 19:18:04.75] [SYSTEM] INFO: Date: Tue 18/06/2019
+[INFO: Tue 18/06/2019 - 19:18:04.76] [SYSTEM] INFO: Time: 19:18:04.76
+[INFO: Tue 18/06/2019 - 19:18:04.76] [SYSTEM] INFO: Reporting: Version:  1.5 Build 159
+------------------------ END OF LOGGING --------------------------- 
+
+[INFO: Tue 18/06/2019 - 19:18:05.87] [SYSTEM] Checking if  is synced with the Client Service...
+[INFO: Tue 18/06/2019 - 19:18:05.89] [GAME] @CONSOLE : Issued the command: textgame.client.checksync
+
+------------------------ START PROCEDURE --------------------------- 
+[INFO: Tue 18/06/2019 - 19:18:05.89] [SYSTEM] Starting Application...
+[INFO: Tue 18/06/2019 - 19:18:05.91] [SYSTEM] Starting Task #15288
+[INFO: Tue 18/06/2019 - 19:18:05.91] [SYSTEM] Starting Task #23104
+[INFO: Tue 18/06/2019 - 19:18:05.91] [SYSTEM] Starting Task #24017
+[INFO: Tue 18/06/2019 - 19:18:05.91] [SYSTEM] Starting Task #18638
+[INFO: Tue 18/06/2019 - 19:18:05.91] [SYSTEM] Starting independent services...
+[INFO: Tue 18/06/2019 - 19:18:05.91] [GAME] Unpacking data...
+[INFO: Tue 18/06/2019 - 19:18:05.91] [GAME] @CONSOLE : Executing command: textgame.loadgame.state
+[INFO: Tue 18/06/2019 - 19:18:05.92] [SYSTEM] Loading Last Game State...
+[INFO: Tue 18/06/2019 - 19:18:05.92] [GAME] Checking Game State...
+[INFO: Tue 18/06/2019 - 19:18:05.92] [SYSTEM] Service (Game) REQUEST event.GameState
+[INFO: Tue 18/06/2019 - 19:18:05.92] [SYSTEM] Service (Game) POST event.GameState
+[INFO: Tue 18/06/2019 - 19:18:05.92] [ENGINE] Checking if GameState matches latest with current...
+[INFO: Tue 18/06/2019 - 19:18:05.92] [ENGINE] Checking if GameState matches latest with current... OK!
+[INFO: Tue 18/06/2019 - 19:18:05.94] [SYSTEM] Start Procedures Completed!
+------------------------ START PROCEDURE --------------------------- 
+[INFO: Tue 18/06/2019 - 19:18:05.94] [SYSTEM] INFO: Date: Tue 18/06/2019
+[INFO: Tue 18/06/2019 - 19:18:05.94] [SYSTEM] INFO: Time: 19:18:05.94
+[INFO: Tue 18/06/2019 - 19:18:05.94] [SYSTEM] INFO: Reporting: Version:  1.5 Build 159
+------------------------ START OF LOGGING --------------------------- 
+
+[INFO: Tue 18/06/2019 - 19:18:06.07] [SYSTEM] Checking if Text Game is synced with the Client Service...
+[INFO: Tue 18/06/2019 - 19:18:06.07] [GAME] @CONSOLE : Issued the command: textgame.client.checksync
+[INFO: Tue 18/06/2019 - 19:22:57.91] [SYSTEM] Checking if  is synced with the Client Service...
+[INFO: Tue 18/06/2019 - 19:22:57.91] [GAME] @CONSOLE : Issued the command: textgame.client.checksync
+
+------------------------ START PROCEDURE --------------------------- 
+[INFO: Tue 18/06/2019 - 19:22:57.94] [SYSTEM] Starting Application...
+[INFO: Tue 18/06/2019 - 19:22:57.94] [SYSTEM] Starting Task #16241
+[INFO: Tue 18/06/2019 - 19:22:57.94] [SYSTEM] Starting Task #15911
+[INFO: Tue 18/06/2019 - 19:22:57.94] [SYSTEM] Starting Task #30243
+[INFO: Tue 18/06/2019 - 19:22:57.94] [SYSTEM] Starting Task #6
+[INFO: Tue 18/06/2019 - 19:22:57.94] [SYSTEM] Starting independent services...
+[INFO: Tue 18/06/2019 - 19:22:57.95] [GAME] Unpacking data...
+[INFO: Tue 18/06/2019 - 19:22:57.95] [GAME] @CONSOLE : Executing command: textgame.loadgame.state
+[INFO: Tue 18/06/2019 - 19:22:57.95] [SYSTEM] Loading Last Game State...
+[INFO: Tue 18/06/2019 - 19:22:57.95] [GAME] Checking Game State...
+[INFO: Tue 18/06/2019 - 19:22:57.95] [SYSTEM] Service (Game) REQUEST event.GameState
+[INFO: Tue 18/06/2019 - 19:22:57.95] [SYSTEM] Service (Game) POST event.GameState
+[INFO: Tue 18/06/2019 - 19:22:57.95] [ENGINE] Checking if GameState matches latest with current...
+[INFO: Tue 18/06/2019 - 19:22:57.97] [ENGINE] Checking if GameState matches latest with current... OK!
+[INFO: Tue 18/06/2019 - 19:22:57.97] [SYSTEM] Start Procedures Completed!
+------------------------ START PROCEDURE --------------------------- 
+[INFO: Tue 18/06/2019 - 19:22:57.97] [SYSTEM] INFO: Date: Tue 18/06/2019
+[INFO: Tue 18/06/2019 - 19:22:57.97] [SYSTEM] INFO: Time: 19:22:57.97
+[INFO: Tue 18/06/2019 - 19:22:57.97] [SYSTEM] INFO: Reporting: Version:  1.5 Build 159
+------------------------ START OF LOGGING --------------------------- 
+
+[INFO: Tue 18/06/2019 - 19:22:58.09] [SYSTEM] Checking if Text Game is synced with the Client Service...
+[INFO: Tue 18/06/2019 - 19:22:58.09] [GAME] @CONSOLE : Issued the command: textgame.client.checksync
+[INFO: Tue 18/06/2019 - 21:22:01.01] [SYSTEM] Checking if  is synced with the Client Service...
+[INFO: Tue 18/06/2019 - 21:22:01.01] [GAME] @CONSOLE : Issued the command: textgame.client.checksync
+
+------------------------ START PROCEDURE --------------------------- 
+[INFO: Tue 18/06/2019 - 21:22:01.04] [SYSTEM] Starting Application...
+[INFO: Tue 18/06/2019 - 21:22:01.05] [SYSTEM] Starting Task #6799
+[INFO: Tue 18/06/2019 - 21:22:01.05] [SYSTEM] Starting Task #16354
+[INFO: Tue 18/06/2019 - 21:22:01.05] [SYSTEM] Starting Task #2660
+[INFO: Tue 18/06/2019 - 21:22:01.05] [SYSTEM] Starting Task #16096
+[INFO: Tue 18/06/2019 - 21:22:01.07] [SYSTEM] Starting independent services...
+[INFO: Tue 18/06/2019 - 21:22:01.07] [GAME] Unpacking data...
+[INFO: Tue 18/06/2019 - 21:22:01.07] [GAME] @CONSOLE : Executing command: textgame.loadgame.state
+[INFO: Tue 18/06/2019 - 21:22:01.07] [SYSTEM] Loading Last Game State...
+[INFO: Tue 18/06/2019 - 21:22:01.08] [GAME] Checking Game State...
+[INFO: Tue 18/06/2019 - 21:22:01.08] [SYSTEM] Service (Game) REQUEST event.GameState
+[INFO: Tue 18/06/2019 - 21:22:01.08] [SYSTEM] Service (Game) POST event.GameState
+[INFO: Tue 18/06/2019 - 21:22:01.08] [ENGINE] Checking if GameState matches latest with current...
+[INFO: Tue 18/06/2019 - 21:22:01.10] [ENGINE] Checking if GameState matches latest with current... OK!
+[INFO: Tue 18/06/2019 - 21:22:01.10] [SYSTEM] Start Procedures Completed!
+------------------------ START PROCEDURE --------------------------- 
+[INFO: Tue 18/06/2019 - 21:22:01.10] [SYSTEM] INFO: Date: Tue 18/06/2019
+[INFO: Tue 18/06/2019 - 21:22:01.10] [SYSTEM] INFO: Time: 21:22:01.10
+[INFO: Tue 18/06/2019 - 21:22:01.11] [SYSTEM] INFO: Reporting: Version:  1.5 Build 159
+------------------------ START OF LOGGING --------------------------- 
+
+[INFO: Tue 18/06/2019 - 21:22:01.30] [SYSTEM] Checking if Text Game is synced with the Client Service...
+[INFO: Tue 18/06/2019 - 21:22:01.30] [GAME] @CONSOLE : Issued the command: textgame.client.checksync
+[INFO: Tue 18/06/2019 - 22:23:14.06] [SYSTEM] Checking if  is synced with the Client Service...
+[INFO: Tue 18/06/2019 - 22:23:14.06] [GAME] @CONSOLE : Issued the command: textgame.client.checksync
+
+------------------------ START PROCEDURE --------------------------- 
+[INFO: Tue 18/06/2019 - 22:23:14.07] [SYSTEM] Starting Application...
+[INFO: Tue 18/06/2019 - 22:23:14.07] [SYSTEM] Starting Task #18794
+[INFO: Tue 18/06/2019 - 22:23:14.09] [SYSTEM] Starting Task #9811
+[INFO: Tue 18/06/2019 - 22:23:14.09] [SYSTEM] Starting Task #16226
+[INFO: Tue 18/06/2019 - 22:23:14.09] [SYSTEM] Starting Task #25351
+[INFO: Tue 18/06/2019 - 22:23:14.09] [SYSTEM] Starting independent services...
+[INFO: Tue 18/06/2019 - 22:23:14.09] [GAME] Unpacking data...
+[INFO: Tue 18/06/2019 - 22:23:14.09] [GAME] @CONSOLE : Executing command: textgame.loadgame.state
+[INFO: Tue 18/06/2019 - 22:23:14.10] [SYSTEM] Loading Last Game State...
+[INFO: Tue 18/06/2019 - 22:23:14.10] [GAME] Checking Game State...
+[INFO: Tue 18/06/2019 - 22:23:14.10] [SYSTEM] Service (Game) REQUEST event.GameState
+[INFO: Tue 18/06/2019 - 22:23:14.10] [SYSTEM] Service (Game) POST event.GameState
+[INFO: Tue 18/06/2019 - 22:23:14.10] [ENGINE] Checking if GameState matches latest with current...
+[INFO: Tue 18/06/2019 - 22:23:14.10] [ENGINE] Checking if GameState matches latest with current... OK!
+[INFO: Tue 18/06/2019 - 22:23:14.12] [SYSTEM] Start Procedures Completed!
+------------------------ START PROCEDURE --------------------------- 
+[INFO: Tue 18/06/2019 - 22:23:14.12] [SYSTEM] INFO: Date: Tue 18/06/2019
+[INFO: Tue 18/06/2019 - 22:23:14.12] [SYSTEM] INFO: Time: 22:23:14.12
+[INFO: Tue 18/06/2019 - 22:23:14.12] [SYSTEM] INFO: Reporting: Version:  1.5 Build 159
+------------------------ START OF LOGGING --------------------------- 
+
+[INFO: Tue 18/06/2019 - 22:23:14.26] [SYSTEM] Checking if Text Game is synced with the Client Service...
+[INFO: Tue 18/06/2019 - 22:23:14.26] [GAME] @CONSOLE : Issued the command: textgame.client.checksync
+[INFO: Wed 19/06/2019 -  1:17:30.15] [SYSTEM] Checking if  is synced with the Client Service...
+[INFO: Wed 19/06/2019 -  1:17:30.15] [GAME] @CONSOLE : Issued the command: textgame.client.checksync
+
+------------------------ START PROCEDURE --------------------------- 
+[INFO: Wed 19/06/2019 -  1:17:30.17] [SYSTEM] Starting Application...
+[INFO: Wed 19/06/2019 -  1:17:30.17] [SYSTEM] Starting Task #20174
+[INFO: Wed 19/06/2019 -  1:17:30.17] [SYSTEM] Starting Task #11656
+[INFO: Wed 19/06/2019 -  1:17:30.17] [SYSTEM] Starting Task #11499
+[INFO: Wed 19/06/2019 -  1:17:30.18] [SYSTEM] Starting Task #29951
+[INFO: Wed 19/06/2019 -  1:17:30.18] [SYSTEM] Starting independent services...
+[INFO: Wed 19/06/2019 -  1:17:30.18] [GAME] Unpacking data...
+[INFO: Wed 19/06/2019 -  1:17:30.18] [GAME] @CONSOLE : Executing command: textgame.loadgame.state
+[INFO: Wed 19/06/2019 -  1:17:30.18] [SYSTEM] Loading Last Game State...
+[INFO: Wed 19/06/2019 -  1:17:30.18] [GAME] Checking Game State...
+[INFO: Wed 19/06/2019 -  1:17:30.20] [SYSTEM] Service (Game) REQUEST event.GameState
+[INFO: Wed 19/06/2019 -  1:17:30.20] [SYSTEM] Service (Game) POST event.GameState
+[INFO: Wed 19/06/2019 -  1:17:30.20] [ENGINE] Checking if GameState matches latest with current...
+[INFO: Wed 19/06/2019 -  1:17:30.20] [ENGINE] Checking if GameState matches latest with current... OK!
+[INFO: Wed 19/06/2019 -  1:17:30.20] [SYSTEM] Start Procedures Completed!
+------------------------ START PROCEDURE --------------------------- 
+[INFO: Wed 19/06/2019 -  1:17:30.20] [SYSTEM] INFO: Date: Wed 19/06/2019
+[INFO: Wed 19/06/2019 -  1:17:30.21] [SYSTEM] INFO: Time:  1:17:30.21
+[INFO: Wed 19/06/2019 -  1:17:30.21] [SYSTEM] INFO: Reporting: Version:  1.5 Build 159
+------------------------ START OF LOGGING --------------------------- 
+
+[INFO: Wed 19/06/2019 -  1:17:30.35] [SYSTEM] Checking if Text Game is synced with the Client Service...
+[INFO: Wed 19/06/2019 -  1:17:30.35] [GAME] @CONSOLE : Issued the command: textgame.client.checksync
+[INFO: Wed 19/06/2019 -  9:34:42.03] [SYSTEM] Checking if  is synced with the Client Service...
+[INFO: Wed 19/06/2019 -  9:34:42.03] [GAME] @CONSOLE : Issued the command: textgame.client.checksync
+
+------------------------ START PROCEDURE --------------------------- 
+[INFO: Wed 19/06/2019 -  9:34:42.06] [SYSTEM] Starting Application...
+[INFO: Wed 19/06/2019 -  9:34:42.06] [SYSTEM] Starting Task #19285
+[INFO: Wed 19/06/2019 -  9:34:42.06] [SYSTEM] Starting Task #12487
+[INFO: Wed 19/06/2019 -  9:34:42.06] [SYSTEM] Starting Task #11613
+[INFO: Wed 19/06/2019 -  9:34:42.06] [SYSTEM] Starting Task #14087
+[INFO: Wed 19/06/2019 -  9:34:42.08] [SYSTEM] Starting independent services...
+[INFO: Wed 19/06/2019 -  9:34:42.08] [GAME] Unpacking data...
+[INFO: Wed 19/06/2019 -  9:34:42.08] [GAME] @CONSOLE : Executing command: textgame.loadgame.state
+[INFO: Wed 19/06/2019 -  9:34:42.08] [SYSTEM] Loading Last Game State...
+[INFO: Wed 19/06/2019 -  9:34:42.08] [GAME] Checking Game State...
+[INFO: Wed 19/06/2019 -  9:34:42.09] [SYSTEM] Service (Game) REQUEST event.GameState
+[INFO: Wed 19/06/2019 -  9:34:42.09] [SYSTEM] Service (Game) POST event.GameState
+[INFO: Wed 19/06/2019 -  9:34:42.09] [ENGINE] Checking if GameState matches latest with current...
+[INFO: Wed 19/06/2019 -  9:34:42.09] [ENGINE] Checking if GameState matches latest with current... OK!
+[INFO: Wed 19/06/2019 -  9:34:42.11] [SYSTEM] Start Procedures Completed!
+------------------------ START PROCEDURE --------------------------- 
+[INFO: Wed 19/06/2019 -  9:34:42.11] [SYSTEM] INFO: Date: Wed 19/06/2019
+[INFO: Wed 19/06/2019 -  9:34:42.11] [SYSTEM] INFO: Time:  9:34:42.11
+[INFO: Wed 19/06/2019 -  9:34:42.11] [SYSTEM] INFO: Reporting: Version:  1.5 Build 159
+------------------------ START OF LOGGING --------------------------- 
+
+[INFO: Wed 19/06/2019 -  9:34:42.30] [SYSTEM] Checking if Text Game is synced with the Client Service...
+[INFO: Wed 19/06/2019 -  9:34:42.30] [GAME] @CONSOLE : Issued the command: textgame.client.checksync
+[INFO: Wed 19/06/2019 -  9:47:33.63] [SYSTEM] Checking if  is synced with the Client Service...
+[INFO: Wed 19/06/2019 -  9:47:33.63] [GAME] @CONSOLE : Issued the command: textgame.client.checksync
+
+------------------------ START PROCEDURE --------------------------- 
+[INFO: Wed 19/06/2019 -  9:47:33.66] [SYSTEM] Starting Application...
+[INFO: Wed 19/06/2019 -  9:47:33.66] [SYSTEM] Starting Task #21806
+[INFO: Wed 19/06/2019 -  9:47:33.66] [SYSTEM] Starting Task #19953
+[INFO: Wed 19/06/2019 -  9:47:33.66] [SYSTEM] Starting Task #7426
+[INFO: Wed 19/06/2019 -  9:47:33.68] [SYSTEM] Starting Task #11509
+[INFO: Wed 19/06/2019 -  9:47:33.68] [SYSTEM] Starting independent services...
+[INFO: Wed 19/06/2019 -  9:47:33.68] [GAME] Unpacking data...
+[INFO: Wed 19/06/2019 -  9:47:33.68] [GAME] @CONSOLE : Executing command: textgame.loadgame.state
+[INFO: Wed 19/06/2019 -  9:47:33.68] [SYSTEM] Loading Last Game State...
+[INFO: Wed 19/06/2019 -  9:47:33.69] [GAME] Checking Game State...
+[INFO: Wed 19/06/2019 -  9:47:33.69] [SYSTEM] Service (Game) REQUEST event.GameState
+[INFO: Wed 19/06/2019 -  9:47:33.69] [SYSTEM] Service (Game) POST event.GameState
+[INFO: Wed 19/06/2019 -  9:47:33.69] [ENGINE] Checking if GameState matches latest with current...
+[INFO: Wed 19/06/2019 -  9:47:33.69] [ENGINE] Checking if GameState matches latest with current... OK!
+[INFO: Wed 19/06/2019 -  9:47:33.71] [SYSTEM] Start Procedures Completed!
+------------------------ START PROCEDURE --------------------------- 
+[INFO: Wed 19/06/2019 -  9:47:33.71] [SYSTEM] INFO: Date: Wed 19/06/2019
+[INFO: Wed 19/06/2019 -  9:47:33.71] [SYSTEM] INFO: Time:  9:47:33.71
+[INFO: Wed 19/06/2019 -  9:47:33.72] [SYSTEM] INFO: Reporting: Version:  1.5 Build 159
+------------------------ START OF LOGGING --------------------------- 
+
+[INFO: Wed 19/06/2019 -  9:47:33.88] [SYSTEM] Checking if Text Game is synced with the Client Service...
+[INFO: Wed 19/06/2019 -  9:47:33.88] [GAME] @CONSOLE : Issued the command: textgame.client.checksync
