@@ -2,7 +2,7 @@
 :INIT
 TITLE Welcome to the Store // TextGame
 CLS
-REM // set applicationVersion=1.5
+set applicationVersion=1.5
 set latestVersion=1.5
 set storeVersion=0500110018
 
@@ -18,7 +18,7 @@ set item7Name="Desmonic 'Shroom"
 set item8Name="Desmonic Bowl"
 
 set item1Meta="A usable weapon ingame. Delivers 24 DMG among enemies."
-set item2Meta="A tradable item."
+set item2Meta="A tradable resource item."
 set item3Meta="A perishable item used by weapons."
 set item4Meta="Tops up your shield meter by 20"
 set item5Meta="It's his secret coin..."
